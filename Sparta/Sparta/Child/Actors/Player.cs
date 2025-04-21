@@ -37,8 +37,8 @@ namespace Sparta.Child.Actors
             {
                 base.Tick();
                 Console.WriteLine("플레이어\n");
-
-                Console.WriteLine("0. 가방을 확인한다.");
+                Player.GetPlayer().PrintStatus();
+                Console.WriteLine("\n0. 가방을 확인한다.");
                 Console.WriteLine("1. 무장을 확인한다.");
                 Console.WriteLine("2. 나간다.");
 

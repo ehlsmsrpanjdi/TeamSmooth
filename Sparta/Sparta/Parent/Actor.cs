@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Sparta.SelectorSystem;
 using Sparta.NameSpace;
 using Sparta.Child.Actors.ItemSystem;
+using System.Reflection.Emit;
+using System.Xml.Linq;
 
 namespace Sparta.Parent
 {
@@ -32,7 +34,12 @@ namespace Sparta.Parent
 
         public virtual void PrintStatus()   //상태를 출력하는 함수입니다.
         {
-
+            Console.WriteLine("Lv. " + Level);
+            Console.WriteLine($"{Name} ( 전사 )");
+            Console.WriteLine($"공격력 : {attack} "); // (+{eqStr})");
+            Console.WriteLine($"방어력 : {shield} "); // (+{eqDef})");
+            Console.WriteLine($"체 력 : {hp} "); // (+{eqHp})");
+            Console.WriteLine($"Gold : {gold} G");
         }
 
 
