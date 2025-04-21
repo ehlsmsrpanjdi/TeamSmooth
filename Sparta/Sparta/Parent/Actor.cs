@@ -65,11 +65,6 @@ namespace Sparta.Parent
 
         }
 
-        public virtual void TakeOnItem(Item _item)
-        {
-
-        }
-
 
 
 

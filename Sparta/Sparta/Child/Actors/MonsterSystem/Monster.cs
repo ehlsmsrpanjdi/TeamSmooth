@@ -16,7 +16,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             attack = 5;
             shield = 0;
             hp = 60;
-            gold = Global.rand.Next(0, 100);
+            gold = Global.Rand(0, 100);
         }
     }
 
@@ -26,8 +26,8 @@ namespace Sparta.Child.Actors.MonsterSystem
             attack = 5;
             shield = 5;
             hp = 120;
-            gold = Global.rand.Next(0, 100);
-        }
+            gold = Global.Rand(0, 100);
+        }   
     }
 
     class TwinHeadOrc : Actor
@@ -37,7 +37,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             attack = 10;
             shield = 5;
             hp = 150;
-            gold = Global.rand.Next(0, 100);
+            gold = Global.Rand(0, 100);
         }
     }
 
@@ -48,7 +48,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             attack = 50;
             shield = 20;
             hp = 120;
-            gold = Global.rand.Next(0, 100);
+            gold = Global.Rand(0, 100);
         }
     }
 }
