@@ -22,7 +22,7 @@ namespace Sparta.Parent
 
         public virtual void BeginPlay()
         {
-
+            //aaa
         }
 
         public virtual void Tick()
