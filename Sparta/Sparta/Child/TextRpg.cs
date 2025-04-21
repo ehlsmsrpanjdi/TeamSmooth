@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sparta.Child;
 using Sparta.Child.Actors;
+using Sparta.Child.Actors.ItemSystem;
 
 namespace Sparta.Child
 {
@@ -46,7 +47,7 @@ namespace Sparta.Child
                         CreateField<ShopField>(FieldName.ShopField);
                         CreateField<InnField>(FieldName.InnField);
                         Player.GetPlayer();
-
+                        AllItem.ItemInit();
                         FieldChange(FieldName.MainField);
                         base.Start();
                         selectedcomplete = true;
