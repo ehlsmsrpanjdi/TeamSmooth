@@ -17,13 +17,18 @@ namespace Sparta.Child.Fields
             base.BeginPlay();
         }
 
+        
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("여관입니다.\n");
-
-            Console.WriteLine("0. 상태를 살핀다.");
-            Console.WriteLine("2. 밖으로");
+            Console.WriteLine("============================");
+            Console.WriteLine("어서오세요 스무스 여관입니다");
+            Console.WriteLine("============================");
+            Console.WriteLine();
+            Console.WriteLine("0. 상태창.");
+            Console.WriteLine("1. 휴식하기.");
+            Console.WriteLine("2. 밖으로 나가기");
+            Console.WriteLine();
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
@@ -31,6 +36,11 @@ namespace Sparta.Child.Fields
                 case 0:
                     Player.GetPlayer().Tick();
                     break;
+
+                case 1:
+                    Console.WriteLine("휴식을 취합니다.");
+                    Console.WriteLine("체력이 회복되었습니다.");
+                    return;
                 case 2:
                     ChangeField(FieldName.MainField);
                     break;

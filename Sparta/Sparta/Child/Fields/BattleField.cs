@@ -21,12 +21,12 @@ namespace Sparta.Child.Fields
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("당신은 마을 밖을 벗어났습니다.");
+            Console.WriteLine("마을 밖으로 나왔습니다.");
 
-            Console.WriteLine("0. 상태를 살핀다.");
+            Console.WriteLine("0. 상태창.");
             Console.WriteLine("1. 이동한다.");
             Console.WriteLine("2. 휴식을 취한다.");
-            Console.WriteLine("3. 마을 방향으로 이동한다.");
+            Console.WriteLine("3. 마을로 이동하기.");
 
             selectedIndex = selector.Select();
             switch (selectedIndex)

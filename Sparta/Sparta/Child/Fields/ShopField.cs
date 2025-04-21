@@ -13,22 +13,29 @@ namespace Sparta.Child.Fields
     class ShopField : Field
     {
         Inventory inventory = new Inventory();
+        
 
         public override void BeginPlay()
         {
             base.BeginPlay();
+            inventory.getitem();
         }
+        
 
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("상점입니다.");
+            Console.WriteLine("============================");
+            Console.WriteLine("어서오세요 스무스 상점입니다");
+            Console.WriteLine("============================");
 
+            Console.WriteLine("구매하실 아이템을 선택해주세요.");
+            Console.WriteLine();
             Console.WriteLine("현재 소지금 : {0}\n\n", Player.GetPlayer().gold);
 
-
             Console.WriteLine("0. 상태를 살핀다.");
-            Console.WriteLine("3. 밖으로");
+            Console.WriteLine("3. 밖으로 나가기");
+
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
