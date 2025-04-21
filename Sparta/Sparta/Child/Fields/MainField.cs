@@ -49,10 +49,7 @@ namespace Sparta.Child.Fields
             }
         }
 
-        public override void BeginPlay()
-        {
-            base.BeginPlay();
-        }
+
 
     }
 }
