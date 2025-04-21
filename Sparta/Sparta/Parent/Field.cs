@@ -38,6 +38,11 @@ namespace Sparta.Parent
 
         }
 
+        public virtual void FieldOpen()
+        {
+
+        }
+
         public virtual void EndPlay()
         {
             Actors.Clear();

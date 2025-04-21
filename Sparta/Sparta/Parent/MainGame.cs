@@ -19,6 +19,7 @@ namespace Sparta.Parent
         {
             ChildField field = new ChildField();
             field.Name = name;
+            field.BeginPlay();
             fieldDictionary.Add(name, field);
         }
 
@@ -39,8 +40,8 @@ namespace Sparta.Parent
 
                     PrevField.EndPlay();
 
-                    CurrentField.BeginPlay();
                     selectedField = CurrentField;
+                    selectedField.FieldOpen();
                     return selectedField;
                 }
             }
@@ -49,7 +50,7 @@ namespace Sparta.Parent
                 if (fieldDictionary.TryGetValue(name, out Field? field))
                 {
                     selectedField = field;
-                    selectedField.BeginPlay();
+                    selectedField.FieldOpen();
                     return selectedField;
                 }
             }
