@@ -10,31 +10,8 @@ using System.Threading.Tasks;
 
 namespace Sparta.Child.Fields
 {
-
-
-
     class EncounterField : Field
     {
-
-        public void Encounter(int _encounterprobabilty)
-        {
-            if(_encounterprobabilty < 10)
-            {
-                SpawnActor<Gobline>();
-            }
-            else if(_encounterprobabilty < 20)
-            {
-                SpawnActor<Orc>();
-            }
-            else if (_encounterprobabilty < 30)
-            {
-                if(Global.rand.Next(0,10) > 7)
-                {
-                    SpawnActor<Ogre>();
-                }
-                SpawnActor<TwinHeadOrc>();
-            }
-        }
 
         public override void BeginPlay()
         {
@@ -50,7 +27,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("2. 아이템을 확인한다.");
             Console.WriteLine("3. 도망을 시도한다.\n\n\n");
 
-                    Player.GetPlayer().PrintStatus();
+            Player.GetPlayer().PrintStatus();
 
             Console.WriteLine("============================\n\n");
 

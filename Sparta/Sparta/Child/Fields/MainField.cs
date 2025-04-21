@@ -11,6 +11,13 @@ namespace Sparta.Child.Fields
 {
     class MainField : Field
     {
+
+        public override void BeginPlay()
+        {
+            base.BeginPlay();
+        }
+
+
         public override void Tick()
         {
             base.Tick();

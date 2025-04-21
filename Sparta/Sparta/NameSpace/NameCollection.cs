@@ -46,5 +46,10 @@ namespace Sparta.NameSpace
     public static class Global
     {
         public static Random rand = new Random();
+
+        public static int Rand(int _min, int _max)
+        {
+            return Global.rand.Next(_min, _max);
+        }
     }
 }

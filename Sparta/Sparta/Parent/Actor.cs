@@ -22,7 +22,7 @@ namespace Sparta.Parent
 
         public virtual void BeginPlay()
         {
-            //aaa
+
         }
 
         public virtual void Tick()
@@ -30,43 +30,11 @@ namespace Sparta.Parent
             Console.Clear();
         }
 
-        public void PrintStatus()
+        public virtual void PrintStatus()   //상태를 출력하는 함수입니다.
         {
-            int ItemAttack = 0;
-            int ItemShield = 0;
-            int ItemHp = 0;
-            if (Weapon != null)
-            {
-                ItemAttack += Weapon.attack;
-                ItemShield += Weapon.shield;
-                ItemHp += Weapon.hp;
-            }
-            if (Armour != null)
-            {
-                ItemAttack += Armour.attack;
-                ItemShield += Armour.shield;
-                ItemHp += Armour.hp;
-            }
 
-
-            Console.WriteLine("레벨 : {0}", Level);
-            Console.WriteLine("현재 공격력: {0} + {1}", attack, ItemAttack);
-            Console.WriteLine("현재 방어력: {0} + {1}", shield, ItemShield);
-
-            if (ActType == ActorType.Player)
-            {
-                Console.WriteLine("현재 체력: {0}", hp);
-                Console.WriteLine("소지 금액 : {0}\n\n\n\n", gold);
-            }
-            else
-            {
-                Console.WriteLine("\n\n");
-            }
-
-                PrintItem();
-
-            Key.AnyKey();
         }
+
 
         public virtual void PrintItem()
         {
@@ -99,21 +67,6 @@ namespace Sparta.Parent
 
         public virtual void TakeOnItem(Item _item)
         {
-            if (_item.Type == ItemType.Weapon)
-            {
-                Weapon = _item;
-                _item.TakeOn();
-            }
-            else if (_item.Type == ItemType.Armour)
-            {
-                Armour = _item;
-                _item.TakeOn();
-            }
-            else if (_item.Type == ItemType.Ring)
-            {
-                Ring = _item;
-                _item.TakeOn();
-            }
 
         }
 
@@ -135,12 +88,12 @@ namespace Sparta.Parent
         public Item? Armour = null;
         public Item? Ring = null;
 
-
+        public string Name {  get; set; }
         public int Level { get; protected set; }
         public int attack { get; protected set; }
         public int shield { get; protected set; }
         public int hp { get; protected set; }
-        public int currenthp { get; protected set; }
+        public int maxHp { get; protected set; }
         public int gold { get;  set; }
         public float exp { get; protected set; }
 

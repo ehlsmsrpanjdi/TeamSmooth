@@ -38,15 +38,6 @@ namespace Sparta.Child.Actors.MonsterSystem
             shield = 5;
             hp = 150;
             gold = Global.rand.Next(0, 100);
-
-            int probability = Global.rand.Next(0, 100);
-            if (probability > 30){
-                TakeOnItem(new OrcArmour());
-            }
-            if(probability > 60)
-            {
-                TakeOnItem(new OrcSword());
-            }
         }
     }
 

@@ -12,39 +12,11 @@ namespace Sparta.Child.Fields
 {
     class BattleField : Field
     {
-        int Difficiulty = 0;
-        int Range = 0;
-        void Move()
+        public override void BeginPlay()
         {
-            if(Range > 0)
-            {
-                --Range;
-            }
-            Difficiulty++;
+            base.BeginPlay();
         }
 
-        void Back()
-        {
-            Range++;
-            if(Range >= 4)
-            {
-                ChangeField(FieldName.MainField);
-            }
-        }
-
-        void Battle()
-        {
-            int enCounterProbability = Global.rand.Next(0, 100) + Difficiulty;
-
-            if (enCounterProbability < 60)
-            {
-                return;
-            }
-            else
-            {
-                ChangeField(FieldName.EncounterField);
-            }
-        }
 
         public override void Tick()
         {
@@ -63,12 +35,10 @@ namespace Sparta.Child.Fields
                     Player.GetPlayer().PrintStatus();
                     break;
                 case 1:
-                    Move();
                     break;
                 case 2:
                     break;
                 case 3:
-                    Back();
                     break;
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
