@@ -70,17 +70,6 @@ namespace Sparta.Parent
 
         }
 
-        public void LevelUp()
-        {
-            ++Level;
-            float attackValue = (float)attack * LevelUpValue;
-            float shieldValue = (float)attack * LevelUpValue;
-            float hpValue = (float)attack * LevelUpValue;
-
-            attack = (int)attackValue;
-            shield = (int)shieldValue;
-            hp = (int)hpValue;
-        }
 
 
 
@@ -97,7 +86,6 @@ namespace Sparta.Parent
         public int gold { get;  set; }
         public float exp { get; protected set; }
 
-        public float LevelUpValue = 1.1f;
 
         protected Selector selector = new Selector();
         protected int selectedIndex = 0;

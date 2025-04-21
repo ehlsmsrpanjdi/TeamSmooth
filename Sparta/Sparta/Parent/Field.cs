@@ -48,7 +48,7 @@ namespace Sparta.Parent
             Actors.Clear();
         }
 
-        public Field ChangeField(string _fieldName)
+        public Field? ChangeField(string _fieldName)
         {
             return TextRpg.GetInst().FieldChange(_fieldName);
         }
