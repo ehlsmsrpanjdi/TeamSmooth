@@ -65,9 +65,9 @@ namespace Sparta.Child.Actors
         {
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( 전사 )");
-            Console.WriteLine($"공격력 : {attack} "); // (+{eqStr})");
-            Console.WriteLine($"방어력 : {shield} "); // (+{eqDef})");
-            Console.WriteLine($"체 력 : {hp} "); // (+{eqHp})");
+            Console.WriteLine($"공격력 : {attack} "); // ( +{eqStr})");
+            Console.WriteLine($"방어력 : {shield} "); // ( +{eqDef})");
+            Console.WriteLine($"체 력 : {hp} "); // ( +{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
         }
 
