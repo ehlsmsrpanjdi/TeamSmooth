@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Sparta.Child.Actors
 {
@@ -29,7 +30,36 @@ namespace Sparta.Child.Actors
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
-        }
+            Console.WriteLine("던전시커에 오신 것을 환영합니다.");
+            Console.WriteLine("이름을 알려주세요.\n");
+            Name = Console.ReadLine();
+
+            
+                Console.Clear();
+                Console.WriteLine($"입력하신 이름은 {Name}입니다.");
+                Console.WriteLine("이름을 저장하시겠습니까?");
+                Console.WriteLine("1. 저장");
+                Console.WriteLine("2. 취소\n");
+
+                selectedIndex = selector.Select();
+                switch (selectedIndex)
+                {
+                    case 1:
+                        Console.WriteLine("원하시는 행동을 입력해주세요\n");
+                        break;
+                    case 2:
+                        Console.Clear();
+                        BeginPlay();
+                        break;
+                    
+                    default:
+                        Key.WrongKey();
+                        break;
+
+                      
+                }
+            }
+        
 
         public override void PrintStatus()
         {
