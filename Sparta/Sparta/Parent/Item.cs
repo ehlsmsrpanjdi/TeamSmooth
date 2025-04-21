@@ -18,7 +18,7 @@ namespace Sparta.Parent
     }
     public class Item : Actor
     {
-        ItemType myItemType;
+        public ItemType myItemType;
         public string? Info = null;
         public bool isEquip = false;
         public override void PrintStatus()
