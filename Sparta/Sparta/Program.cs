@@ -6,6 +6,7 @@ namespace MainSpace
     class MainClass
     {
         // 정머 왔다감
+        // 영준 왔다감
         static void Main(String[] args)
         {
             TextRpg Core = new TextRpg();
