@@ -43,6 +43,7 @@ namespace Sparta.Child.Fields
                     Move();
                     break;
                 case 2:
+                    ChangeField(FieldName.MainField);
                     break;
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
