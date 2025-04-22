@@ -35,7 +35,7 @@ namespace Sparta.Parent
         public virtual void PrintStatus()   //상태를 출력하는 함수입니다.
         {
             Console.WriteLine("Lv. " + Level);
-            Console.WriteLine($"{Name} ( 전사 )");
+            Console.WriteLine($"{Name} ( {Job} )");
             Console.WriteLine($"공격력 : {attack} "); // (+{eqStr})");
             Console.WriteLine($"방어력 : {shield} "); // (+{eqDef})");
             Console.WriteLine($"체 력 : {hp} "); // (+{eqHp})");
@@ -71,7 +71,26 @@ namespace Sparta.Parent
             }
 
         }
+        public virtual void GetDamage(int damage)
+        {
+            hp -= damage;
+            if (hp < 0) hp = 0; // 최대 체력 이하로 떨어지지 않도록 설정
 
+            Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다. 현재 체력: {hp}/{maxHp}");
+
+            if (hp == 0)
+            {
+                Console.WriteLine($"{Name}이(가) 쓰러졌습니다!");
+                OnDeath();
+            }
+        }
+
+        // 사망 시 실행될 함수 (필요시 오버라이드 가능)
+        protected virtual void OnDeath()
+        {
+            Console.WriteLine($"{Name}이(가) 사망했습니다.");
+            // 여기서 전투 종료, 제거 처리 등 추가 가능
+        }
 
 
 
@@ -80,6 +99,7 @@ namespace Sparta.Parent
         public Item? Ring = null;
 
         public string Name {  get; set; }
+        public string Job { get; set; } // 전직(Class 가 맞는 거 같은데 단어 혼동이 클 거 같음 ㅇㅇ;;) 
         public int Level { get; protected set; }
         public int attack { get; protected set; }
         public int shield { get; protected set; }

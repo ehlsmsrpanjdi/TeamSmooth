@@ -38,8 +38,19 @@ namespace Sparta.NameSpace
         public const string LeatherArmour = "가죽갑옷";
         public const string NormalRing = "평범한 반지";
     }
-
-
+    public static class MonsterName
+    {
+        public const string Gobline = "고블린";
+        public const string Orc = "오크";
+        public const string TwinHeadOrc = "쌍두오크";
+    }
+    public static class JobName
+    {
+        public const string Warrior = "전사";
+        public const string Thief = "도적";
+        public const string Magician = "마법사";
+        public const string Monster = "몬스터";
+    }
     public static class Global
     {
         public static Random rand = new Random();

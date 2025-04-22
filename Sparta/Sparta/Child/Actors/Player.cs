@@ -33,18 +33,13 @@ namespace Sparta.Child.Actors
   
         public override void BeginPlay()
         {
-
-            attack = 10;
-            shield = 5;
-            hp = 100;
-            maxHp = 100;
-
             ActType = ActorType.Player;
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
 
             Level = 1;
+            Job = JobName.Warrior;
             attack = 10;
             shield = 5;
             hp = 100;
@@ -107,6 +102,11 @@ namespace Sparta.Child.Actors
             hp = maxHp;
         }
 
+        protected override void OnDeath()
+        {
+            Console.WriteLine($"{Name}이(가) 사망했습니다. 마을로 귀환합니다...");
+            // 게임 종료 처리 또는 재시작 유도
+        }
 
         public override void Tick()
         {
