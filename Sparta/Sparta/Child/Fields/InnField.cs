@@ -21,9 +21,9 @@ namespace Sparta.Child.Fields
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("============================");
-            Console.WriteLine("어서오세요 스무스 여관입니다");
-            Console.WriteLine("============================");
+            Console.WriteLine("==============================");
+            Console.WriteLine("=어서오세요 스무스 여관입니다=");
+            Console.WriteLine("==============================");
             Console.WriteLine();
             Console.WriteLine("0. 상태창.");
             Console.WriteLine("1. 휴식하기.");
@@ -41,9 +41,11 @@ namespace Sparta.Child.Fields
                     Console.WriteLine("휴식을 취합니다.");
                     Console.WriteLine("체력이 회복되었습니다.");
                     return;
+
                 case 2:
                     ChangeField(FieldName.MainField);
                     break;
+
                 default:
                     Key.WrongKey();
                     break;
