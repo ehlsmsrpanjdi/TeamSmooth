@@ -63,10 +63,7 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
-            int eqAttack = 0; //equipItemList.Sum
-            int eqShield = 0;
-            int eqHp = 0;
-
+            var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( 전사 )");
             Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
