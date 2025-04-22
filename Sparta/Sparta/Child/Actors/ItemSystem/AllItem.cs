@@ -13,7 +13,7 @@ namespace Sparta.Child.Actors.ItemSystem
     {
         public static Dictionary<string, Item> Items = null;
 
-        static void ItemInit()
+        public static void ItemInit()
         {
             Dictionary<string, Item> Items = GetAllItem();
             Items[ItemName.LongSword] = new LongSword();
