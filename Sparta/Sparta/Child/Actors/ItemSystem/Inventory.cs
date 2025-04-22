@@ -59,6 +59,7 @@ namespace Sparta.Child.Actors.ItemSystem
         }
         protected Selector selector = new Selector();
         protected int selectedIndex = 0;
+        
     }
 
 }
