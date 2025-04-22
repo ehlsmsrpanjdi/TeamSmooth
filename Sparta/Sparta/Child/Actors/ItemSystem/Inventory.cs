@@ -38,7 +38,7 @@ namespace Sparta.Child.Actors.ItemSystem
                     inventory[i].PrintStatus();
                     //AllItem.GetItem(ItemName.LongSword).PrintStatus(); // 도감에 들어있는 정보가 훼손이 안되는지 테스트 하기 위한 코드
                 }
-                Console.WriteLine("\n1. 장착 관리\n2. 나가기");
+                Console.WriteLine("\n1. 장비를 착용한다.\n2. 가방을 닫는다.");
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {

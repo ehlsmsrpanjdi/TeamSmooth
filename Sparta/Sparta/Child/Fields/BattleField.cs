@@ -29,9 +29,9 @@ namespace Sparta.Child.Fields
             base.Tick();
             Console.WriteLine("마을 밖으로 나왔습니다.");
 
-            Console.WriteLine("0. 상태창.");
+            Console.WriteLine("0. 상태창을 확인한다..");
             Console.WriteLine("1. 이동한다.");
-            Console.WriteLine("2. 마을로 이동하기.");
+            Console.WriteLine("2. 마을로 이동한다.");
 
             selectedIndex = selector.Select();
 
