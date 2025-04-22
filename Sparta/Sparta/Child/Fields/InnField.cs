@@ -42,6 +42,7 @@ namespace Sparta.Child.Fields
                     
                     Console.WriteLine($"현재 체력: {player.hp}/{player.maxHp}");
                     Console.WriteLine("체력이 회복되었습니다.");
+                    Key.AnyKey();
                     break;
                 case 2:
                     ChangeField(FieldName.MainField);
