@@ -43,6 +43,10 @@ namespace Sparta.Child.Actors
             Name = Console.ReadLine();
 
             Level = 1;
+            attack = 10;
+            shield = 5;
+            hp = 100;
+            maxHp = 100;
             gold = 1500;
 
             Console.Clear();
