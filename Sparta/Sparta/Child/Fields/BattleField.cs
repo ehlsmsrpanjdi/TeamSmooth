@@ -37,7 +37,7 @@ namespace Sparta.Child.Fields
             switch (selectedIndex)
             {
                 case 0:
-                    Player.GetPlayer().PrintStatus();
+                    Player.GetPlayer().Tick();
                     break;
                 case 1:
                     Move();
