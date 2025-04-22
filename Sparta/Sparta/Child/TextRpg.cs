@@ -32,9 +32,15 @@ namespace Sparta.Child
             while (!selectedcomplete)
             {
                 Console.Clear();
+                Console.WriteLine("=================================");
+                Console.WriteLine("=          Text RPG             =");
+                Console.WriteLine("=          던전 시커            =");
+                Console.WriteLine("=================================");
+                Console.WriteLine();
                 Console.WriteLine("0. 게임 시작하기");
                 Console.WriteLine("1. 게임 불러오기");
                 Console.WriteLine("99. 게임 종료");
+                Console.WriteLine();
 
                 selectedIndex = selector.Select();
 
