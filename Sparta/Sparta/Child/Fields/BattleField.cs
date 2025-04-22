@@ -37,12 +37,13 @@ namespace Sparta.Child.Fields
             switch (selectedIndex)
             {
                 case 0:
-                    Player.GetPlayer().PrintStatus();
+                    Player.GetPlayer().Tick();
                     break;
                 case 1:
                     Move();
                     break;
                 case 2:
+                    ChangeField(FieldName.MainField);
                     break;
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
