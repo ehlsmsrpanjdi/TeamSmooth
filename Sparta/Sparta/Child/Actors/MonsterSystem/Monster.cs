@@ -13,6 +13,8 @@ namespace Sparta.Child.Actors.MonsterSystem
     {
         public Gobline()
         {
+            Name = MonsterName.Gobline;
+            Job = JobName.Monster;
             attack = 5;
             shield = 0;
             hp = 60;
@@ -22,7 +24,10 @@ namespace Sparta.Child.Actors.MonsterSystem
 
     class Orc : Actor
     {
-        public Orc() {
+        public Orc() 
+        {
+            Name = MonsterName.Gobline;
+            Job = JobName.Monster;
             attack = 5;
             shield = 5;
             hp = 120;
@@ -34,6 +39,8 @@ namespace Sparta.Child.Actors.MonsterSystem
     {
         public TwinHeadOrc()
         {
+            Name = MonsterName.Gobline;
+            Job = JobName.Monster;
             attack = 10;
             shield = 5;
             hp = 150;
@@ -45,6 +52,8 @@ namespace Sparta.Child.Actors.MonsterSystem
     {
         public Ogre()
         {
+            Name = MonsterName.Ogre;
+            Job = JobName.Monster;
             attack = 50;
             shield = 20;
             hp = 120;
