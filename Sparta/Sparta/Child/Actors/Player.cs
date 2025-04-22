@@ -20,7 +20,7 @@ namespace Sparta.Child.Actors
         public static Player GetPlayer()
         {
             if (Instance == null)
-            {
+            {0
                 Instance = new Player();
                 Instance.BeginPlay();
             }
