@@ -29,15 +29,15 @@ namespace Sparta.Child.Actors
 
 
 
-        int attack = 10;
-        int shield = 5;
-        int hp = 100;
-        public int eqHp;
-        public int maxHp => hp + eqHp;
 
         public override void BeginPlay()
         {
-            ActType = ActorType.Player;
+            attack = 10;
+            shield = 5;
+            hp = 100;
+            maxHp = 100;
+
+        ActType = ActorType.Player;
             Console.WriteLine("스무스의 던전에 오신 것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
