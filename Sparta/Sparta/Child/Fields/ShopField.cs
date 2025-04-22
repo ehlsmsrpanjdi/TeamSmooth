@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sparta.Child.Actors.ItemSystem;
+using System.Numerics;
 
 namespace Sparta.Child.Fields
 {
     class ShopField : Field
     {
         Inventory inventory = new Inventory();
-        
+
 
         public override void BeginPlay()
         {
             base.BeginPlay();
         }
-        
+
 
         public override void Tick()
         {
@@ -46,6 +47,7 @@ namespace Sparta.Child.Fields
                     break;
                 case 1:
                     Console.WriteLine("구매할 아이템을 선택해주세요.");
+                    Buy GetBuyItem();
                     break;
                 case 2:
                     Console.WriteLine("판매할 아이템을 선택해주세요.");
@@ -58,7 +60,7 @@ namespace Sparta.Child.Fields
                     break;
             }
         }
-
-
     }
 }
+
+
