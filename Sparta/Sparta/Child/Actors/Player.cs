@@ -27,6 +27,14 @@ namespace Sparta.Child.Actors
             return Instance;
         }
 
+
+
+        int attack = 10;
+        int shield = 5;
+        int hp = 100;
+        public int eqHp;
+        public int maxHp => hp + eqHp;
+
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
@@ -67,9 +75,6 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
-            int attack = 10;
-            int shield = 5;
-            int hp = 100;
 
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
 
