@@ -99,7 +99,7 @@ namespace Sparta.Child.Fields
                 }
                 else
                 {
-                    //Actors[select].GetDamage();
+                    Actors[select].GetDamage();
                     
                 }
             }

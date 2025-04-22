@@ -71,7 +71,26 @@ namespace Sparta.Parent
             }
 
         }
+        public virtual void GetDamage(int damage)
+        {
+            hp -= damage;
+            if (hp < 0) hp = 0; // 최대 체력 이하로 떨어지지 않도록 설정
 
+            Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다. 현재 체력: {hp}/{maxHp}");
+
+            if (hp == 0)
+            {
+                Console.WriteLine($"{Name}이(가) 쓰러졌습니다!");
+                OnDeath();
+            }
+        }
+
+        // 사망 시 실행될 함수 (필요시 오버라이드 가능)
+        protected virtual void OnDeath()
+        {
+            Console.WriteLine($"{Name}이(가) 사망했습니다.");
+            // 여기서 전투 종료, 제거 처리 등 추가 가능
+        }
 
 
 

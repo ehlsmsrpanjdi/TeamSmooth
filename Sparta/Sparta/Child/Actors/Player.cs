@@ -107,6 +107,11 @@ namespace Sparta.Child.Actors
             hp = maxHp;
         }
 
+        protected override void OnDeath()
+        {
+            Console.WriteLine($"{Name}이(가) 사망했습니다. 마을로 귀환합니다...");
+            // 게임 종료 처리 또는 재시작 유도
+        }
 
         public override void Tick()
         {
