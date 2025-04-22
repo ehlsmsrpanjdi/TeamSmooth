@@ -18,7 +18,10 @@ namespace Sparta.Child.Actors.ItemSystem
             Dictionary<string, Item> Items = GetAllItem();
             Items[ItemName.LongSword] = new LongSword();
             Items[ItemName.LeatherArmour] = new LeatherArmour();
-            Items[ItemName.NormalRing] = new NormalRing();
+            Items[ItemName.woodshield] = new WoodShield();
+            Items[ItemName.Broadsword] = new Broadsword();
+            Items[ItemName.ironarmour] = new ironarmour();
+            Items[ItemName.ironshield] = new ironshield();
         }
 
         public static Item? GetItem(string _itemName)
@@ -50,7 +53,6 @@ namespace Sparta.Child.Actors.ItemSystem
             return Items;
         }
     }
-
     public class LongSword : Item
     {
         public LongSword()
@@ -59,11 +61,10 @@ namespace Sparta.Child.Actors.ItemSystem
             Name = ItemName.LongSword;
             isEquip = false;
             addattack = 10;
-            gold = 1000;
-            Info = "적당히 긴 길이의 검입니다.";
+            gold = 500;
+            Info = "길이가 긴 검입니다.";
         }
     }
-
     public class LeatherArmour : Item
     {
         public LeatherArmour()
@@ -71,21 +72,59 @@ namespace Sparta.Child.Actors.ItemSystem
             myItemType = ItemType.Armour;
             Name = ItemName.LeatherArmour;
             isEquip = false;
+            addshield = 5;
+            gold = 500;
+            Info = "가죽으로 만든 갑옷입니다.";
+        }
+    }
+    public class WoodShield : Item
+    {
+        public WoodShield()
+        {
+            myItemType = ItemType.shield;
+            Name = ItemName.woodshield;
+            isEquip = false;
+            addmaxHp = 5;
+            gold = 500;
+            Info = "나무로 만든 방패입니다.";
+        }
+    }
+    public class Broadsword : Item
+    {
+        public Broadsword()
+        {
+            myItemType = ItemType.Weapon;
+            Name = ItemName.Broadsword;
+            isEquip = false;
+            addattack = 20;
+            gold = 1000;
+            Info = "두껍고 무거운 검입니다.";
+        }
+    }
+    public class ironarmour : Item
+    {
+        public ironarmour()
+        {
+            myItemType = ItemType.Armour;
+            Name = ItemName.ironarmour;
+            isEquip = false;
             addshield = 10;
             gold = 1000;
-            Info = "흔한 가죽으로 만든 갑옷입니다.";
+            Info = "철로 만든 갑옷입니다.";
+        }
+    }
+    public class ironshield : Item
+    {
+        public ironshield()
+        {
+            myItemType = ItemType.shield;
+            Name = ItemName.ironshield;
+            isEquip = false;
+            addshield = 10;
+            gold = 1000;
+            Info = "철로 만든 방패입니다.";
         }
     }
 
-    public class NormalRing : Item
-    {
-        public NormalRing()
-        {
-            myItemType = ItemType.Ring;
-            Name = ItemName.NormalRing;
-            isEquip = false;
-            gold = 1000;
-            Info = "평범하지만 나름의 은은한 매력이 있는 반지입니다.";
-        }
-    }
+
 }

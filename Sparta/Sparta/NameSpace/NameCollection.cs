@@ -36,7 +36,10 @@ namespace Sparta.NameSpace
     {
         public const string LongSword = "장검";
         public const string LeatherArmour = "가죽갑옷";
-        public const string NormalRing = "평범한 반지";
+        public const string woodshield = "나무방패";
+        public const string Broadsword = "브로드소드";
+        public const string ironarmour = "철갑옷";
+        public const string ironshield = "철방패";
     }
     public static class MonsterName
     {

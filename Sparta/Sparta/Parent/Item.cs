@@ -22,7 +22,7 @@ namespace Sparta.Parent
     {
         Weapon = 0,
         Armour,
-        Ring,
+        shield,
     }
     public class Item : Actor
     {
