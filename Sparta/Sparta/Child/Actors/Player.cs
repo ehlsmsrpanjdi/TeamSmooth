@@ -29,9 +29,16 @@ namespace Sparta.Child.Actors
 
 
 
+
   
         public override void BeginPlay()
         {
+
+            attack = 10;
+            shield = 5;
+            hp = 100;
+            maxHp = 100;
+
             ActType = ActorType.Player;
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
