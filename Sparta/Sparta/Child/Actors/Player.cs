@@ -71,6 +71,22 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"Gold : {gold} G");
         }
 
+        public void HealHP(int Value)
+        {
+            hp += Value;
+
+            if(hp > maxHp)
+            {
+                hp = maxHp;
+            }
+        }
+
+        public void FullHP()
+        {
+            hp = maxHp;
+        }
+
+
         public override void Tick()
         {
             while (true)
