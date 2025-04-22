@@ -65,54 +65,65 @@ namespace Sparta.Child.Fields
             {
                 new Item { Name = "롱소드", addattack = 10, gold = 500 },
                 new Item { Name = "가죽 갑옷", addshield = 5, gold = 500 },
-                new Item { Name = "철 방패", addmaxHp = 5, gold = 500 },
-                new Item { Name = "추가예정", addmaxHp = 0, gold = 0 },
-                new Item { Name = "추가예정", addmaxHp = 0, gold = 0 },
-                new Item { Name = "추가예정", addmaxHp = 0, gold = 0 }
+                new Item { Name = "나무 방패", addmaxHp = 5, gold = 500 },
+                new Item { Name = "브로드 소드", addattack = 20, gold = 1000 },
+                new Item { Name = "철 갑옷", addshield = 10, gold = 1000 },
+                new Item { Name = "철 방패", addmaxHp = 10, gold = 1000 }
             };
-            Console.WriteLine("=========================");
-            Console.WriteLine("=구매 가능한 아이템 목록=");
-            Console.WriteLine("=========================");
-            Console.WriteLine();
-            for (int i = 0; i < buyitem.Count; i++)
+
+            while (true) // 상점 아저씨가 쫒아내는 문제 해결
             {
-                Console.WriteLine($"{i}. {buyitem[i].Name} - 가격: {buyitem[i].gold} 골드");
-            }
-            Console.WriteLine($"{buyitem.Count}. 구매하지 않는다");
-            Console.WriteLine();
-
-            int choice = selector.Select();
-
-            if (choice >= 0 && choice < buyitem.Count)
-            {
-                Item selectedItem = buyitem[choice];
-                Player player = Player.GetPlayer();
-
-                if (player.gold >= selectedItem.gold)
+                Console.WriteLine("=========================");
+                Console.WriteLine("=구매 가능한 아이템 목록=");
+                Console.WriteLine("=========================");
+                Console.WriteLine();
+                for (int i = 0; i < buyitem.Count; i++)
                 {
-                    player.gold -= selectedItem.gold;
-                    Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
-                    Key.AnyKey();
+                    Console.WriteLine($"{i}. {buyitem[i].Name} - 가격: {buyitem[i].gold} 골드");
                 }
-                else
+                Console.WriteLine($"{buyitem.Count}. 구매하지 않는다");
+                Console.WriteLine();
+
+                int choice = selector.Select();
+
+                if (choice >= 0 && choice < buyitem.Count)
                 {
-                    Console.WriteLine("소지금이 부족합니다.");
-                    Key.AnyKey();
+                    Item selectedItem = buyitem[choice];
+                    Player player = Player.GetPlayer();
+
+                    if (player.gold >= selectedItem.gold)
+                    {
+                        player.gold -= selectedItem.gold;
+                        player.inventory.inventory.Add(selectedItem); //구매시 플레이어 인벤토리로
+                        Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("소지금이 부족합니다.");
+                    }
+
+                }
+                else if (choice == buyitem.Count)
+                {
+                    Console.WriteLine("구매를 취소하였습니다.");
+                    break; //상점 밖으로 나갈 수 없던 문제 해결
                 }
             }
+
         }
+
+
         public void SellItem()
         {
             Player player = Player.GetPlayer();
 
-            while (player != null)
+            while (true)
             {
 
                 if (player.inventory.inventory.Count == 0)
                 {
                     Console.WriteLine("판매할 아이템이 없습니다.");
-                    Key.AnyKey();
-                    break;
+                    Console.WriteLine();
                 }
 
                 List<Item> sellitem = player.inventory.inventory;
@@ -120,7 +131,7 @@ namespace Sparta.Child.Fields
                 if (sellitem.Count == 0)
                 {
                     Console.WriteLine("판매 가능한 아이템이 없습니다.");
-                    Key.AnyKey();
+                    Console.WriteLine();
                 }
 
                 Console.WriteLine("=========================");
@@ -131,7 +142,7 @@ namespace Sparta.Child.Fields
                 {
                     Console.WriteLine($"{i}. {sellitem[i].Name} - 가격: {sellitem[i].gold} 골드");
                 }
-                Console.WriteLine($"{sellitem.Count}. 판매하지 않는다");
+                Console.WriteLine($"{sellitem.Count}. 나가기");
                 Console.WriteLine();
 
                 int choice = selector.Select();
@@ -143,11 +154,13 @@ namespace Sparta.Child.Fields
                     player.gold += selectedItem.gold;
                     sellitem.Remove(selectedItem);
                     Console.WriteLine($"{selectedItem.Name}을(를) 판매하였습니다!");
-                    Key.AnyKey();
+                }
+                else if (choice == sellitem.Count)
+                {
+                    Console.WriteLine("판매를 취소하였습니다.");
+                    break;
                 }
             }
-
-
         }
     }
 }       
