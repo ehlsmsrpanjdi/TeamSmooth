@@ -63,9 +63,9 @@ namespace Sparta.Child.Fields
         {
             List<Item> buyitem = new List<Item>
             {
-                new Item { Name = "롱소드", addattack = 0, gold = 0 },
-                new Item { Name = "가죽 갑옷", addshield = 0, gold = 0 },
-                new Item { Name = "철 방패", addmaxHp = 0, gold = 0 },
+                new Item { Name = "롱소드", addattack = 10, gold = 500 },
+                new Item { Name = "가죽 갑옷", addshield = 5, gold = 500 },
+                new Item { Name = "철 방패", addmaxHp = 5, gold = 500 },
                 new Item { Name = "추가예정", addmaxHp = 0, gold = 0 },
                 new Item { Name = "추가예정", addmaxHp = 0, gold = 0 },
                 new Item { Name = "추가예정", addmaxHp = 0, gold = 0 }
@@ -105,38 +105,48 @@ namespace Sparta.Child.Fields
         {
             Player player = Player.GetPlayer();
 
-            List<Item> sellitem = player.inventory.inventory;
-
-            if (sellitem.Count == 0)
+            while (player != null)
             {
-                Console.WriteLine("판매 가능한 아이템이 없습니다.");
-                Key.AnyKey();
-                return;
+
+                if (player.inventory.inventory.Count == 0)
+                {
+                    Console.WriteLine("판매할 아이템이 없습니다.");
+                    Key.AnyKey();
+                    break;
+                }
+
+                List<Item> sellitem = player.inventory.inventory;
+
+                if (sellitem.Count == 0)
+                {
+                    Console.WriteLine("판매 가능한 아이템이 없습니다.");
+                    Key.AnyKey();
+                }
+
+                Console.WriteLine("=========================");
+                Console.WriteLine("=판매 가능한 아이템 목록=");
+                Console.WriteLine("=========================");
+                Console.WriteLine();
+                for (int i = 0; i < sellitem.Count; i++)
+                {
+                    Console.WriteLine($"{i}. {sellitem[i].Name} - 가격: {sellitem[i].gold} 골드");
+                }
+                Console.WriteLine($"{sellitem.Count}. 판매하지 않는다");
+                Console.WriteLine();
+
+                int choice = selector.Select();
+
+                if (choice >= 0 && choice < sellitem.Count)
+                {
+                    Item selectedItem = sellitem[choice];
+
+                    player.gold += selectedItem.gold;
+                    sellitem.Remove(selectedItem);
+                    Console.WriteLine($"{selectedItem.Name}을(를) 판매하였습니다!");
+                    Key.AnyKey();
+                }
             }
 
-            Console.WriteLine("=========================");
-            Console.WriteLine("=판매 가능한 아이템 목록=");
-            Console.WriteLine("=========================");
-            Console.WriteLine();
-            for (int i = 0; i < sellitem.Count; i++)
-            {
-                Console.WriteLine($"{i}. {sellitem[i].Name} - 가격: {sellitem[i].gold} 골드");
-            }
-            Console.WriteLine($"{sellitem.Count}. 판매하지 않는다");
-            Console.WriteLine();
-
-            int choice = selector.Select();
-
-            if (choice >= 0 && choice < sellitem.Count)
-            {
-                Item selectedItem = sellitem[choice];
-
-                // 판매 처리
-                player.gold += selectedItem.gold;
-                sellitem.Remove(selectedItem);
-                Console.WriteLine($"{selectedItem.Name}을(를) 판매하였습니다!");
-                Key.AnyKey();
-            }
 
         }
     }
