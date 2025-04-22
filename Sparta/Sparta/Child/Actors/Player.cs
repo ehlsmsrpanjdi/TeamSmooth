@@ -63,11 +63,15 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
+            int eqAttack = 0;
+            int eqShield = 0;
+            int eqHp = 0;
+
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( 전사 )");
-            Console.WriteLine($"공격력 : {attack} "); // ( +{eqStr})");
-            Console.WriteLine($"방어력 : {shield} "); // ( +{eqDef})");
-            Console.WriteLine($"체 력 : {hp} "); // ( +{eqHp})");
+            Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
+            Console.WriteLine($"방어력 : {shield + eqShield} (+{eqShield})");
+            Console.WriteLine($"체 력 : {hp + eqHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
         }
 
