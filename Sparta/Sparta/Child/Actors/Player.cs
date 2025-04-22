@@ -30,7 +30,7 @@ namespace Sparta.Child.Actors
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
-            Console.WriteLine("스무스의 던전에 오신 것을 환영합니다.");
+            Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
 
