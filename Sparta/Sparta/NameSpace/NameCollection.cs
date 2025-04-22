@@ -43,6 +43,7 @@ namespace Sparta.NameSpace
         public const string Gobline = "고블린";
         public const string Orc = "오크";
         public const string TwinHeadOrc = "쌍두오크";
+        public const string Ogre = "오우거";
     }
     public static class JobName
     {
