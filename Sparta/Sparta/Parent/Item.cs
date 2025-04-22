@@ -9,6 +9,15 @@ using Sparta.Child.Actors;
 
 namespace Sparta.Parent
 {
+    public struct ItemStatus
+    {
+        public string Name;
+        public string? Info;
+        public int attack;
+        public int shield;
+        public int hp;
+    }
+
     public enum ItemType
     {
         Weapon = 0,
@@ -46,5 +55,17 @@ namespace Sparta.Parent
                 Console.Write("| 최대 HP +{0} ", addmaxHp);
             Console.WriteLine("| {0} | {1} G", Info, gold);
         }
+
+        public ItemStatus GetItemStatus()
+        {
+            ItemStatus status = new ItemStatus();
+            status.Name = Name;
+            status.attack = attack;
+            status.shield = shield;
+            status.hp = hp;
+            status.Info = Info;
+            return status;
+        }
+
     }
 }
