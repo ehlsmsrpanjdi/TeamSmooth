@@ -27,13 +27,22 @@ namespace Sparta.Child.Actors
             return Instance;
         }
 
+
+
+        int attack = 10;
+        int shield = 5;
+        int hp = 100;
+        public int eqHp;
+        public int maxHp => hp + eqHp;
+
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
-            Console.WriteLine("스무스의 던전에 오신 것을 환영합니다.");
+            Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
 
+            Level = 1;
             gold = 1500;
 
             Console.Clear();
@@ -66,11 +75,9 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
-            int attack = 10;
-            int shield = 5;
-            int hp = 100;
 
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
+
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( 전사 )");
             Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
@@ -103,8 +110,7 @@ namespace Sparta.Child.Actors
                 Console.WriteLine("플레이어\n");
                 Player.GetPlayer().PrintStatus();
                 Console.WriteLine("\n0. 가방을 확인한다.");
-                Console.WriteLine("1. 무장을 확인한다.");
-                Console.WriteLine("2. 나간다.");
+                Console.WriteLine("1. 나간다.");
 
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
@@ -113,9 +119,6 @@ namespace Sparta.Child.Actors
                         inventory.Tick();
                         break;
                     case 1:
-                        Console.Clear();
-                        break;
-                    case 2:
                         return;
                     default:
                         Key.WrongKey();

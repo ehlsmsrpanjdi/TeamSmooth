@@ -40,7 +40,7 @@ namespace Sparta.Child.Fields
                     Console.WriteLine("휴식을 취합니다.");
                     Player player = Player.GetPlayer();
                     player.FullHP();
-                    Console.WriteLine($"현재 체력: {player.hp}/{player.maxHp}");
+                    Console.WriteLine($"현재 체력: {player.maxHp}/{player.maxHp}");
                     Console.WriteLine("체력이 회복되었습니다.");
                     Key.AnyKey();
                     break;
