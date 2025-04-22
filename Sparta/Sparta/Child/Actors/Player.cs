@@ -13,7 +13,7 @@ namespace Sparta.Child.Actors
 {
     class Player : Actor
     {
-        Inventory inventory = new Inventory();
+        public Inventory inventory = new Inventory();
 
         private static Player? Instance = null;
 
@@ -63,11 +63,12 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
+            var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( 전사 )");
-            Console.WriteLine($"공격력 : {attack} "); // ( +{eqStr})");
-            Console.WriteLine($"방어력 : {shield} "); // ( +{eqDef})");
-            Console.WriteLine($"체 력 : {hp} "); // ( +{eqHp})");
+            Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
+            Console.WriteLine($"방어력 : {shield + eqShield} (+{eqShield})");
+            Console.WriteLine($"체 력 : {hp + eqHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
         }
 
