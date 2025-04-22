@@ -20,8 +20,8 @@ namespace Sparta.Child.Actors.ItemSystem
             Items[ItemName.LeatherArmour] = new LeatherArmour();
             Items[ItemName.woodshield] = new WoodShield();
             Items[ItemName.Broadsword] = new Broadsword();
-            Items[ItemName.ironarmour] = new ironarmour();
-            Items[ItemName.ironshield] = new ironshield();
+            Items[ItemName.ironarmour] = new Ironarmour();
+            Items[ItemName.ironshield] = new Ironshield();
         }
 
         public static Item? GetItem(string _itemName)
@@ -101,9 +101,9 @@ namespace Sparta.Child.Actors.ItemSystem
             Info = "두껍고 무거운 검입니다.";
         }
     }
-    public class ironarmour : Item
+    public class Ironarmour : Item
     {
-        public ironarmour()
+        public Ironarmour()
         {
             myItemType = ItemType.Armour;
             Name = ItemName.ironarmour;
@@ -113,9 +113,9 @@ namespace Sparta.Child.Actors.ItemSystem
             Info = "철로 만든 갑옷입니다.";
         }
     }
-    public class ironshield : Item
+    public class Ironshield : Item
     {
-        public ironshield()
+        public Ironshield()
         {
             myItemType = ItemType.shield;
             Name = ItemName.ironshield;

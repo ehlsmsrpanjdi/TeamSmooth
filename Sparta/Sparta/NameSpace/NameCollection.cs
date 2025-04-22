@@ -34,7 +34,7 @@ namespace Sparta.NameSpace
 
     public static class ItemName
     {
-        public const string LongSword = "장검";
+        public const string LongSword = "롱소드";
         public const string LeatherArmour = "가죽갑옷";
         public const string woodshield = "나무방패";
         public const string Broadsword = "브로드소드";
