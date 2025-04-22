@@ -36,7 +36,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("0. 상태창");
             Console.WriteLine("1. 구매하기");
             Console.WriteLine("2. 판매하기");
-            Console.WriteLine("3. 밖으로 나가기");
+            Console.WriteLine("3. 상점에서 나간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();

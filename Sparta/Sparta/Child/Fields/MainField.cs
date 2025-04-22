@@ -28,7 +28,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("0. 상태창");
             Console.WriteLine("1. 상점");
             Console.WriteLine("2. 여관");
-            Console.WriteLine("3. 밖으로 나가기");
+            Console.WriteLine("3. 던전 진입");
             Console.WriteLine();
 
             selectedIndex = selector.Select();

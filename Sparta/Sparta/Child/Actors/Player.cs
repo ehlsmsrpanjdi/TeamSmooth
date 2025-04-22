@@ -116,7 +116,7 @@ namespace Sparta.Child.Actors
                 Console.WriteLine("플레이어\n");
                 Player.GetPlayer().PrintStatus();
                 Console.WriteLine("\n0. 가방을 확인한다.");
-                Console.WriteLine("1. 나간다.");
+                Console.WriteLine("1. 상태창을 닫는다.");
 
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
