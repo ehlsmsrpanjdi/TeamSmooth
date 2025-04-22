@@ -1,6 +1,7 @@
 ﻿using Sparta.NameSpace;
 using Sparta.Parent;
 using Sparta.SelectorSystem;
+using System.ComponentModel.Design;
 
 namespace Sparta.Child.Actors.ItemSystem
 {
@@ -25,8 +26,16 @@ namespace Sparta.Child.Actors.ItemSystem
                     case 0:
                         return;
                     default:
-                        inventory.inventory[selectedIndex - 1].isEquip = !inventory.inventory[selectedIndex - 1].isEquip;
-                        Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory.inventory[selectedIndex - 1].Name, inventory.inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
+                        if (selectedIndex < inventory.inventory.Count)
+                        {
+                            inventory.inventory[selectedIndex - 1].isEquip = !inventory.inventory[selectedIndex - 1].isEquip;
+                            Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory.inventory[selectedIndex - 1].Name, inventory.inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
+                            break;
+                        }
+                        else
+                        {
+                            Key.WrongKey();
+                        }
                         break;
                 }
             }

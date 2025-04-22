@@ -10,6 +10,20 @@ using System.Threading.Tasks;
 
 namespace Sparta.Child.Fields
 {
+    /// <summary>
+    /// 플레이어 맞는거
+    /// 플레이어 때리는거
+    /// 
+    /// 몬스터 때리는거
+    /// 몬스터 맞는거
+    /// 
+    /// 몬스터 죽을 때 호출되어야 할 함수
+    /// 플레이어 죽을 때 호출되어야 할 함수
+    /// 
+    /// 전투 중 아이템 사용
+    /// </summary>
+
+
     class EncounterField : Field
     {
 
@@ -116,6 +130,8 @@ namespace Sparta.Child.Fields
             selectedIndex = selector.Select();
             switch (selectedIndex)
             {
+                case -1:
+                    break;
                 case 1:
                     PlayerAttack();
                     MonsterAttack();
