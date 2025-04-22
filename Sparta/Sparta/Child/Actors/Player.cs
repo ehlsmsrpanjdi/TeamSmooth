@@ -13,7 +13,7 @@ namespace Sparta.Child.Actors
 {
     class Player : Actor
     {
-        Inventory inventory = new Inventory();
+        public Inventory inventory = new Inventory();
 
         private static Player? Instance = null;
 

@@ -16,17 +16,6 @@ namespace Sparta.Child.Actors.ItemSystem
     {
         public List<Item> inventory = new List<Item>();
         EquipManage EquipManage = new EquipManage();
-
-        private static Inventory? Instance = null;
-        public static Inventory GetInventory()
-        {
-            if (Instance == null)
-            {
-                Instance = new Inventory();
-            }
-            return Instance;
-        }
-
         public Inventory()
         {
             if (AllItem.Items != null)
