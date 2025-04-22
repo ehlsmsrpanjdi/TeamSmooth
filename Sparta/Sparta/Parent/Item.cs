@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
 using Sparta.Child.Actors;
 
 namespace Sparta.Parent
@@ -27,18 +26,25 @@ namespace Sparta.Parent
 
         public override void PrintStatus()
         {
-            if (Name != null)
-            {
-                Console.Write("- {0} {1}", isEquip ? "[E]" : "", Name);
-                if (addshield > 0)
-                    Console.Write("| 방어력 +{0} ", addshield);
-                if (addattack > 0)
-                    Console.Write("| 공격력 +{0} ", addattack);
-                if (addmaxHp > 0)
-                    Console.Write("| 최대 HP +{0} ", addmaxHp);
-                Console.WriteLine("| {0} | {1} G", Info, gold);
-
-            }
+            Console.Write("- {0} {1}", isEquip ? "[E]" : "", Name);
+            if (addshield > 0)
+                Console.Write("| 방어력 +{0} ", addshield);
+            if (addattack > 0)
+                Console.Write("| 공격력 +{0} ", addattack);
+            if (addmaxHp > 0)
+                Console.Write("| 최대 HP +{0} ", addmaxHp);
+            Console.WriteLine("| {0} | {1} G", Info, gold);
+        }
+        public void EquipManageStatus(int i)
+        {
+            Console.Write("-{0}. {1} {2}", i + 1, isEquip ? "[E]" : "", Name);
+            if (addshield > 0)
+                Console.Write("| 방어력 +{0} ", addshield);
+            if (addattack > 0)
+                Console.Write("| 공격력 +{0} ", addattack);
+            if (addmaxHp > 0)
+                Console.Write("| 최대 HP +{0} ", addmaxHp);
+            Console.WriteLine("| {0} | {1} G", Info, gold);
         }
     }
 }

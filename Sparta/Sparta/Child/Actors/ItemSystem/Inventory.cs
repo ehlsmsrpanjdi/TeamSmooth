@@ -12,19 +12,28 @@ using System.Threading.Tasks;
 
 namespace Sparta.Child.Actors.ItemSystem
 {
-    public class Inventory
+    class Inventory
     {
-        List<Item> inventory = new List<Item>();
+        public List<Item> inventory = new List<Item>();
+        EquipManage EquipManage = new EquipManage();
+
+        private static Inventory? Instance = null;
+        public static Inventory GetInventory()
+        {
+            if (Instance == null)
+            {
+                Instance = new Inventory();
+            }
+            return Instance;
+        }
 
         public Inventory()
         {
             if (AllItem.Items != null)
             {
-                Item item_base = AllItem.CreatItem(ItemName.LongSword);
-                item_base.Name = "초보자의 장검";
-                item_base.isEquip = true;
-                item_base.addattack = 11;
-                inventory.Add(item_base);
+                inventory.Add(AllItem.CreatItem(ItemName.LongSword));
+                inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
+                inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
             }
         }
 
@@ -38,15 +47,14 @@ namespace Sparta.Child.Actors.ItemSystem
                 for (int i = 0; i < inventory.Count; i++) // 개인적으로 foreach 싫어서 for 문으로 제작
                 {
                     inventory[i].PrintStatus();
-                    AllItem.GetItem(ItemName.LongSword).PrintStatus();
+                    //AllItem.GetItem(ItemName.LongSword).PrintStatus(); // 도감에 들어있는 정보가 훼손이 안되는지 테스트 하기 위한 코드
                 }
                 Console.WriteLine("\n1. 장착 관리\n2. 나가기");
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {
-                    case 0:
-                        break;
                     case 1:
+                        EquipManage.Tick();
                         break;
                     case 2:
                         return;
