@@ -34,8 +34,11 @@ namespace Sparta.Child.Fields
             Console.WriteLine("2. 마을로 이동하기.");
 
             selectedIndex = selector.Select();
+
             switch (selectedIndex)
             {
+                case -1:
+                    break;
                 case 0:
                     Player.GetPlayer().Tick();
                     break;
