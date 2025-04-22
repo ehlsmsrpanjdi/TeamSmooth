@@ -36,16 +36,16 @@ namespace Sparta.Child.Fields
                 case 0:
                     Player.GetPlayer().Tick();
                     break;
-
                 case 1:
                     Console.WriteLine("휴식을 취합니다.");
+                    Player player = Player.GetPlayer();
+                    
+                    Console.WriteLine($"현재 체력: {player.hp}/{player.maxHp}");
                     Console.WriteLine("체력이 회복되었습니다.");
-                    return;
-
+                    break;
                 case 2:
                     ChangeField(FieldName.MainField);
                     break;
-
                 default:
                     Key.WrongKey();
                     break;

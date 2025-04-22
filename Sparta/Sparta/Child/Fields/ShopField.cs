@@ -18,7 +18,7 @@ namespace Sparta.Child.Fields
         public override void BeginPlay()
         {
             base.BeginPlay();
-            AllItem.GetAllItem();
+            AllItem.GetItem("");
         }
         
 
