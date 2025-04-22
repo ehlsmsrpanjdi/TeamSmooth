@@ -25,10 +25,10 @@ namespace Sparta.Child.Fields
             Console.WriteLine("=환영합니다! 스무스 마을에 어서오세요.=");
             Console.WriteLine("=======================================");
             Console.WriteLine();
-            Console.WriteLine("0. 상태창");
-            Console.WriteLine("1. 상점");
-            Console.WriteLine("2. 여관");
-            Console.WriteLine("3. 던전 진입");
+            Console.WriteLine("0. 상태창을 확인한다.");
+            Console.WriteLine("1. 상점으로 간다.");
+            Console.WriteLine("2. 여관으로 간다.");
+            Console.WriteLine("3. 던전에 진입한다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();

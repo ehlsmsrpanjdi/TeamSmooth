@@ -33,9 +33,9 @@ namespace Sparta.Child.Fields
             Console.WriteLine();
             Console.WriteLine("현재 소지금 : {0}\n\n", Player.GetPlayer().gold);
 
-            Console.WriteLine("0. 상태창");
-            Console.WriteLine("1. 구매하기");
-            Console.WriteLine("2. 판매하기");
+            Console.WriteLine("0. 상태창을 확인한다.");
+            Console.WriteLine("1. 아이템을 구매한다.");
+            Console.WriteLine("2. 아이템을 판매한다.");
             Console.WriteLine("3. 상점에서 나간다.");
             Console.WriteLine();
 
