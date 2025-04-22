@@ -21,7 +21,9 @@ namespace Sparta.Child.Fields
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("어서오세요. 스무스 마을입니다.");
+            Console.WriteLine("=======================================");
+            Console.WriteLine("=환영합니다! 스무스 마을에 어서오세요.=");
+            Console.WriteLine("=======================================");
             Console.WriteLine();
             Console.WriteLine("0. 상태창");
             Console.WriteLine("1. 상점");

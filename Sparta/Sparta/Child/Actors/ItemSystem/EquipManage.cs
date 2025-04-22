@@ -1,0 +1,37 @@
+﻿using Sparta.NameSpace;
+using Sparta.Parent;
+using Sparta.SelectorSystem;
+
+namespace Sparta.Child.Actors.ItemSystem
+{
+    public class EquipManage
+    {
+        public void Tick()
+        {
+            while (true)
+            {
+                Console.WriteLine("-장착 관리-\n보유 중인 아이템을 장착하거나 해제합니다.\n");
+                Console.WriteLine("\n[아이템 목록]\n");
+                List<Item> inventory = Inventory.GetInventory().inventory;
+
+                for (int i = 0; i < inventory.Count; i++) // 개인적으로 foreach 싫어서 for 문으로 제작
+                {
+                    inventory[i].EquipManageStatus(i);
+                }
+                Console.WriteLine("\n0. 나가기");
+                selectedIndex = selector.Select();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        return;
+                    default:
+                        inventory[selectedIndex - 1].isEquip = !inventory[selectedIndex - 1].isEquip;
+                        Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
+                        break;
+                }
+            }
+        }
+        protected Selector selector = new Selector();
+        protected int selectedIndex = 0;
+    }
+}

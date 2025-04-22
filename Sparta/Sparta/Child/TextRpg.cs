@@ -32,9 +32,15 @@ namespace Sparta.Child
             while (!selectedcomplete)
             {
                 Console.Clear();
+                Console.WriteLine("=================================");
+                Console.WriteLine("=          Text RPG             =");
+                Console.WriteLine("=          던전 시커            =");
+                Console.WriteLine("=================================");
+                Console.WriteLine();
                 Console.WriteLine("0. 게임 시작하기");
                 Console.WriteLine("1. 게임 불러오기");
                 Console.WriteLine("99. 게임 종료");
+                Console.WriteLine();
 
                 selectedIndex = selector.Select();
 
@@ -46,8 +52,8 @@ namespace Sparta.Child
                         CreateField<EncounterField>(FieldName.EncounterField);
                         CreateField<ShopField>(FieldName.ShopField);
                         CreateField<InnField>(FieldName.InnField);
-                        Player.GetPlayer();
                         AllItem.ItemInit();
+                        Player.GetPlayer();
                         FieldChange(FieldName.MainField);
                         base.Start();
                         selectedcomplete = true;

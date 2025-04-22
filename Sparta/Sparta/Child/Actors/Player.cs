@@ -30,7 +30,7 @@ namespace Sparta.Child.Actors
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
-            Console.WriteLine("던전시커에 오신 것을 환영합니다.");
+            Console.WriteLine("스무스의 던전에 오신 것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
 
@@ -74,6 +74,22 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"체 력 : {hp + eqHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
         }
+
+        public void HealHP(int Value)
+        {
+            hp += Value;
+
+            if(hp > maxHp)
+            {
+                hp = maxHp;
+            }
+        }
+
+        public void FullHP()
+        {
+            hp = maxHp;
+        }
+
 
         public override void Tick()
         {
