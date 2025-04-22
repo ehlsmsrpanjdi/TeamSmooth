@@ -65,7 +65,27 @@ namespace Sparta.Child.Actors.ItemSystem
         }
         protected Selector selector = new Selector();
         protected int selectedIndex = 0;
-        
+
+        public (int totalStr, int totalDef, int totalHp) GetEquippedStatTotal()
+        {
+            int totalStr = 0;
+            int totalDef = 0;
+            int totalHp = 0;
+
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                if (inventory[i].isEquip)
+                {
+                    totalStr += inventory[i].addattack;
+                    totalDef += inventory[i].addshield;
+                    totalHp += inventory[i].addmaxHp;
+                }
+            }
+
+            return (totalStr, totalDef, totalHp);
+        }
+
+
     }
 
 }
