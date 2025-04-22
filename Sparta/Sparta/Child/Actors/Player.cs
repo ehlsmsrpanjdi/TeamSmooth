@@ -29,12 +29,7 @@ namespace Sparta.Child.Actors
 
 
 
-        int attack = 10;
-        int shield = 5;
-        int hp = 100;
-        public int eqHp;
-        public int maxHp => hp + eqHp;
-
+  
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
