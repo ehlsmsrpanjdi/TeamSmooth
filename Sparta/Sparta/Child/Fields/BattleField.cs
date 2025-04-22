@@ -17,6 +17,12 @@ namespace Sparta.Child.Fields
             base.BeginPlay();
         }
 
+        private void Move()
+        {
+            if(30 > Global.Rand(0, 100)){
+                ChangeField(FieldName.EncounterField);
+            }
+        }
 
         public override void Tick()
         {
@@ -25,8 +31,7 @@ namespace Sparta.Child.Fields
 
             Console.WriteLine("0. 상태창.");
             Console.WriteLine("1. 이동한다.");
-            Console.WriteLine("2. 휴식을 취한다.");
-            Console.WriteLine("3. 마을로 이동하기.");
+            Console.WriteLine("2. 마을로 이동하기.");
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
@@ -35,10 +40,9 @@ namespace Sparta.Child.Fields
                     Player.GetPlayer().PrintStatus();
                     break;
                 case 1:
+                    Move();
                     break;
                 case 2:
-                    break;
-                case 3:
                     break;
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
