@@ -19,21 +19,25 @@ namespace Sparta.Parent
     public class Item : Actor
     {
         public ItemType myItemType;
-        public string? Info = null;
-        public bool isEquip = false;
+        public string? Info = null;     // 장비 설명
+        public bool isEquip = false;    // 장착 여부
+        public int addattack = 0;       // 장비 추가 능력치
+        public int addshield = 0;
+        public int addmaxHp = 0;
+
         public override void PrintStatus()
         {
             if (Name != null)
             {
-                Console.Write("- ");
-                Console.Write("{0}", isEquip ? "[E]" : ""); // 장착 중일 경우 [E] 가 붙고 아니면 안 붙음
-                Console.Write("{0}  ", Name);
-                if (Armour != null)
-                    Console.Write("| 방어력 +{0} ", shield);
-                if (Weapon != null)
-                    Console.Write("| 공격력 +{0} ", attack);
-                Console.Write("| {0} ", Info);
-                Console.Write("| {0} G\n", gold);
+                Console.Write("- {0} {1}", isEquip ? "[E]" : "", Name);
+                if (addshield > 0)
+                    Console.Write("| 방어력 +{0} ", addshield);
+                if (addattack > 0)
+                    Console.Write("| 공격력 +{0} ", addattack);
+                if (addmaxHp > 0)
+                    Console.Write("| 최대 HP +{0} ", addmaxHp);
+                Console.WriteLine("| {0} | {1} G", Info, gold);
+
             }
         }
     }

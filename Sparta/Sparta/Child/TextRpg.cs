@@ -46,8 +46,8 @@ namespace Sparta.Child
                         CreateField<EncounterField>(FieldName.EncounterField);
                         CreateField<ShopField>(FieldName.ShopField);
                         CreateField<InnField>(FieldName.InnField);
-                        Player.GetPlayer();
                         AllItem.ItemInit();
+                        Player.GetPlayer();
                         FieldChange(FieldName.MainField);
                         base.Start();
                         selectedcomplete = true;
