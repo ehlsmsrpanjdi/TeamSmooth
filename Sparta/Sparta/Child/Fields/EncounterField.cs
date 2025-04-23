@@ -60,7 +60,7 @@ namespace Sparta.Child.Fields
         private void PrintMonsterStatus()
         {
             Console.WriteLine("============================\n\n");
-            for (int i = 1; i <= Actors.Count(); ++i)
+            for (int i = 0; i < Actors.Count(); ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
                 Actors[i - 1].PrintStatus();

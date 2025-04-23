@@ -41,7 +41,7 @@ namespace Sparta.Child.Actors.MonsterSystem
     {
         public TwinHeadOrc()
         {
-            Name = MonsterName.Gobline;
+            Name = MonsterName.TwinHeadOrc;
             Job = JobName.Monster;
             attack = 10;
             shield = 5;

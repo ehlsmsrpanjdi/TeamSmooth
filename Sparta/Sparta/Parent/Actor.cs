@@ -111,6 +111,9 @@ namespace Sparta.Parent
         public int maxHp { get; protected set; }
         public int gold { get;  set; }
         public float exp { get; protected set; }
+        public int totalAttack { get; set; }
+        public int totalShield { get; set; }
+        public int totalHp  { get; set; }
 
 
         protected Selector selector = new Selector();
