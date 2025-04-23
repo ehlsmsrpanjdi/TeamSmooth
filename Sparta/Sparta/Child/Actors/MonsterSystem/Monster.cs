@@ -17,7 +17,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             Job = JobName.Monster;
             attack = 5;
             shield = 0;
-            maxHp = 60;
+            maxHp = 20;
             hp = maxHp;
             gold = Global.Rand(0, 100);
         }
@@ -31,7 +31,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             Job = JobName.Monster;
             attack = 5;
             shield = 5;
-            maxHp = 120;
+            maxHp = 40;
             hp = maxHp;
             gold = Global.Rand(0, 100);
         }   
@@ -45,7 +45,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             Job = JobName.Monster;
             attack = 10;
             shield = 5;
-            maxHp = 150;
+            maxHp = 60;
             hp = maxHp;
             gold = Global.Rand(0, 100);
         }
@@ -57,9 +57,9 @@ namespace Sparta.Child.Actors.MonsterSystem
         {
             Name = MonsterName.Ogre;
             Job = JobName.Monster;
-            attack = 50;
-            shield = 20;
-            maxHp = 120;
+            attack = 20;
+            shield = 10;
+            maxHp = 100;
             hp = maxHp;
             gold = Global.Rand(0, 100);
         }
