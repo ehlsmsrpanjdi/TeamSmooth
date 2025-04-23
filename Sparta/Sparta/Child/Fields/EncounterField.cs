@@ -150,7 +150,7 @@ namespace Sparta.Child.Fields
 
             Console.WriteLine("1. 공격한다.");
             Console.WriteLine("2. 아이템을 확인한다.");
-            Console.WriteLine("3. 도망을 시도한다.\n\n\n");
+            Console.WriteLine("3. 도망을 시도한다.\n");
 
             Player.GetPlayer().PrintStatus();
 
