@@ -16,6 +16,10 @@ namespace Sparta.Child.Actors.MonsterSystem
         {
 
         }
+        public List<Item> MosterItemGet()
+        {
+            return monsterInven;
+        }
         public override void PrintStatus()
         {
             Console.Write("Lv. " + Level);
