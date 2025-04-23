@@ -26,7 +26,7 @@ namespace Sparta.Child.Actors.ItemSystem
                     case 0:
                         return;
                     default:
-                        if (selectedIndex < inventory.inventory.Count)
+                        if (selectedIndex - 1 < inventory.inventory.Count)
                         {
                             inventory.inventory[selectedIndex - 1].isEquip = !inventory.inventory[selectedIndex - 1].isEquip;
                             Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory.inventory[selectedIndex - 1].Name, inventory.inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
