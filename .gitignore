@@ -53,3 +53,6 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 /Sparta/.vs
+
+#Visual Studio
+.vs/
