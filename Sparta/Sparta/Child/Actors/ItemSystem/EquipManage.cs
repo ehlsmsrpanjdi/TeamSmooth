@@ -13,11 +13,11 @@ namespace Sparta.Child.Actors.ItemSystem
             {
                 Console.WriteLine("-장착 관리-\n보유 중인 아이템을 장착하거나 해제합니다.\n");
                 Console.WriteLine("\n[아이템 목록]\n");
-                Inventory inventory = Player.GetPlayer().inventory;
+                List<Item> inventory = Player.GetPlayer().inventory.inventory;
 
-                for (int i = 0; i < inventory.inventory.Count; i++) // 개인적으로 foreach 싫어서 for 문으로 제작
+                for (int i = 0; i < inventory.Count; i++) // 개인적으로 foreach 싫어서 for 문으로 제작
                 {
-                    inventory.inventory[i].EquipManageStatus(i);
+                    inventory[i].EquipManageStatus(i);
                 }
                 Console.WriteLine("\n0. 장비 착용을 중단한다.");
                 selectedIndex = selector.Select();
@@ -26,10 +26,10 @@ namespace Sparta.Child.Actors.ItemSystem
                     case 0:
                         return;
                     default:
-                        if (selectedIndex - 1 < inventory.inventory.Count)
+                        if (selectedIndex - 1 < inventory.Count)
                         {
-                            inventory.inventory[selectedIndex - 1].isEquip = !inventory.inventory[selectedIndex - 1].isEquip;
-                            Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory.inventory[selectedIndex - 1].Name, inventory.inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
+                            inventory[selectedIndex - 1].isEquip = !inventory[selectedIndex - 1].isEquip;
+                            Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
                             break;
                         }
                         else
