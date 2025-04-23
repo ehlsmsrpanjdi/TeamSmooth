@@ -125,7 +125,7 @@ namespace Sparta.Child.Fields
                     {
                         Console.WriteLine("플레이어가 승리하였습니다.\n");
 
-                        Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!");
+                        Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!", TotalExp, TotalGold);
                         ChangeField(FieldName.BattleField);
                         Key.AnyKey();
                         return;
@@ -187,8 +187,7 @@ namespace Sparta.Child.Fields
                     }
                     MonsterAttack();
                     break;
-                case 0:
-                    Player.GetPlayer().attack = 1000;
+
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
                     Console.ReadKey();
