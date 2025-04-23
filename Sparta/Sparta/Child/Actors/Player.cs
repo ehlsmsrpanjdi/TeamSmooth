@@ -17,6 +17,7 @@ namespace Sparta.Child.Actors
 
         private static Player? Instance = null;
 
+        bool Init = false;
 
         public static Player GetPlayer()
         {
@@ -62,6 +63,10 @@ namespace Sparta.Child.Actors
 
         void SelectName()
         {
+            if(Init == true)
+            {
+                return;
+            }
             Console.Clear();
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
@@ -76,6 +81,10 @@ namespace Sparta.Child.Actors
 
             while (true)
             {
+                if (Init == true)
+                {
+                    return;
+                }
                 Console.Clear();
                 Console.WriteLine($"입력하신 이름은 {Name}입니다.");
                 Console.WriteLine("이름을 저장하시겠습니까?");
@@ -96,7 +105,7 @@ namespace Sparta.Child.Actors
                         Console.WriteLine("이름을 다시 만듭니다.\n");
                         Key.AnyKey();
                         BeginPlay();
-                        break;
+                        return;
                     default:
                         Key.WrongKey();
                         break;
@@ -105,12 +114,20 @@ namespace Sparta.Child.Actors
         }
         void SelectJob()
         {
+            if (Init == true)
+            {
+                return;
+            }
             Console.Clear();
             int jobselect;
             string? JobNum;
 
             while (true)
             {
+                if (Init == true)
+                {
+                    return;
+                }
                 Console.Clear();
                 Console.WriteLine("직업을 선택해주세요.\n 1. 전사\n 2. 암살자\n 3. 탱커\n");
 
@@ -163,6 +180,7 @@ namespace Sparta.Child.Actors
                         case 1:
                             Console.WriteLine("직업을 저장했습니다. 게임을 시작합니다.\n");
                             SetStatus();
+                            Init = true;
                             Key.AnyKey();
                             return;
                         case 2:
