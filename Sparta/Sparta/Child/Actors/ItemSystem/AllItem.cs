@@ -22,6 +22,7 @@ namespace Sparta.Child.Actors.ItemSystem
             Items[ItemName.Broadsword] = new Broadsword();
             Items[ItemName.ironarmour] = new Ironarmour();
             Items[ItemName.ironshield] = new Ironshield();
+            Items[ItemName.RedPotion] = new RedPotion();
         }
 
         public static Item? GetItem(string _itemName)

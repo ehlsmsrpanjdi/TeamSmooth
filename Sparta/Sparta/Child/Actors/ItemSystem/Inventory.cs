@@ -23,6 +23,7 @@ namespace Sparta.Child.Actors.ItemSystem
                 inventory.Add(AllItem.CreatItem(ItemName.LongSword));
                 inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
                 inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
+                inventory.Add(AllItem.CreatItem(ItemName.RedPotion));
             }
         }
         public void Tick()
