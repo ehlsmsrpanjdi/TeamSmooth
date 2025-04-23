@@ -22,7 +22,6 @@ namespace Sparta.Child.Actors.ItemSystem
         {
             while (true)
             {
-                Console.Clear();
                 Console.WriteLine("-인벤토리-\n보유 중인 아이템을 확인합니다.\n");
                 Console.WriteLine("\n[아이템 목록]\n");
 
@@ -36,6 +35,7 @@ namespace Sparta.Child.Actors.ItemSystem
                 switch (selectedIndex)
                 {
                     case -1:
+                        Console.Clear();
                         break;
                     case 1:
                         EquipManage.Tick();
@@ -48,6 +48,7 @@ namespace Sparta.Child.Actors.ItemSystem
                     default:
                         Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
                         Console.ReadKey();
+                        Console.Clear();
                         break;
                 }
             }

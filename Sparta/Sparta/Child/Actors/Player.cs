@@ -38,7 +38,7 @@ namespace Sparta.Child.Actors
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
-            if(string.IsNullOrWhiteSpace(Name))
+            if (string.IsNullOrWhiteSpace(Name))
             {
                 Console.Clear();
                 Console.WriteLine("이름은 빈칸일 수 없습니다.\n");
@@ -54,31 +54,28 @@ namespace Sparta.Child.Actors
                 Console.WriteLine("2. 취소\n");
 
                 selectedIndex = selector.Select();
-
                 switch (selectedIndex)
                 {
+                    case -1:
+                        break;
                     case 1:
                         Console.WriteLine("원하시는 행동을 입력해주세요\n");
                         break;
                     case 2:
                         Console.Clear();
                         BeginPlay();
-                        return;
+                        break;
                     default:
-                        Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
-                        continue;
+                        return;
                 }
 
-                break;
-            }
+                int jobselect;
+                string? JobNum;
 
-            int jobselect;
-            string? JobNum;
-
-            while (true)
-            {
-                Console.WriteLine("직업을 선택해주세요.\n 1. 전사\n 2. 암살자\n 3. 탱커\n");
-                JobNum = Console.ReadLine();
+                while (true)
+                {
+                    Console.WriteLine("직업을 선택해주세요.\n 1. 전사\n 2. 암살자\n 3. 탱커\n");
+                    JobNum = Console.ReadLine();
 
                 if (JobNum != "1" && JobNum != "2" && JobNum != "3" && JobNum != "스파르타")
                 {
@@ -142,35 +139,36 @@ namespace Sparta.Child.Actors
                 Console.Clear();
             }
 
-            if (Job == "전사")
-            {
-                attack = 10;
-                shield = 5;
-                hp = 100;
-            }
-            else if (Job == "암살자")
-            {
-                attack = 15;
-                shield = 3;
-                hp = 80;
-            }
-            else if (Job == "탱커")
-            {
-                attack = 7;
-                shield = 7;
-                hp = 120;
-            }
-            else if (Job == "스파르타")
-            {
-                attack = 20;
-                shield = 10;
-                hp = 150;
-            }
+                if (Job == "전사")
+                {
+                    attack = 10;
+                    shield = 5;
+                    hp = 100;
+                }
+                else if (Job == "암살자")
+                {
+                    attack = 15;
+                    shield = 3;
+                    hp = 80;
+                }
+                else if (Job == "탱커")
+                {
+                    attack = 7;
+                    shield = 7;
+                    hp = 120;
+                }
+                else if (Job == "스파르타")
+                {
+                    attack = 20;
+                    shield = 10;
+                    hp = 150;
+                }
 
-            Level = 1;
-            gold = 1500;
-            maxHp = hp;
+                Level = 1;
+                gold = 1500;
+                maxHp = hp;
 
+            }
         }
 
         public void PrintStatShort()
@@ -241,6 +239,8 @@ namespace Sparta.Child.Actors
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {
+                    case -1:
+                        break;
                     case 0:
                         inventory.Tick();
                         break;
