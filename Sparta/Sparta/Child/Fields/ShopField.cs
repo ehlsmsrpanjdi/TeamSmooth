@@ -121,9 +121,9 @@ namespace Sparta.Child.Fields
             List<Item> usingitem = new List<Item>
                 {
                 new Item { Name = "빨간물약", addmaxHp = 20, gold = 100 , Info = "체력을 회복합니다."},
-                new Item { Name = "큰 빨간물약", addmaxHp = 40, gold = 200 , Info = "체력을 회복합니다."},
+                new Item { Name = "큰 빨간물약", addmaxHp = 40, gold = 200 , Info = "체력을 많이 회복합니다."},
                 new Item { Name = "하얀물약", addmaxHp = 60, gold = 400 , Info = "체력을 크게 회복합니다."},
-                new Item { Name = "큰 하얀물약", addmaxHp = 80, gold = 800 , Info = "체력을 크게 회복합니다."},
+                new Item { Name = "큰 하얀물약", addmaxHp = 80, gold = 800 , Info = "체력을 아주 크게 회복합니다."},
             };
 
             while (true)

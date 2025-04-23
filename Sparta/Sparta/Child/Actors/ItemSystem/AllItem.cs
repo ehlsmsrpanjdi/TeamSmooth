@@ -125,6 +125,54 @@ namespace Sparta.Child.Actors.ItemSystem
             Info = "철로 만든 방패입니다.";
         }
     }
+    public class RedPotion : Item
+    {
+        public RedPotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.redpotion;
+            isEquip = false;
+            addmaxHp = 20;
+            gold = 100;
+            Info = "체력을 회복합니다.";
+        }
+    }
+    public class BigRedPotion : Item
+    {
+        public BigRedPotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.bigredpotion;
+            isEquip = false;
+            addshield = 40;
+            gold = 200;
+            Info = "체력을 많이 회복합니다.";
+        }
+    }
+    public class WritePotion : Item
+    {
+        public WritePotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.writepotion;
+            isEquip = false;
+            addshield = 60;
+            gold = 400;
+            Info = "체력을 크게 회복합니다.";
+        }
+    }
+    public class BigWritePotion : Item
+    {
+        public BigWritePotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.bigwritepotion;
+            isEquip = false;
+            addshield = 80;
+            gold = 800;
+            Info = "체력을 아주 크게 회복합니다.";
+        }
+    }
 
 
 }
