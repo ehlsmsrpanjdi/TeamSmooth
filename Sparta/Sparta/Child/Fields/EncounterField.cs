@@ -132,7 +132,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("몬스터가 공격합니다\n");
             for (int i = 0; i < Actors.Count(); ++i)
             {
-                if(true == Player.GetPlayer().GetDamage(Actors[i].totalAttack, Player.GetPlayer().totalAttack))
+                if(true == Player.GetPlayer().GetDamage(Actors[i].totalAttack, Player.GetPlayer().totalShield))
                 {
                     Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);

@@ -71,6 +71,12 @@ namespace Sparta.Parent
             }
 
         }
+        /// <summary>
+        /// 첫 번째 인자는 공격자의 총 공격력, 두 번째 인자는 방어자의 총 방어력입니다.
+        /// </summary>
+        /// <param name="attackerTotalAttack"></param>
+        /// <param name="defenderTotalShield"></param>
+        /// <returns></returns>
         public virtual bool GetDamage(int attackerTotalAttack, int defenderTotalShield)
         {
             int damage = Math.Max(0, attackerTotalAttack - defenderTotalShield);
