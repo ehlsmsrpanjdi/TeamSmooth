@@ -55,8 +55,9 @@ namespace Sparta.NameSpace
     public static class JobName
     {
         public const string Warrior = "전사";
-        public const string Thief = "도적";
-        public const string Magician = "마법사";
+        public const string Assassin = "암살자";
+        public const string Tanker = "탱커";
+        public const string Sparta = "스파르타";
         public const string Monster = "몬스터";
     }
     public static class Global

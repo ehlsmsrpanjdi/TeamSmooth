@@ -63,18 +63,38 @@ namespace Sparta.Child.Actors
             }
 
             int jobselect;
-            string? Job;
+            string? JobNum;
 
             while (true)
             {
-                Console.WriteLine("직업을 선택해주세요.\n - 전사\n - 암살자\n - 탱커\n");
-                Job = Console.ReadLine();
+                Console.WriteLine("직업을 선택해주세요.\n 1. 전사\n 2. 암살자\n 3. 탱커\n");
+                JobNum = Console.ReadLine();
 
-                if (Job != "전사" && Job != "암살자" && Job != "탱커" && Job != "스파르타")
+                if (JobNum != "1" && JobNum != "2" && JobNum != "3" && JobNum != "스파르타")
                 {
                     Console.Clear();
                     Console.WriteLine("존재하는 직업을 선택해주세요\n");
                     continue;
+                }
+                else if (JobNum == "스파르타")
+                {
+                    Job = "스파르타";
+                }
+                else if (int.Parse(JobNum) == 1)
+                {
+                    Job = "전사";
+                }
+                else if (int.Parse(JobNum) == 2)
+                {
+                    Job = "암살자";
+                }
+                else if (int.Parse(JobNum) == 3)
+                {
+                    Job = "탱커";
+                }
+                else
+                {
+                    return;
                 }
 
                 Console.Clear();
@@ -117,7 +137,6 @@ namespace Sparta.Child.Actors
             }
 
             Level = 1;
-            Job = JobName.Warrior;
             gold = 1500;
             maxHp = hp;
 
@@ -126,7 +145,6 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
-            
 
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
             totalAttack = attack + eqAttack;
