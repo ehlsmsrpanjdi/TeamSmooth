@@ -313,7 +313,14 @@ namespace Sparta.Child.Actors
             // 최종 메시지 출력
             Console.WriteLine(message);
         }
-
+        public void MonsterItemGet(List<Item> totalitem)
+        {
+            for (int i = 0; i < totalitem.Count; i++)
+            {
+                inventory.inventory.Add(totalitem[i]);
+                Console.WriteLine($"전리품으로 {totalitem[i].Name} 장비를 획득했습니다.");
+            }
+        }
         public void HealHP(int Value)
         {
             hp += Value;
