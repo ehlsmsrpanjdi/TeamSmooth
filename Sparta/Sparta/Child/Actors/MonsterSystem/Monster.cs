@@ -9,70 +9,24 @@ using Sparta.Child.Actors.ItemSystem;
 
 namespace Sparta.Child.Actors.MonsterSystem
 {
-    class Gobline : Actor
+    class Monster : Actor
     {
-        public Gobline()
+        public Monster()
         {
-            Name = MonsterName.Gobline;
-            Job = JobName.Monster;
-            attack = 5;
-            shield = 0;
-            maxHp = 20;
-            hp = maxHp;
-            exp = 10;
-            gold = Global.Rand(0, 100);
 
-            
+        }
+        public override void PrintStatus()
+        {
+            Console.WriteLine("Lv. " + Level);
+            Console.WriteLine($"{Name}");
+            Console.Write($"공격력 : {attack} "); // (+{eqStr})");
+            Console.Write($" | 방어력 : {shield} "); // (+{eqDef})");
+            Console.WriteLine($" | 체 력 : {hp} "); // (+{eqHp})");
         }
         protected override void OnDeath()
         {
             base.OnDeath();
             Player.GetPlayer().ExpGet(exp);
-        }
-    }
-
-    class Orc : Actor
-    {
-        public Orc() 
-        {
-            Name = MonsterName.Orc;
-            Job = JobName.Monster;
-            attack = 5;
-            shield = 5;
-            maxHp = 40;
-            hp = maxHp;
-            exp = 15;
-            gold = Global.Rand(0, 100);
-        }   
-    }
-
-    class TwinHeadOrc : Actor
-    {
-        public TwinHeadOrc()
-        {
-            Name = MonsterName.TwinHeadOrc;
-            Job = JobName.Monster;
-            attack = 10;
-            shield = 5;
-            maxHp = 60;
-            hp = maxHp;
-            exp = 20;
-            gold = Global.Rand(0, 100);
-        }
-    }
-
-    class Ogre : Actor
-    {
-        public Ogre()
-        {
-            Name = MonsterName.Ogre;
-            Job = JobName.Monster;
-            attack = 20;
-            shield = 10;
-            maxHp = 100;
-            exp = 25;
-            hp = maxHp;
-            gold = Global.Rand(0, 100);
         }
     }
 }
