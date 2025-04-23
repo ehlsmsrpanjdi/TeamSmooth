@@ -57,16 +57,16 @@ namespace Sparta.Child.Actors
                 switch (selectedIndex)
                 {
                     case -1:
-                        break;
+                        continue;
                     case 1:
                         Console.WriteLine("원하시는 행동을 입력해주세요\n");
                         break;
                     case 2:
                         Console.Clear();
                         BeginPlay();
-                        break;
-                    default:
                         return;
+                    default:
+                        continue;
                 }
 
                 int jobselect;
@@ -116,7 +116,37 @@ namespace Sparta.Child.Actors
                     }
 
                     Console.Clear();
+                    Console.WriteLine($"입력하신 직업은 {Job}입니다.");
+                    Console.WriteLine("직업을 선택하시겠습니까?");
+                    Console.WriteLine("1. 저장");
+                    Console.WriteLine("2. 취소\n");
+
+                    int JobOk = int.Parse(Console.ReadLine());
+
+                    switch (JobOk)
+                    {
+                        case 1:
+                            Console.WriteLine("원하시는 행동을 입력해주세요\n");
+                            break;
+                        case 2:
+                            Console.Clear();
+                            continue;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
+                            continue;
+                    }
+
+                    break;
+                    //if (int.TryParse(Console.ReadLine(), out jobselect) && jobselect == 1)
+                    //{
+                    //    break;
+                    //}
+
                 }
+
+                break;
+                Console.Clear();
 
                 if (Job == "전사")
                 {
