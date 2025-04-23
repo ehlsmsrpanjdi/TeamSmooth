@@ -60,7 +60,9 @@ namespace Sparta.Child.Actors
                     Key.WrongKey();
                     break;
             }
+
             int jobselect;
+            string? Job;
 
             while (true)
             {
