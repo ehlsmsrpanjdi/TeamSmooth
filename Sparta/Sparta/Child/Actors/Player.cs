@@ -159,10 +159,12 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"Gold : {gold} G");
         }
 
-        public void ExpGet(float monsterexp)
+        public void ExpGoldGet(float monsterexp, int monstergold)
         {
             exp += monsterexp;
+            gold += monstergold;
             Console.WriteLine($"경험치를 {monsterexp} 획득했습니다.");
+            Console.WriteLine($"골드를 {monsterexp} G 획득했습니다.");
         }
 
         public void HealHP(int Value)
