@@ -61,6 +61,8 @@ namespace Sparta.Child.Actors
                     Console.Clear();
                     BeginPlay();
                     break;
+                default:
+                    return;
             }
 
             int jobselect;

@@ -27,10 +27,13 @@ namespace Sparta.Child.Fields
 
     class EncounterField : Field
     {
-
+        float TotalExp = 0;
+        int TotalGold = 0;
         public override void BeginPlay()
         {
             base.BeginPlay();
+            TotalExp = 0;
+            TotalGold = 0;
         }
 
         public override void FieldOpen()
@@ -95,6 +98,8 @@ namespace Sparta.Child.Fields
                 Console.Clear();
                 Console.WriteLine("어떤 몬스터를 공격하십니까?");
 
+                PrintMonsterStatus();
+
                 int select = selector.Select();
                 if(select == -1)
                 {
@@ -111,12 +116,16 @@ namespace Sparta.Child.Fields
 
                     if (true == Actors[select - 1].GetDamage(Player.GetPlayer().totalAttack, Actors[select - 1].shield))
                     {
+                        TotalGold += Actors[select - 1].gold;
+                        TotalExp += Actors[select - 1].exp;
                         Actors.Remove(Actors[select - 1]);
                     }
 
                     if(Actors.Count() == 0)
                     {
-                        Console.WriteLine("플레이어가 승리하였습니다.");
+                        Console.WriteLine("플레이어가 승리하였습니다.\n");
+
+                        Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!");
                         ChangeField(FieldName.BattleField);
                         Key.AnyKey();
                         return;
@@ -129,11 +138,13 @@ namespace Sparta.Child.Fields
 
         private void MonsterAttack()
         {
+            if(Actors.Count() == 0) { return; }
             Console.WriteLine("\n몬스터가 공격합니다\n");
             for (int i = 0; i < Actors.Count(); ++i)
             {
                 if(true == Player.GetPlayer().GetDamage(Actors[i].attack, Player.GetPlayer().totalShield))
                 {
+                    Console.WriteLine("눈앞이 캄캄해집니다...");
                     Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);
                     Key.AnyKey();
@@ -146,16 +157,17 @@ namespace Sparta.Child.Fields
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("당신은 적을 조우했습니다.");
 
-            Console.WriteLine("1. 공격한다.");
-            Console.WriteLine("2. 아이템을 확인한다.");
-            Console.WriteLine("3. 도망을 시도한다.\n");
 
             Player.GetPlayer().PrintStatShort();
 
             PrintMonsterStatus();
 
+            Console.WriteLine("\n당신은 적을 조우했습니다.");
+
+            Console.WriteLine("1. 공격한다.");
+            Console.WriteLine("2. 아이템을 확인한다.");
+            Console.WriteLine("3. 도망을 시도한다.\n");
             selectedIndex = selector.Select();
             switch (selectedIndex)
             {
