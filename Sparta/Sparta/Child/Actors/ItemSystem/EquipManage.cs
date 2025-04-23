@@ -11,7 +11,7 @@ namespace Sparta.Child.Actors.ItemSystem
         {
             while (true)
             {
-                Console.WriteLine("-장착 관리-\n보유 중인 아이템을 장착하거나 해제합니다.\n");
+                Console.WriteLine("-장착 관리-\n보유 중인 아이템을 장착하거나 해제합니다.(포션은 장착을 하면 사용이 됩니다.)\n");
                 Player.GetPlayer().PrintStatus();
                 Console.WriteLine("\n[아이템 목록]\n");
                 List<Item> inventory = Player.GetPlayer().inventory.inventory;
@@ -38,7 +38,9 @@ namespace Sparta.Child.Actors.ItemSystem
                             }
                             else
                             {
-                                Console.WriteLine("포션은 장착할 수 없습니다.\n");
+                                Console.WriteLine("{0} 을(를) 사용하여 체력을 {1} 회복했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].addmaxHp);
+                                Player.GetPlayer().HealHP(inventory[selectedIndex - 1].addmaxHp);
+                                inventory.Remove(inventory[selectedIndex - 1]);
                                 break;
                             }    
                         }
