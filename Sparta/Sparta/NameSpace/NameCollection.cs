@@ -30,6 +30,7 @@ namespace Sparta.NameSpace
         public const string InnField = "inn";
         public const string BattleField = "battlefield";
         public const string EncounterField = "encounterField";
+        public const string GuildField = "GuildField";
     }
 
     public static class ItemName
