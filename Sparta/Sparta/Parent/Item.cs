@@ -23,6 +23,7 @@ namespace Sparta.Parent
         Weapon = 0,
         Armour,
         shield,
+        Potion,
     }
     public class Item : Actor
     {
