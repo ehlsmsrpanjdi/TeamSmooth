@@ -22,7 +22,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             hp = maxHp;
             exp = 10;
             gold = Global.Rand(0, 100);
-            if (30 > Global.Rand(0,100))
+            if (30 > Global.Rand(0, 100))
             {
                 monsterInven.Add(AllItem.GetAllItem()[ItemName.WoodShield]);
             }
@@ -31,7 +31,7 @@ namespace Sparta.Child.Actors.MonsterSystem
 
     class Orc : Monster
     {
-        public Orc() 
+        public Orc()
         {
             Name = MonsterName.Orc;
             Job = JobName.Monster;
@@ -41,6 +41,10 @@ namespace Sparta.Child.Actors.MonsterSystem
             hp = maxHp;
             exp = 15;
             gold = Global.Rand(0, 100);
+            if (30 > Global.Rand(0, 100))
+            {
+                monsterInven.Add(AllItem.GetAllItem()[ItemName.LongSword]);
+            }
         }
     }
 
@@ -56,6 +60,10 @@ namespace Sparta.Child.Actors.MonsterSystem
             hp = maxHp;
             exp = 20;
             gold = Global.Rand(0, 100);
+            if (30 > Global.Rand(0, 100))
+            {
+                monsterInven.Add(AllItem.GetAllItem()[ItemName.IronShield]);
+            }
         }
     }
 
@@ -71,6 +79,10 @@ namespace Sparta.Child.Actors.MonsterSystem
             exp = 25;
             hp = maxHp;
             gold = Global.Rand(0, 100);
+            if (30 > Global.Rand(0, 100))
+            {
+                monsterInven.Add(AllItem.GetAllItem()[ItemName.IronArmour]);
+            }
         }
     }
 }
