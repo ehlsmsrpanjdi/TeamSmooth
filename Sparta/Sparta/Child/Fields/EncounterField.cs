@@ -65,12 +65,12 @@ namespace Sparta.Child.Fields
 
         private void PrintMonsterStatus()
         {
-            Console.WriteLine("============================\n\n");
+            Console.WriteLine("\n============================\n");
             for (int i = 1; i < Actors.Count() + 1; ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
                 Actors[i - 1].PrintStatus();
-                Console.WriteLine("\n");
+                Console.WriteLine("");
             }
         }
 
@@ -131,6 +131,7 @@ namespace Sparta.Child.Fields
                         return;
                     }
                     Key.AnyKey();
+                    
                     return;
                 }
             }
@@ -145,7 +146,6 @@ namespace Sparta.Child.Fields
                 if(true == Player.GetPlayer().GetDamage(Actors[i].attack, Player.GetPlayer().totalShield))
                 {
                     Console.WriteLine("눈앞이 캄캄해집니다...");
-                    Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);
                     Key.AnyKey();
                     return;
@@ -178,8 +178,7 @@ namespace Sparta.Child.Fields
                     MonsterAttack();
                     break;
                 case 2:
-                    //플레이어 HP 회복 수단 및 아이템 변경 등등의 기능
-                    //Player.GetPlayer().Tick();
+                    Player.GetPlayer().Tick();
                     break;
                 case 3:
                     if (true == RunAway())
@@ -188,6 +187,8 @@ namespace Sparta.Child.Fields
                     }
                     MonsterAttack();
                     break;
+                case 0:
+                    Player.GetPlayer().attack = 1000;
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
                     Console.ReadKey();
