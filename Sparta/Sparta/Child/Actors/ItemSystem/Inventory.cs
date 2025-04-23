@@ -1,14 +1,6 @@
 ﻿using Sparta.NameSpace;
 using Sparta.Parent;
 using Sparta.SelectorSystem;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sparta.Child.Actors.ItemSystem
 {
@@ -30,6 +22,7 @@ namespace Sparta.Child.Actors.ItemSystem
         {
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("-인벤토리-\n보유 중인 아이템을 확인합니다.\n");
                 Console.WriteLine("\n[아이템 목록]\n");
 
@@ -42,6 +35,8 @@ namespace Sparta.Child.Actors.ItemSystem
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {
+                    case -1:
+                        break;
                     case 1:
                         EquipManage.Tick();
                         break;
@@ -51,6 +46,8 @@ namespace Sparta.Child.Actors.ItemSystem
                     case 3:
                         return;
                     default:
+                        Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
+                        Console.ReadKey();
                         break;
                 }
             }

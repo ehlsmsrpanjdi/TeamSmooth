@@ -26,7 +26,7 @@ namespace Sparta.Child.Actors.MonsterSystem
         protected override void OnDeath()
         {
             base.OnDeath();
-            Player.GetPlayer().ExpGoldGet(exp, gold);
+            //Player.GetPlayer().ExpGoldGet(exp, gold); 몬스터가 죽을 때 함수 실행
         }
     }
 }
