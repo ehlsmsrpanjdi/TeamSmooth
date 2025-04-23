@@ -246,10 +246,11 @@ namespace Sparta.Child.Actors
         {
             exp += monsterexp;
             gold += monstergold;
-            Console.WriteLine($"경험치를 {monsterexp} 획득했습니다.");
-            Console.WriteLine($"골드를 {monsterexp} G 획득했습니다.\n");
+            // 기본 메시지
+            string message = $"경험치를 {monsterexp} 획득했습니다.\n골드를 {monstergold} G 획득했습니다.\n";
 
-            if (exp >= requierdexp)
+            // 레벨업 조건 확인
+            while (exp >= requierdexp)
             {
                 Level++;
                 maxHp += 10;
@@ -257,8 +258,13 @@ namespace Sparta.Child.Actors
                 shield += 2;
                 exp -= requierdexp;
                 requierdexp *= 1.2f; // 다음 레벨업에 필요한 경험치 증가
-                Console.WriteLine($"{Name}이(가) 레벨업했습니다! 현재 레벨: {Level}");
+
+                // 레벨업 메시지 추가
+                message += $"{Name}이(가) 레벨업했습니다! 현재 레벨: {Level}\n";
             }
+
+            // 최종 메시지 출력
+            Console.WriteLine(message);
         }
 
         public void HealHP(int Value)
