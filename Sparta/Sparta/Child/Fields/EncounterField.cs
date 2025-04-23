@@ -29,6 +29,7 @@ namespace Sparta.Child.Fields
     {
         float TotalExp = 0;
         int TotalGold = 0;
+        List<Item> TotalItem = new List<Item>();
         public override void BeginPlay()
         {
             base.BeginPlay();
@@ -118,6 +119,11 @@ namespace Sparta.Child.Fields
                     {
                         TotalGold += Actors[select - 1].gold;
                         TotalExp += Actors[select - 1].exp;
+                        for (int i = 0; i < Actors[select - 1].monsterInven.Count; i++)
+                        {
+                            TotalItem.Add(Actors[select - 1].monsterInven[i]);
+                            Console.WriteLine($"{Actors[select - 1].Name}의 전리품인 {Actors[select - 1].monsterInven[i].Name} 장비를 발견했다!\n");
+                        }
                         Actors.Remove(Actors[select - 1]);
                     }
 
@@ -127,6 +133,7 @@ namespace Sparta.Child.Fields
 
                         Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!", TotalExp, TotalGold);
                         Player.GetPlayer().ExpGoldGet(TotalExp, TotalGold);
+                        Player.GetPlayer().MonsterItemGet(TotalItem);
                         ChangeField(FieldName.BattleField);
                         Key.AnyKey();
                         return;

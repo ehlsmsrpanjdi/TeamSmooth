@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sparta.SelectorSystem;
+using Sparta.Child.Actors.MonsterSystem;
 
 namespace Sparta.Parent
 {
@@ -26,7 +27,7 @@ namespace Sparta.Parent
             Console.Clear();
         }
 
-        public void SpawnActor<ChildActor>() where ChildActor : Actor , new()
+        public void SpawnActor<ChildActor>() where ChildActor : Monster, new()
         {
             ChildActor actor = new ChildActor();
             actor.BeginPlay();
@@ -53,7 +54,7 @@ namespace Sparta.Parent
             return TextRpg.GetInst().FieldChange(_fieldName);
         }
 
-        protected List<Actor> Actors = new List<Actor>();
+        protected List<Monster> Actors = new List<Monster>();
         protected Selector selector = new Selector();
         protected int selectedIndex = 0;
     }
