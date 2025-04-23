@@ -9,56 +9,46 @@ using System.Threading.Tasks;
 
 namespace Sparta.Child.Fields
 {
-    class MainField : Field
+    class GuildField : Field
     {
-
         public override void BeginPlay()
         {
             base.BeginPlay();
+            Console.WriteLine("길드에 입장했습니다.");
         }
-
 
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("=======================================");
-            Console.WriteLine("=환영합니다! 스무스 마을에 어서오세요.=");
-            Console.WriteLine("=======================================");
+            Console.WriteLine("==============================");
+            Console.WriteLine("=         시커 길드          =");
+            Console.WriteLine("==============================");
             Console.WriteLine();
             Console.WriteLine("0. 상태창을 확인한다.");
-            Console.WriteLine("1. 상점으로 간다.");
-            Console.WriteLine("2. 여관으로 간다.");
-            Console.WriteLine("3. 길드로 간다.");
-            Console.WriteLine("4. 던전에 진입한다.");
+            Console.WriteLine("1. 퀘스트를 진행한다.");
+            Console.WriteLine("2. 퀘스트를 포기한다.");
+            Console.WriteLine("3. 마을로 돌아간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
             {
-                case -1:
-                    break;
                 case 0:
                     Player.GetPlayer().Tick();
                     break;
                 case 1:
-                    ChangeField(FieldName.ShopField);
                     break;
                 case 2:
-                    ChangeField(FieldName.InnField);
                     break;
                 case 3:
-                    ChangeField(FieldName.GuildField);
-                    break;
-                case 4:
-                    ChangeField(FieldName.BattleField);
+                    ChangeField(FieldName.MainField);
                     break;
                 default:
-                    Key.WrongKey();
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
             }
         }
-
-
-
     }
 }
+

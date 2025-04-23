@@ -103,7 +103,8 @@ namespace Sparta.Parent
             // 여기서 전투 종료, 제거 처리 등 추가 가능
         }
 
-       
+        
+
 
         public Item? Weapon = null;
         public Item? Armour = null;
@@ -121,6 +122,8 @@ namespace Sparta.Parent
         public int totalAttack { get; set; }
         public int totalShield { get; set; }
         public int totalHp  { get; set; }
+        public float requierdexp { get; protected set; } = 100;
+        
 
 
         protected Selector selector = new Selector();

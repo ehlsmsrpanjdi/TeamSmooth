@@ -55,6 +55,7 @@ namespace Sparta.Child
                         CreateField<EncounterField>(FieldName.EncounterField);
                         CreateField<ShopField>(FieldName.ShopField);
                         CreateField<InnField>(FieldName.InnField);
+                        CreateField<GuildField>(FieldName.GuildField);
                         AllItem.ItemInit();
                         Player.GetPlayer();
                         FieldChange(FieldName.MainField);
