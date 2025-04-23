@@ -54,7 +54,20 @@ namespace Sparta.Child.Actors.ItemSystem
         }
         protected Selector selector = new Selector();
         protected int selectedIndex = 0;
-
+        public void OnlyOnePartItem(ItemType itemtype, int index)
+        {
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                if (i != index)
+                {
+                    if (inventory[i].myItemType == itemtype && inventory[i].isEquip)
+                    {
+                        inventory[i].isEquip = false;
+                        Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[i].Name, inventory[i].isEquip ? "장착" : "해제");
+                    }
+                }
+            }
+        }
         public (int totalStr, int totalDef, int totalHp) GetEquippedStatTotal()
         {
             int totalStr = 0;

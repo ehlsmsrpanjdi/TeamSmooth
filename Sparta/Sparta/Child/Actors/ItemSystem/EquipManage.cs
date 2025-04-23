@@ -29,6 +29,7 @@ namespace Sparta.Child.Actors.ItemSystem
                         if (selectedIndex - 1 < inventory.Count)
                         {
                             inventory[selectedIndex - 1].isEquip = !inventory[selectedIndex - 1].isEquip;
+                            Player.GetPlayer().inventory.OnlyOnePartItem(inventory[selectedIndex - 1].myItemType, selectedIndex - 1);
                             Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
                             break;
                         }
