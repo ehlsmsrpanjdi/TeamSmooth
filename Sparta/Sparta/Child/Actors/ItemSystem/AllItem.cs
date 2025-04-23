@@ -18,10 +18,10 @@ namespace Sparta.Child.Actors.ItemSystem
             Dictionary<string, Item> Items = GetAllItem();
             Items[ItemName.LongSword] = new LongSword();
             Items[ItemName.LeatherArmour] = new LeatherArmour();
-            Items[ItemName.woodshield] = new WoodShield();
+            Items[ItemName.WoodShield] = new WoodShield();
             Items[ItemName.Broadsword] = new Broadsword();
-            Items[ItemName.ironarmour] = new Ironarmour();
-            Items[ItemName.ironshield] = new Ironshield();
+            Items[ItemName.IronArmour] = new Ironarmour();
+            Items[ItemName.IronShield] = new Ironshield();
             Items[ItemName.RedPotion] = new RedPotion();
             Items[ItemName.BigRedPotion] = new BigRedPotion();
             Items[ItemName.WhitePotion] = new WhitePotion();
@@ -86,7 +86,7 @@ namespace Sparta.Child.Actors.ItemSystem
         public WoodShield()
         {
             myItemType = ItemType.shield;
-            Name = ItemName.woodshield;
+            Name = ItemName.WoodShield;
             isEquip = false;
             addmaxHp = 5;
             gold = 500;
@@ -110,7 +110,7 @@ namespace Sparta.Child.Actors.ItemSystem
         public Ironarmour()
         {
             myItemType = ItemType.Armour;
-            Name = ItemName.ironarmour;
+            Name = ItemName.IronArmour;
             isEquip = false;
             addshield = 10;
             gold = 1000;
@@ -122,7 +122,7 @@ namespace Sparta.Child.Actors.ItemSystem
         public Ironshield()
         {
             myItemType = ItemType.shield;
-            Name = ItemName.ironshield;
+            Name = ItemName.IronShield;
             isEquip = false;
             addshield = 10;
             gold = 1000;
@@ -134,7 +134,7 @@ namespace Sparta.Child.Actors.ItemSystem
         public RedPotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.redpotion;
+            Name = ItemName.RedPotion;
             isEquip = false;
             addmaxHp = 20;
             gold = 100;
@@ -146,31 +146,31 @@ namespace Sparta.Child.Actors.ItemSystem
         public BigRedPotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.bigredpotion;
+            Name = ItemName.BigRedPotion;
             isEquip = false;
             addshield = 40;
             gold = 200;
             Info = "체력을 많이 회복합니다.";
         }
     }
-    public class WritePotion : Item
+    public class WhitePotion : Item
     {
-        public WritePotion()
+        public WhitePotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.writepotion;
+            Name = ItemName.WhitePotion;
             isEquip = false;
             addshield = 60;
             gold = 400;
             Info = "체력을 크게 회복합니다.";
         }
     }
-    public class BigWritePotion : Item
+    public class BigWhitePotion : Item
     {
-        public BigWritePotion()
+        public BigWhitePotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.bigwritepotion;
+            Name = ItemName.BigWhitePotion;
             isEquip = false;
             addshield = 80;
             gold = 800;
