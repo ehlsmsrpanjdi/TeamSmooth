@@ -60,7 +60,7 @@ namespace Sparta.Child.Fields
         private void PrintMonsterStatus()
         {
             Console.WriteLine("============================\n\n");
-            for (int i = 0; i < Actors.Count(); ++i)
+            for (int i = 1; i < Actors.Count() + 1; ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
                 Actors[i - 1].PrintStatus();
@@ -106,7 +106,7 @@ namespace Sparta.Child.Fields
                 {
                     Console.WriteLine("플레이어가 공격합니다\n");
 
-                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().attack))
+                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().totalAttack))
                     {
                         Actors.Remove(Actors[select - 1]);
                     }
