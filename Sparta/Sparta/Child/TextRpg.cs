@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sparta.Child;
 using Sparta.Child.Actors;
 using Sparta.Child.Actors.ItemSystem;
+using Sparta.SaveSystem;
 
 namespace Sparta.Child
 {
@@ -61,6 +62,9 @@ namespace Sparta.Child
                         selectedcomplete = true;
                         break;
                     case 1:
+                        SaveManager saveManager = new SaveManager();
+                        saveManager.Load();
+                        return;
                         break;
                     case 99:
                         return;

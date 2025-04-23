@@ -1,6 +1,7 @@
 ﻿using Sparta.Child.Actors.ItemSystem;
 using Sparta.NameSpace;
 using Sparta.Parent;
+using Sparta.SaveSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,9 +62,55 @@ namespace Sparta.Child.Actors
             maxHp = hp;
         }
 
+        public PlayerSaveData MakeSaveData()
+        {
+            PlayerSaveData saveData = new PlayerSaveData();
+            saveData.Name = Name;
+            saveData.Job = Job;
+            saveData.Level = Level;
+            saveData.hp = hp;
+            saveData.ListLength = inventory.inventory.Count();
+
+            for (int i = 0; i < saveData.ListLength; ++i)
+            {
+                ItemSaveData ItemData = new ItemSaveData();
+                Item item = inventory.inventory[i];
+                string? ItemName = item.Name;
+
+                ItemData.ItemName = ItemName;
+                ItemData.IsEquipment = item.isEquip;
+
+                saveData.ItemList.Add(ItemData);
+            }
+
+
+            return saveData;
+        }
+
+        public void LoadSaveData(PlayerSaveData _SaveData)
+        {
+            Name = _SaveData.Name;
+            Job = _SaveData.Job;
+            Level = _SaveData.Level;
+            hp = _SaveData.hp;
+            int ListLength = _SaveData.ListLength;
+
+            for (int i = 0; i < ListLength; ++i)
+            {
+                ItemSaveData itemData = _SaveData.ItemList[i];
+                Item item = AllItem.CreatItem(itemData.ItemName);
+                
+                if (itemData.IsEquipment)
+                {
+
+                }
+            }
+
+        }
+
         void SelectName()
         {
-            if(Init == true)
+            if (Init == true)
             {
                 return;
             }

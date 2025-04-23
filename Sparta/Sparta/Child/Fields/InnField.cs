@@ -1,6 +1,7 @@
 ﻿using Sparta.Child.Actors;
 using Sparta.NameSpace;
 using Sparta.Parent;
+using Sparta.SaveSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("0. 상태창을 확인한다.");
             Console.WriteLine("1. 휴식을 취한다.");
             Console.WriteLine("2. 여관에서 나간다.");
+            Console.WriteLine("3. 저장한다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();
@@ -48,6 +50,10 @@ namespace Sparta.Child.Fields
                     break;
                 case 2:
                     ChangeField(FieldName.MainField);
+                    break;
+                case 3:
+                    SaveManager saveManager = new SaveManager();
+                    saveManager.Save();
                     break;
                 default:
                     Key.WrongKey();
