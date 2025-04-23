@@ -142,7 +142,15 @@ namespace Sparta.Child.Actors
 
         }
 
-
+        public void PrintStatShort()
+        {
+            var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
+            totalAttack = attack + eqAttack;
+            totalShield = shield + eqShield;
+            totalHp = hp + eqHp;
+            Console.WriteLine($"LV. {Level} | {Name} ( {Job} )");
+            Console.WriteLine($"공격력 : {totalAttack} | 방어력 : {totalShield} | 체력 : {totalHp}");
+        }
         public override void PrintStatus()
         {
 
