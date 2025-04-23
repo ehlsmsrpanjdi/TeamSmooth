@@ -23,6 +23,9 @@ namespace Sparta.Child.Actors.ItemSystem
             Items[ItemName.ironarmour] = new Ironarmour();
             Items[ItemName.ironshield] = new Ironshield();
             Items[ItemName.RedPotion] = new RedPotion();
+            Items[ItemName.BigRedPotion] = new BigRedPotion();
+            Items[ItemName.WhitePotion] = new WhitePotion();
+            Items[ItemName.BigWhitePotion] = new BigWhitePotion();
         }
 
         public static Item? GetItem(string _itemName)
@@ -138,6 +141,40 @@ namespace Sparta.Child.Actors.ItemSystem
             Info = "체력을 회복합니다.";
         }
     }
-
-
+    public class BigRedPotion : Item
+    {
+        public BigRedPotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.RedPotion;
+            addmaxHp = 40;
+            isEquip = false;
+            gold = 200;
+            Info = "체력을 회복합니다.";
+        }
+    }
+    public class WhitePotion : Item
+    {
+        public WhitePotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.RedPotion;
+            addmaxHp = 60;
+            isEquip = false;
+            gold = 400;
+            Info = "체력을 크게 회복합니다.";
+        }
+    }
+    public class BigWhitePotion : Item
+    {
+        public BigWhitePotion()
+        {
+            myItemType = ItemType.Potion;
+            Name = ItemName.RedPotion;
+            addmaxHp = 80;
+            isEquip = false;
+            gold = 800;
+            Info = "체력을 크게 회복합니다.";
+        }
+    }
 }
