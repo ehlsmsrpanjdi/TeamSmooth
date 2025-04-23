@@ -40,6 +40,7 @@ namespace Sparta.NameSpace
         public const string Broadsword = "브로드소드";
         public const string ironarmour = "철갑옷";
         public const string ironshield = "철방패";
+        public const string RedPotion = "빨간물약";
     }
     public static class MonsterName
     {
