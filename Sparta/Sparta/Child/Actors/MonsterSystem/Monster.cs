@@ -17,8 +17,8 @@ namespace Sparta.Child.Actors.MonsterSystem
         }
         public override void PrintStatus()
         {
-            Console.WriteLine("Lv. " + Level);
-            Console.WriteLine($"{Name}");
+            Console.Write("Lv. " + Level);
+            Console.WriteLine($" {Name}");
             Console.Write($"공격력 : {attack} "); // (+{eqStr})");
             Console.Write($" | 방어력 : {shield} "); // (+{eqDef})");
             Console.WriteLine($" | 체 력 : {hp} "); // (+{eqHp})");
