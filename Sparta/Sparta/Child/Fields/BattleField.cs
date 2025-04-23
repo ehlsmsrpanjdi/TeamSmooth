@@ -20,7 +20,15 @@ namespace Sparta.Child.Fields
         private void Move()
         {
             if(30 > Global.Rand(0, 100)){
+                Console.WriteLine("몬스터와 조우했습니다.\n");
+
                 ChangeField(FieldName.EncounterField);
+                Key.AnyKey();
+            }
+            else
+            {
+                Console.WriteLine("아무일도 일어나지 않았습니다.\n");
+                Key.AnyKey();
             }
         }
 

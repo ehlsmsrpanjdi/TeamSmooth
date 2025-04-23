@@ -4,6 +4,7 @@ using Sparta.NameSpace;
 using Sparta.Parent;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,7 +77,6 @@ namespace Sparta.Child.Fields
         private void PrintMonsterStatus()
         {
             Console.WriteLine("============================\n\n");
-            Console.WriteLine("몬스터 정보");
             for (int i = 0; i < Actors.Count(); ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
@@ -117,19 +117,31 @@ namespace Sparta.Child.Fields
                 }
                 else
                 {
-                    Actors[select].GetDamage(Player.GetPlayer().attack);
-                    
+                    Console.WriteLine("플레이어가 공격합니다\n");
+
+                    if (true == Actors[select].GetDamage(Player.GetPlayer().attack))
+                    {
+                        Actors.Remove(Actors[select]);
+                    }
+                    Key.AnyKey();
+                    return;
                 }
             }
         }
 
         private void MonsterAttack()
         {
+            Console.WriteLine("몬스터가 공격합니다\n");
             for (int i = 0; i < Actors.Count(); ++i)
             {
-                //Monster monster = Actors[i];
-                //monster.Attack();
+                if(true == Player.GetPlayer().GetDamage(Actors[i].attack))
+                {
+                    Console.WriteLine("마을로 이동됩니다.");
+                    ChangeField(FieldName.MainField);
+                    return;
+                }
             }
+            Key.AnyKey();
         }
 
         public override void Tick()
