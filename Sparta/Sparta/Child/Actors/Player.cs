@@ -148,8 +148,8 @@ namespace Sparta.Child.Actors
             totalAttack = attack + eqAttack;
             totalShield = shield + eqShield;
             totalHp = hp + eqHp;
-            Console.WriteLine($"LV. {Level} | {Name} ( {Job} )");
-            Console.WriteLine($"공격력 : {totalAttack} | 방어력 : {totalShield} | 체력 : {totalHp}");
+            Console.WriteLine($"LV. {Level}\t | {Name}\t ( {Job} )");
+            Console.WriteLine($"공격력 : {totalAttack}\t | 방어력 : {totalShield}\t | 체력 : {totalHp}\t");
         }
         public override void PrintStatus()
         {
