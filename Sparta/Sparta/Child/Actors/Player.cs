@@ -19,6 +19,8 @@ namespace Sparta.Child.Actors
 
         bool Init = false;
 
+        
+
         public static Player GetPlayer()
         {
             if (Instance == null)
@@ -237,14 +239,26 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"방어력 : {shield + eqShield} (+{eqShield})");
             Console.WriteLine($"체 력 : {hp + eqHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
+            Console.WriteLine($"경험치 : {exp:F0}/{requierdexp:F0} ");
         }
-
+      
         public void ExpGoldGet(float monsterexp, int monstergold)
         {
             exp += monsterexp;
             gold += monstergold;
             Console.WriteLine($"경험치를 {monsterexp} 획득했습니다.");
             Console.WriteLine($"골드를 {monsterexp} G 획득했습니다.\n");
+
+            if (exp >= requierdexp)
+            {
+                Level++;
+                maxHp += 10;
+                attack += 5;
+                shield += 2;
+                exp -= requierdexp;
+                requierdexp *= 1.2f; // 다음 레벨업에 필요한 경험치 증가
+                Console.WriteLine($"{Name}이(가) 레벨업했습니다! 현재 레벨: {Level}");
+            }
         }
 
         public void HealHP(int Value)
