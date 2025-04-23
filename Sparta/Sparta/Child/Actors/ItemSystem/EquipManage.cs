@@ -12,6 +12,7 @@ namespace Sparta.Child.Actors.ItemSystem
             while (true)
             {
                 Console.WriteLine("-장착 관리-\n보유 중인 아이템을 장착하거나 해제합니다.\n");
+                Player.GetPlayer().PrintStatus();
                 Console.WriteLine("\n[아이템 목록]\n");
                 List<Item> inventory = Player.GetPlayer().inventory.inventory;
 
