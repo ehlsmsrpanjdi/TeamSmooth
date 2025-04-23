@@ -23,7 +23,7 @@ namespace Sparta.Parent
         Weapon = 0,
         Armour,
         shield,
-        Potion
+        Potion,
     }
     public class Item : Actor
     {
@@ -36,14 +36,23 @@ namespace Sparta.Parent
 
         public override void PrintStatus()
         {
-            Console.Write("- {0} {1}", isEquip ? "[E]" : "", Name);
-            if (addshield > 0)
-                Console.Write("| 방어력 +{0} ", addshield);
-            if (addattack > 0)
-                Console.Write("| 공격력 +{0} ", addattack);
-            if (addmaxHp > 0)
-                Console.Write("| 최대 HP +{0} ", addmaxHp);
-            Console.WriteLine("| {0} | {1} G", Info, gold);
+            if (myItemType != ItemType.Potion)
+            {
+                Console.Write("- {0} {1}", isEquip ? "[E]" : "", Name);
+                if (addshield > 0)
+                    Console.Write("| 방어력 +{0} ", addshield);
+                if (addattack > 0)
+                    Console.Write("| 공격력 +{0} ", addattack);
+                if (addmaxHp > 0)
+                    Console.Write("| 최대 HP +{0} ", addmaxHp);
+                Console.WriteLine("| {0} | {1} G", Info, gold);
+            }
+            else
+            {
+                Console.Write("-  {0} ", Name);
+                Console.Write("| 회복량 +{0} ", addmaxHp);
+                Console.WriteLine("| {0} | {1} G", Info, gold);
+            }
         }
         public void EquipManageStatus(int i)
         {

@@ -30,7 +30,7 @@ namespace Sparta.Child.Actors
 
 
 
-  
+
         public override void BeginPlay()
         {
             ActType = ActorType.Player;
@@ -38,21 +38,12 @@ namespace Sparta.Child.Actors
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
 
-            Level = 1;
-            Job = JobName.Warrior;
-            attack = 10;
-            shield = 5;
-            hp = 100;
-            maxHp = 100;
-            gold = 1500;
 
             Console.Clear();
             Console.WriteLine($"입력하신 이름은 {Name}입니다.");
             Console.WriteLine("이름을 저장하시겠습니까?");
             Console.WriteLine("1. 저장");
             Console.WriteLine("2. 취소\n");
-
-
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
@@ -68,9 +59,65 @@ namespace Sparta.Child.Actors
                 default:
                     Key.WrongKey();
                     break;
-
-
             }
+            int jobselect;
+
+            while (true)
+            {
+                Console.WriteLine("직업을 선택해주세요.\n - 전사\n - 암살자\n - 탱커\n");
+                Job = Console.ReadLine();
+
+                if (Job != "전사" && Job != "암살자" && Job != "탱커" && Job != "스파르타")
+                {
+                    Console.Clear();
+                    Console.WriteLine("존재하는 직업을 선택해주세요\n");
+                    continue;
+                }
+
+                Console.Clear();
+                Console.WriteLine($"입력하신 직업은 {Job}입니다.");
+                Console.WriteLine("직업을 선택하시겠습니까?");
+                Console.WriteLine("1. 저장");
+                Console.WriteLine("2. 취소\n");
+
+                if (int.TryParse(Console.ReadLine(), out jobselect) && jobselect == 1)
+                {
+                    break;
+                }
+
+                Console.Clear();
+            }
+
+            if (Job == "전사")
+            {
+                attack = 10;
+                shield = 5;
+                hp = 100;
+            }
+            else if (Job == "암살자")
+            {
+                attack = 15;
+                shield = 3;
+                hp = 80;
+            }
+            else if (Job == "탱커")
+            {
+                attack = 7;
+                shield = 7;
+                hp = 120;
+            }
+            else if (Job == "스파르타")
+            {
+                attack = 20;
+                shield = 10;
+                hp = 150;
+            }
+
+            Level = 1;
+            Job = JobName.Warrior;
+            gold = 1500;
+            maxHp = hp;
+
         }
 
 
@@ -80,7 +127,7 @@ namespace Sparta.Child.Actors
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
 
             Console.WriteLine("Lv. " + Level);
-            Console.WriteLine($"{Name} ( 전사 )");
+            Console.WriteLine($"{Name} ( {Job} )");
             Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
             Console.WriteLine($"방어력 : {shield + eqShield} (+{eqShield})");
             Console.WriteLine($"체 력 : {hp + eqHp} (+{eqHp})");
