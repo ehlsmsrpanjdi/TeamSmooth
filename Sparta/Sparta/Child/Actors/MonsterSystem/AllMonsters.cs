@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sparta.Child.Actors.ItemSystem;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Sparta.Child.Actors.MonsterSystem
 {
@@ -21,6 +22,10 @@ namespace Sparta.Child.Actors.MonsterSystem
             hp = maxHp;
             exp = 10;
             gold = Global.Rand(0, 100);
+            if (30 > Global.Rand(0,100))
+            {
+                monsterInven.Add(AllItem.GetAllItem()[ItemName.WoodShield]);
+            }
         }
     }
 
