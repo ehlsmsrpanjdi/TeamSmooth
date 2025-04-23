@@ -99,7 +99,7 @@ namespace Sparta.Parent
         // 사망 시 실행될 함수 (필요시 오버라이드 가능)
         protected virtual void OnDeath()
         {
-            Console.WriteLine($"{Name}이(가) 사망했습니다.");
+            Console.WriteLine($"{Name}이(가) 사망했습니다.\n");
             // 여기서 전투 종료, 제거 처리 등 추가 가능
         }
 
