@@ -35,8 +35,9 @@ namespace Sparta.Child.Fields
 
             Console.WriteLine("0. 상태창을 확인한다.");
             Console.WriteLine("1. 아이템을 구매한다.");
-            Console.WriteLine("2. 아이템을 판매한다.");
-            Console.WriteLine("3. 상점에서 나간다.");
+            Console.WriteLine("2. 소모품을 구매한다.");
+            Console.WriteLine("3. 아이템을 판매한다.");
+            Console.WriteLine("4. 상점에서 나간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();
@@ -49,9 +50,12 @@ namespace Sparta.Child.Fields
                     BuyItem();
                     break;
                 case 2:
-                    SellItem();
+                    BuyUsingItem();
                     break;
                 case 3:
+                    SellItem();
+                    break;
+                case 4:
                     ChangeField(FieldName.MainField);
                     break;
                 default:
@@ -63,12 +67,12 @@ namespace Sparta.Child.Fields
         {
             List<Item> buyitem = new List<Item>
             {
-                new Item { Name = "롱소드", addattack = 10, gold = 500 },
-                new Item { Name = "가죽 갑옷", addshield = 5, gold = 500 },
-                new Item { Name = "나무 방패", addmaxHp = 5, gold = 500 },
-                new Item { Name = "브로드 소드", addattack = 20, gold = 1000 },
-                new Item { Name = "철 갑옷", addshield = 10, gold = 1000 },
-                new Item { Name = "철 방패", addmaxHp = 10, gold = 1000 }
+                new Item { Name = "롱소드", addattack = 10, gold = 500 , Info = "길이가 긴 검입니다."},
+                new Item { Name = "가죽 갑옷", addshield = 5, gold = 500 , Info = "가죽으로 만든 갑옷입니다." },
+                new Item { Name = "나무 방패", addmaxHp = 5, gold = 500 , Info = "나무로 만든 방패입니다."},
+                new Item { Name = "브로드 소드", addattack = 20, gold = 1000 , Info = "두껍고 무거운 검입니다."},
+                new Item { Name = "철 갑옷", addshield = 10, gold = 1000 , Info = "철로 만든 갑옷입니다."},
+                new Item { Name = "철 방패", addmaxHp = 10, gold = 1000 , Info = "철로 만든 방패입니다."}
             };
 
             while (true) // 상점 아저씨가 쫒아내는 문제 해결
@@ -112,6 +116,56 @@ namespace Sparta.Child.Fields
 
         }
 
+        private void BuyUsingItem()
+        {
+            List<Item> usingitem = new List<Item>
+                {
+                new Item { Name = "빨간물약", addmaxHp = 20, gold = 100 , Info = "체력을 회복합니다."},
+                new Item { Name = "큰 빨간물약", addmaxHp = 40, gold = 200 , Info = "체력을 회복합니다."},
+                new Item { Name = "하얀물약", addmaxHp = 60, gold = 400 , Info = "체력을 크게 회복합니다."},
+                new Item { Name = "큰 하얀물약", addmaxHp = 80, gold = 800 , Info = "체력을 크게 회복합니다."},
+            };
+
+            while (true)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine("=구매 가능한 아이템 목록=");
+                Console.WriteLine("=========================");
+                Console.WriteLine();
+                for (int i = 0; i < usingitem.Count; i++)
+                {
+                    Console.WriteLine($"{i}. {usingitem[i].Name} - 가격: {usingitem[i].gold} 골드");
+                }
+                Console.WriteLine($"{usingitem.Count}. 구매하지 않는다");
+                Console.WriteLine();
+
+                int choice = selector.Select();
+
+                if (choice >= 0 && choice < usingitem.Count)
+                {
+                    Item selectedItem = usingitem[choice];
+                    Player player = Player.GetPlayer();
+
+                    if (player.gold >= selectedItem.gold)
+                    {
+                        player.gold -= selectedItem.gold;
+                        player.inventory.inventory.Add(selectedItem);
+                        Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("소지금이 부족합니다.");
+                    }
+
+                }
+                else if (choice == usingitem.Count)
+                {
+                    Console.WriteLine("구매를 취소하였습니다.");
+                    break; 
+                }
+            }
+
+        }
 
         public void SellItem()
         {
