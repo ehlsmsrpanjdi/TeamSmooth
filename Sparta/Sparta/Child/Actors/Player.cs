@@ -141,7 +141,7 @@ namespace Sparta.Child.Actors
 
                 }
 
-                break;
+               
                 Console.Clear();
 
                 if (Job == "전사")
@@ -173,6 +173,7 @@ namespace Sparta.Child.Actors
                 gold = 1500;
                 maxHp = hp;
 
+                break;
             }
         }
 
