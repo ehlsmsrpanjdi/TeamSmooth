@@ -63,7 +63,7 @@ namespace Sparta.Child.Fields
             for (int i = 1; i <= Actors.Count(); ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
-                Actors[i].PrintStatus();
+                Actors[i - 1].PrintStatus();
                 Console.WriteLine("\n");
             }
         }
@@ -93,6 +93,10 @@ namespace Sparta.Child.Fields
                 Console.WriteLine("어떤 몬스터를 공격하십니까?");
 
                 int select = selector.Select();
+                if(select == -1)
+                {
+                    continue;
+                }
                 if (select <= 0 || select > Actors.Count())
                 {
                     Key.WrongKey();
@@ -102,9 +106,17 @@ namespace Sparta.Child.Fields
                 {
                     Console.WriteLine("플레이어가 공격합니다\n");
 
-                    if (true == Actors[select].GetDamage(Player.GetPlayer().attack))
+                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().attack))
                     {
                         Actors.Remove(Actors[select - 1]);
+                    }
+
+                    if(Actors.Count() == 0)
+                    {
+                        Console.WriteLine("플레이어가 승리하였습니다.");
+                        ChangeField(FieldName.BattleField);
+                        Key.AnyKey();
+                        return;
                     }
                     Key.AnyKey();
                     return;
@@ -121,6 +133,7 @@ namespace Sparta.Child.Fields
                 {
                     Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);
+                    Key.AnyKey();
                     return;
                 }
             }
