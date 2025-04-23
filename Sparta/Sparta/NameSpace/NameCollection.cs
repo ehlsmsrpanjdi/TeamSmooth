@@ -17,7 +17,7 @@ namespace Sparta.NameSpace
 
         public static void WrongKey()
         {
-            Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
+            Console.WriteLine("잘못된 입력입니다. 아무키나 누르시오");
             Console.ReadKey();
         }
     }
