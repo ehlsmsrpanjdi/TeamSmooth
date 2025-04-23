@@ -36,11 +36,11 @@ namespace Sparta.Child.Fields
         public override void FieldOpen()
         {
             base.FieldOpen();
-            for (int i = 0; i < 4; i++)     // 몬스터는 
+            for (int i = 0; i < 4; i++)     // 몬스터는 최대 4마리 생성
             {
                 if (30 < Global.Rand(0, 100))
                 {
-                    int monstertype = Global.Rand(0, 3); // 0이면 고블린, 1이면 오크, 2면 쌍두오크 생성
+                    int monstertype = Global.Rand(0, 4); // 0이면 고블린, 1이면 오크, 2면 쌍두오크 생성
                     switch (monstertype)
                     {
                         case 0:
@@ -51,6 +51,9 @@ namespace Sparta.Child.Fields
                             break;
                         case 2:
                             SpawnActor<TwinHeadOrc>();
+                            break;
+                        case 3:
+                            SpawnActor<Ogre>();
                             break;
                     }
                 }
