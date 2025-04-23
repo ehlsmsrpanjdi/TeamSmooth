@@ -102,16 +102,22 @@ namespace Sparta.Child.Fields
                         player.gold -= selectedItem.gold;
                         player.inventory.inventory.Add(selectedItem); //구매시 플레이어 인벤토리로
                         Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
+                        Key.AnyKey(); 
+                        Console.Clear(); 
                     }
                     else
                     {
                         Console.WriteLine("소지금이 부족합니다.");
+                        Key.AnyKey(); 
+                        Console.Clear(); 
                     }
 
                 }
                 else if (choice == buyitem.Count)
                 {
                     Console.WriteLine("구매를 취소하였습니다.");
+                    Key.AnyKey();
+                    Console.Clear(); 
                     break; //상점 밖으로 나갈 수 없던 문제 해결
                 }
             }
@@ -153,16 +159,22 @@ namespace Sparta.Child.Fields
                         player.gold -= selectedItem.gold;
                         player.inventory.inventory.Add(selectedItem);
                         Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
+                        Key.AnyKey(); 
+                        Console.Clear(); 
                     }
                     else
                     {
                         Console.WriteLine("소지금이 부족합니다.");
+                        Key.AnyKey(); 
+                        Console.Clear(); 
                     }
 
                 }
                 else if (choice == usingitem.Count)
                 {
                     Console.WriteLine("구매를 취소하였습니다.");
+                    Key.AnyKey(); 
+                    Console.Clear(); 
                     break; 
                 }
             }
@@ -210,10 +222,14 @@ namespace Sparta.Child.Fields
                     player.gold += selectedItem.gold;
                     sellitem.Remove(selectedItem);
                     Console.WriteLine($"{selectedItem.Name}을(를) 판매하였습니다!");
+                    Key.AnyKey(); 
+                    Console.Clear(); 
                 }
                 else if (choice == sellitem.Count)
                 {
                     Console.WriteLine("판매를 취소하였습니다.");
+                    Key.AnyKey(); 
+                    Console.Clear(); 
                     break;
                 }
             }
