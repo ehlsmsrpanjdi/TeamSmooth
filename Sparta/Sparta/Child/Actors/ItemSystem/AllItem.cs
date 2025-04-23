@@ -134,9 +134,9 @@ namespace Sparta.Child.Actors.ItemSystem
         public RedPotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.RedPotion;
-            addmaxHp = 20;
+            Name = ItemName.redpotion;
             isEquip = false;
+            addmaxHp = 20;
             gold = 100;
             Info = "체력을 회복합니다.";
         }
@@ -146,35 +146,37 @@ namespace Sparta.Child.Actors.ItemSystem
         public BigRedPotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.RedPotion;
-            addmaxHp = 40;
+            Name = ItemName.bigredpotion;
             isEquip = false;
+            addshield = 40;
             gold = 200;
-            Info = "체력을 회복합니다.";
+            Info = "체력을 많이 회복합니다.";
         }
     }
-    public class WhitePotion : Item
+    public class WritePotion : Item
     {
-        public WhitePotion()
+        public WritePotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.RedPotion;
-            addmaxHp = 60;
+            Name = ItemName.writepotion;
             isEquip = false;
+            addshield = 60;
             gold = 400;
             Info = "체력을 크게 회복합니다.";
         }
     }
-    public class BigWhitePotion : Item
+    public class BigWritePotion : Item
     {
-        public BigWhitePotion()
+        public BigWritePotion()
         {
             myItemType = ItemType.Potion;
-            Name = ItemName.RedPotion;
-            addmaxHp = 80;
+            Name = ItemName.bigwritepotion;
             isEquip = false;
+            addshield = 80;
             gold = 800;
-            Info = "체력을 크게 회복합니다.";
+            Info = "체력을 아주 크게 회복합니다.";
         }
     }
+
+
 }
