@@ -106,7 +106,7 @@ namespace Sparta.Child.Fields
                 {
                     Console.WriteLine("플레이어가 공격합니다\n");
 
-                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().totalAttack))
+                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().totalAttack, Actors[select - 1].totalShield))
                     {
                         Actors.Remove(Actors[select - 1]);
                     }
@@ -129,7 +129,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("몬스터가 공격합니다\n");
             for (int i = 0; i < Actors.Count(); ++i)
             {
-                if(true == Player.GetPlayer().GetDamage(Actors[i].attack))
+                if(true == Player.GetPlayer().GetDamage(Actors[i].totalAttack, Player.GetPlayer().totalAttack))
                 {
                     Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);

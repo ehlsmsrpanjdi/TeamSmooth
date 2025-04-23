@@ -71,8 +71,9 @@ namespace Sparta.Parent
             }
 
         }
-        public virtual bool GetDamage(int damage)
+        public virtual bool GetDamage(int attackerTotalAttack, int defenderTotalShield)
         {
+            int damage = Math.Max(0, attackerTotalAttack - defenderTotalShield);
             hp -= damage;
             if (hp < 0)
                 hp = 0;
@@ -81,7 +82,7 @@ namespace Sparta.Parent
 
             if (hp == 0)
             {
-                Console.WriteLine($"{Name}이(가) 쓰러졌습니다!");
+               
                 OnDeath();
                 return true;  // 사망
             }
@@ -96,7 +97,7 @@ namespace Sparta.Parent
             // 여기서 전투 종료, 제거 처리 등 추가 가능
         }
 
-
+       
 
         public Item? Weapon = null;
         public Item? Armour = null;
