@@ -46,6 +46,8 @@ namespace Sparta.Child
 
                 switch (selectedIndex)
                 {
+                    case -1:
+                        break;
                     case 0:
                         CreateField<MainField>(FieldName.MainField);
                         CreateField<BattleField>(FieldName.BattleField);

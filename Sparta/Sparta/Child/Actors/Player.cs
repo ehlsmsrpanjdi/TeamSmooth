@@ -28,21 +28,50 @@ namespace Sparta.Child.Actors
             return Instance;
         }
 
-
-
-
-
-        public override void BeginPlay()
+        void SetStatus()
         {
-            ActType = ActorType.Player;
-            Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
+            if (Job == "전사")
+            {
+                attack = 10;
+                shield = 5;
+                hp = 100;
+            }
+            else if (Job == "암살자")
+            {
+                attack = 15;
+                shield = 3;
+                hp = 80;
+            }
+            else if (Job == "탱커")
+            {
+                attack = 7;
+                shield = 7;
+                hp = 120;
+            }
+            else if (Job == "스파르타")
+            {
+                attack = 20;
+                shield = 10;
+                hp = 150;
+            }
+
+            Level = 1;
+            gold = 1500;
+            maxHp = hp;
+        }
+
+        void SelectName()
+        {
+            Console.Clear();
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(Name))
             {
                 Console.Clear();
                 Console.WriteLine("이름은 빈칸일 수 없습니다.\n");
+                Key.AnyKey();
                 BeginPlay();
+                return;
             }
 
             while (true)
@@ -57,127 +86,113 @@ namespace Sparta.Child.Actors
                 switch (selectedIndex)
                 {
                     case -1:
-                        continue;
-                    case 1:
-                        Console.WriteLine("원하시는 행동을 입력해주세요\n");
                         break;
+                    case 1:
+                        Console.WriteLine("이름이 저장되었습니다.\n");
+                        Key.AnyKey();
+                        return;
                     case 2:
                         Console.Clear();
+                        Console.WriteLine("이름을 다시 만듭니다.\n");
+                        Key.AnyKey();
                         BeginPlay();
-                        return;
+                        break;
                     default:
-                        continue;
+                        Key.WrongKey();
+                        break;
                 }
+            }
+        }
+        void SelectJob()
+        {
+            Console.Clear();
+            int jobselect;
+            string? JobNum;
 
-                int jobselect;
-                string? JobNum;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("직업을 선택해주세요.\n 1. 전사\n 2. 암살자\n 3. 탱커\n");
+
+                JobNum = Console.ReadLine();
+
+
+                if (JobNum == "스파르타")
+                {
+                    Job = "스파르타";
+                }
+                else if (int.TryParse(JobNum, out int result) == false)
+                {
+                    Console.WriteLine("잘못된 값을 입력하셨습니다.");
+                    Key.AnyKey();
+                    continue;
+                }
+                else if (int.Parse(JobNum) == 1)
+                {
+                    Job = "전사";
+                }
+                else if (int.Parse(JobNum) == 2)
+                {
+                    Job = "암살자";
+                }
+                else if (int.Parse(JobNum) == 3)
+                {
+                    Job = "탱커";
+                }
+                else
+                {
+                    Console.WriteLine("존재하는 직업을 선택해주세요\n");
+                    Key.AnyKey();
+                    continue;
+                }
 
                 while (true)
                 {
-                    Console.WriteLine("직업을 선택해주세요.\n 1. 전사\n 2. 암살자\n 3. 탱커\n");
-                    JobNum = Console.ReadLine();
-
-                    if (JobNum != "1" && JobNum != "2" && JobNum != "3" && JobNum != "스파르타")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("존재하는 직업을 선택해주세요\n");
-                        continue;
-                    }
-                    else if (JobNum == "스파르타")
-                    {
-                        Job = "스파르타";
-                    }
-                    else if (int.Parse(JobNum) == 1)
-                    {
-                        Job = "전사";
-                    }
-                    else if (int.Parse(JobNum) == 2)
-                    {
-                        Job = "암살자";
-                    }
-                    else if (int.Parse(JobNum) == 3)
-                    {
-                        Job = "탱커";
-                    }
-                    else
-                    {
-                        return;
-                    }
-
                     Console.Clear();
                     Console.WriteLine($"입력하신 직업은 {Job}입니다.");
                     Console.WriteLine("직업을 선택하시겠습니까?");
                     Console.WriteLine("1. 저장");
                     Console.WriteLine("2. 취소\n");
 
-                    if (int.TryParse(Console.ReadLine(), out jobselect) && jobselect == 1)
+                    selectedIndex = selector.Select();
+
+                    switch (selectedIndex)
                     {
-                        break;
-                    }
-
-                    Console.Clear();
-                    Console.WriteLine($"입력하신 직업은 {Job}입니다.");
-                    Console.WriteLine("직업을 선택하시겠습니까?");
-                    Console.WriteLine("1. 저장");
-                    Console.WriteLine("2. 취소\n");
-
-                    int JobOk = int.Parse(Console.ReadLine());
-
-                    switch (JobOk)
-                    {
-                        case 1:
-                            Console.WriteLine("원하시는 행동을 입력해주세요\n");
+                        case -1:
                             break;
+                        case 1:
+                            Console.WriteLine("직업을 저장했습니다. 게임을 시작합니다.\n");
+                            SetStatus();
+                            Key.AnyKey();
+                            return;
                         case 2:
                             Console.Clear();
-                            continue;
+                            Console.WriteLine("직업을 다시 고릅니다.\n");
+                            SelectJob();
+                            return;
                         default:
                             Console.Clear();
                             Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.");
-                            continue;
+                            Key.AnyKey();
+                            break;
                     }
 
-                    break;
-                    //if (int.TryParse(Console.ReadLine(), out jobselect) && jobselect == 1)
-                    //{
-                    //    break;
-                    //}
-
                 }
 
-                break;
-                Console.Clear();
-
-                if (Job == "전사")
-                {
-                    attack = 10;
-                    shield = 5;
-                    hp = 100;
-                }
-                else if (Job == "암살자")
-                {
-                    attack = 15;
-                    shield = 3;
-                    hp = 80;
-                }
-                else if (Job == "탱커")
-                {
-                    attack = 7;
-                    shield = 7;
-                    hp = 120;
-                }
-                else if (Job == "스파르타")
-                {
-                    attack = 20;
-                    shield = 10;
-                    hp = 150;
-                }
-
-                Level = 1;
-                gold = 1500;
-                maxHp = hp;
 
             }
+        }
+
+
+
+        public override void BeginPlay()
+        {
+            ActType = ActorType.Player;
+            Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
+
+            SelectName();
+            SelectJob();
+
         }
 
         public void PrintStatShort()
@@ -261,6 +276,6 @@ namespace Sparta.Child.Actors
                 }
             }
         }
-      
+
     }
 }
