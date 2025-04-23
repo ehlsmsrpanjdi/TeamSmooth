@@ -19,7 +19,15 @@ namespace Sparta.Child.Actors.MonsterSystem
             shield = 0;
             maxHp = 20;
             hp = maxHp;
+            exp = 10;
             gold = Global.Rand(0, 100);
+
+            
+        }
+        protected override void OnDeath()
+        {
+            base.OnDeath();
+            Player.GetPlayer().ExpGet(exp);
         }
     }
 
@@ -27,12 +35,13 @@ namespace Sparta.Child.Actors.MonsterSystem
     {
         public Orc() 
         {
-            Name = MonsterName.Gobline;
+            Name = MonsterName.Orc;
             Job = JobName.Monster;
             attack = 5;
             shield = 5;
             maxHp = 40;
             hp = maxHp;
+            exp = 15;
             gold = Global.Rand(0, 100);
         }   
     }
@@ -47,6 +56,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             shield = 5;
             maxHp = 60;
             hp = maxHp;
+            exp = 20;
             gold = Global.Rand(0, 100);
         }
     }
@@ -60,6 +70,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             attack = 20;
             shield = 10;
             maxHp = 100;
+            exp = 25;
             hp = maxHp;
             gold = Global.Rand(0, 100);
         }
