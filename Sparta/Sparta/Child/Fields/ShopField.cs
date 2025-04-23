@@ -118,6 +118,11 @@ namespace Sparta.Child.Fields
                     Console.WriteLine("구매를 취소하였습니다.");
                     break; //상점 밖으로 나갈 수 없던 문제 해결
                 }
+                else if (choice == -1)
+                {
+                    Console.Clear();
+                    break;
+                }
             }
 
         }
@@ -173,8 +178,12 @@ namespace Sparta.Child.Fields
                     Console.WriteLine("구매를 취소하였습니다.");
                     break; 
                 }
+                else if (choice == -1)
+                {
+                    Console.Clear();
+                    break;
+                }
             }
-
         }
 
         public void SellItem()
@@ -224,6 +233,11 @@ namespace Sparta.Child.Fields
                 else if (choice == sellitem.Count)
                 {
                     Console.WriteLine("판매를 취소하였습니다.");
+                    break;
+                }
+                else if (choice == -1)
+                {
+                    Console.Clear();
                     break;
                 }
             }
