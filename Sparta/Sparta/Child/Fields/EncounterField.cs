@@ -65,12 +65,12 @@ namespace Sparta.Child.Fields
 
         private void PrintMonsterStatus()
         {
-            Console.WriteLine("============================\n\n");
+            Console.WriteLine("\n============================\n");
             for (int i = 1; i < Actors.Count() + 1; ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
                 Actors[i - 1].PrintStatus();
-                Console.WriteLine("\n");
+                Console.WriteLine("");
             }
         }
 
@@ -125,12 +125,13 @@ namespace Sparta.Child.Fields
                     {
                         Console.WriteLine("플레이어가 승리하였습니다.\n");
 
-                        Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!");
+                        Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!", TotalExp, TotalGold);
                         ChangeField(FieldName.BattleField);
                         Key.AnyKey();
                         return;
                     }
                     Key.AnyKey();
+                    
                     return;
                 }
             }
@@ -145,7 +146,6 @@ namespace Sparta.Child.Fields
                 if(true == Player.GetPlayer().GetDamage(Actors[i].attack, Player.GetPlayer().totalShield))
                 {
                     Console.WriteLine("눈앞이 캄캄해집니다...");
-                    Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);
                     Key.AnyKey();
                     return;
@@ -178,8 +178,7 @@ namespace Sparta.Child.Fields
                     MonsterAttack();
                     break;
                 case 2:
-                    //플레이어 HP 회복 수단 및 아이템 변경 등등의 기능
-                    //Player.GetPlayer().Tick();
+                    Player.GetPlayer().Tick();
                     break;
                 case 3:
                     if (true == RunAway())
@@ -188,6 +187,7 @@ namespace Sparta.Child.Fields
                     }
                     MonsterAttack();
                     break;
+
                 default:
                     Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
                     Console.ReadKey();
