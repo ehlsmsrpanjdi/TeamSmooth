@@ -33,6 +33,8 @@ namespace Sparta.Child.Fields
             selectedIndex = selector.Select();
             switch (selectedIndex)
             {
+                case -1:
+                    break;
                 case 0:
                     Player.GetPlayer().Tick();
                     break;

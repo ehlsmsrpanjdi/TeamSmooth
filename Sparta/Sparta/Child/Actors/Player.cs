@@ -54,6 +54,8 @@ namespace Sparta.Child.Actors
             selectedIndex = selector.Select();
             switch (selectedIndex)
             {
+                case -1:
+                    break;
                 case 1:
                     Console.WriteLine("원하시는 행동을 입력해주세요\n");
                     break;
@@ -213,6 +215,8 @@ namespace Sparta.Child.Actors
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {
+                    case -1:
+                        break;
                     case 0:
                         inventory.Tick();
                         break;
