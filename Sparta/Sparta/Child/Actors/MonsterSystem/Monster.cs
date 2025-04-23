@@ -11,7 +11,7 @@ namespace Sparta.Child.Actors.MonsterSystem
 {
     class Monster : Actor
     {
-        public List<Item> monsterInven = new List<Item>();
+        private List<Item> monsterInven = new List<Item>();
         public Monster()
         {
 

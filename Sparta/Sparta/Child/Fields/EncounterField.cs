@@ -119,10 +119,10 @@ namespace Sparta.Child.Fields
                     {
                         TotalGold += Actors[select - 1].gold;
                         TotalExp += Actors[select - 1].exp;
-                        for (int i = 0; i < Actors[select - 1].monsterInven.Count; i++)
+                        for (int i = 0; i < Actors[select - 1].MosterItemGet().Count; i++)
                         {
-                            TotalItem.Add(Actors[select - 1].monsterInven[i]);
-                            Console.WriteLine($"{Actors[select - 1].Name}의 전리품인 {Actors[select - 1].monsterInven[i].Name} 장비를 발견했다!\n");
+                            TotalItem.Add(Actors[select - 1].MosterItemGet()[i]);
+                            Console.WriteLine($"{Actors[select - 1].Name}의 전리품인 {Actors[select - 1].MosterItemGet()[i].Name} 장비를 발견했다!\n");
                         }
                         Actors.Remove(Actors[select - 1]);
                     }
