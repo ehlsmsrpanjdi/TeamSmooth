@@ -55,29 +55,12 @@ namespace Sparta.Child.Fields
                     }
                 }
             }
-            if (5 < Player.GetPlayer().Level)
-            {
-                //SpawnActor
-            }
-            else if (10 < Player.GetPlayer().Level)
-            {
-                //SpawnActor
-            }
-            else if (15 < Player.GetPlayer().Level)
-            {
-                //SpawnActor
-            }
-            else
-            {
-                //SpawnActor
-            }
-
         }
 
         private void PrintMonsterStatus()
         {
             Console.WriteLine("============================\n\n");
-            for (int i = 0; i < Actors.Count(); ++i)
+            for (int i = 1; i <= Actors.Count(); ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
                 Actors[i].PrintStatus();
@@ -110,7 +93,7 @@ namespace Sparta.Child.Fields
                 Console.WriteLine("어떤 몬스터를 공격하십니까?");
 
                 int select = selector.Select();
-                if (select < 0 || select >= Actors.Count())
+                if (select <= 0 || select > Actors.Count())
                 {
                     Key.WrongKey();
                     continue;
@@ -121,7 +104,7 @@ namespace Sparta.Child.Fields
 
                     if (true == Actors[select].GetDamage(Player.GetPlayer().attack))
                     {
-                        Actors.Remove(Actors[select]);
+                        Actors.Remove(Actors[select - 1]);
                     }
                     Key.AnyKey();
                     return;
