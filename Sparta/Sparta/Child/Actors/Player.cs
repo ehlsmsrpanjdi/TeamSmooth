@@ -110,18 +110,14 @@ namespace Sparta.Child.Actors
                     Console.WriteLine("1. 저장");
                     Console.WriteLine("2. 취소\n");
 
-                    if (int.TryParse(Console.ReadLine(), out jobselect) && jobselect == 1)
+                    int JobOk;
+                    string? input = Console.ReadLine();
+                    if (!int.TryParse(input, out JobOk))
                     {
-                        break;
+                        Console.Clear();
+                        Console.WriteLine("잘못된 입력입니다. 다시 입력해주세요.\n");
+                        continue;
                     }
-
-                    Console.Clear();
-                    Console.WriteLine($"입력하신 직업은 {Job}입니다.");
-                    Console.WriteLine("직업을 선택하시겠습니까?");
-                    Console.WriteLine("1. 저장");
-                    Console.WriteLine("2. 취소\n");
-
-                    int JobOk = int.Parse(Console.ReadLine());
 
                     switch (JobOk)
                     {
@@ -145,7 +141,7 @@ namespace Sparta.Child.Actors
 
                 }
 
-                break;
+               
                 Console.Clear();
 
                 if (Job == "전사")
@@ -176,6 +172,8 @@ namespace Sparta.Child.Actors
                 Level = 1;
                 gold = 1500;
                 maxHp = hp;
+
+                break;
             }
         }
         
