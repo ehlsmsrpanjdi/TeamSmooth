@@ -64,9 +64,24 @@ namespace Sparta.Child
                         break;
                     case 1:
                         SaveManager saveManager = new SaveManager();
-                        saveManager.Load();
+                        if(false == saveManager.Load())
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            CreateField<MainField>(FieldName.MainField);
+                            CreateField<BattleField>(FieldName.BattleField);
+                            CreateField<EncounterField>(FieldName.EncounterField);
+                            CreateField<ShopField>(FieldName.ShopField);
+                            CreateField<InnField>(FieldName.InnField);
+                            CreateField<GuildField>(FieldName.GuildField);
+                            AllItem.ItemInit();
+                            Player.GetPlayer();
+                            FieldChange(FieldName.MainField);
+                            base.Start();
+                        }
                         return;
-                        break;
                     case 99:
                         return;
                     default:

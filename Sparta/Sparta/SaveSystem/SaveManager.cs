@@ -9,6 +9,7 @@ using Sparta.SelectorSystem;
 using Sparta.NameSpace;
 using Sparta.Child.Actors;
 using System.Runtime.CompilerServices;
+using System.Reflection.Metadata.Ecma335;
 
 
 namespace Sparta.SaveSystem
@@ -79,15 +80,45 @@ namespace Sparta.SaveSystem
                     break;
                 }
             }
+            if (SelectedIndex  - 1< files.Length)
+            {
+                Console.WriteLine("이미 세이브파일이 존재합니다. 덮어씌우시겠습니까?");
+                Console.WriteLine("1 : 네  /  2 : 아니요");
+                int select = selector.Select();
+                switch (select)
+                {
+                    case -1:
+                        break;
+                    case 1:
+                        PlayerSaveData Data = Player.GetPlayer().MakeSaveData();
+                        Serializer serialize = new Serializer();
+                        List<byte> bytes = serialize.Serialize(Data);
+                        byte[] dataByte = bytes.ToArray();
+                        File.WriteAllBytes(files[SelectedIndex - 1], dataByte);
+                        if (File.Exists(files[SelectedIndex - 1]))
+                        {
+                            // 파일 이름 변경
+                            DateTime CurrentTime = DateTime.Now;
+                            string TimeStamp = CurrentTime.ToString("yyyyMMdd_HHmmss");
+                            string Savedir = Path.Combine(ResourcePath, TimeStamp);
+                            File.Move(files[SelectedIndex - 1], Savedir);
+                            Console.WriteLine("파일 이름이 변경되었습니다.");
+                            return;
+                        }
+                        break;
+                    case 2:
+                        Save();
+                        return;
+                }
+            }
 
 
             PlayerSaveData SaveData = Player.GetPlayer().MakeSaveData();
 
             DateTime currentTime = DateTime.Now;
             string timeStamp = currentTime.ToString("yyyyMMdd_HHmmss");
-            string FileName = SelectedIndex + "_" + timeStamp;
 
-            string savedir = Path.Combine(ResourcePath, FileName);
+            string savedir = Path.Combine(ResourcePath, timeStamp);
 
             Serializer serializer = new Serializer();
             List<byte> bytelist = serializer.Serialize(SaveData);
@@ -95,7 +126,7 @@ namespace Sparta.SaveSystem
             File.WriteAllBytes(savedir, dataBytes);
         }
 
-        public void Load()
+        public bool Load()
         {
             string[] files = Directory.GetFiles(ResourcePath);  // 현재 폴더의 파일들 가져오기
 
@@ -110,10 +141,16 @@ namespace Sparta.SaveSystem
                 }
                 Console.WriteLine("몇 번 데이터를 불러옵니까?");
 
+                Console.WriteLine("나가기 : 99");
+
                 SelectedIndex = selector.Select();
                 if (SelectedIndex == -1)
                 {
                     continue;
+                }
+                else if (SelectedIndex == 99)
+                {
+                    return false;
                 }
                 else if (SelectedIndex <= 0 || SelectedIndex > files.Length)
                 {
@@ -132,6 +169,9 @@ namespace Sparta.SaveSystem
 
             Serializer serializer = new Serializer();
             PlayerSaveData Data = serializer.Deserialize(dataBytes);
+            /// 이곳에서 플레이어 생성
+
+            return true;
 
         }
         Selector selector = new Selector();
