@@ -79,7 +79,7 @@ namespace Sparta.Parent
         /// <returns></returns>
         public virtual bool GetDamage(int attackerTotalAttack, int defenderTotalShield)
         {
-            int damage = Math.Max(1, attackerTotalAttack - defenderTotalShield);
+            int damage = Math.Max( 1, attackerTotalAttack - defenderTotalShield);
             hp -= damage;
             if (hp < 0)
                 hp = 0;
