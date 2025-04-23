@@ -45,11 +45,13 @@ namespace Sparta.Child.Actors
                 BeginPlay();
             }
 
-            Console.Clear();
-            Console.WriteLine($"입력하신 이름은 {Name}입니다.");
-            Console.WriteLine("이름을 저장하시겠습니까?");
-            Console.WriteLine("1. 저장");
-            Console.WriteLine("2. 취소\n");
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine($"입력하신 이름은 {Name}입니다.");
+                Console.WriteLine("이름을 저장하시겠습니까?");
+                Console.WriteLine("1. 저장");
+                Console.WriteLine("2. 취소\n");
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
