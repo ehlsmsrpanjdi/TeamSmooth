@@ -17,6 +17,7 @@ namespace Sparta.Child.Actors
 
         private static Player? Instance = null;
 
+
         public static Player GetPlayer()
         {
             if (Instance == null)
@@ -76,8 +77,12 @@ namespace Sparta.Child.Actors
 
         public override void PrintStatus()
         {
+            
 
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
+            totalAttack = attack + eqAttack;
+            totalShield = shield + eqShield;
+            totalHp = hp + eqHp;
 
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( 전사 )");
@@ -86,6 +91,8 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"체 력 : {hp + eqHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
         }
+
+        
 
         public void HealHP(int Value)
         {
@@ -133,5 +140,6 @@ namespace Sparta.Child.Actors
                 }
             }
         }
+      
     }
 }
