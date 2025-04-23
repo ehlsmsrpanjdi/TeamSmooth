@@ -28,9 +28,18 @@ namespace Sparta.Child.Actors.ItemSystem
                     default:
                         if (selectedIndex - 1 < inventory.Count)
                         {
-                            inventory[selectedIndex - 1].isEquip = !inventory[selectedIndex - 1].isEquip;
-                            Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
-                            break;
+                            if (inventory[selectedIndex - 1].myItemType != ItemType.Potion)
+                            {
+                                inventory[selectedIndex - 1].isEquip = !inventory[selectedIndex - 1].isEquip;
+                                Player.GetPlayer().inventory.OnlyOnePartItem(inventory[selectedIndex - 1].myItemType, selectedIndex - 1);
+                                Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("포션은 장착할 수 없습니다.\n");
+                                break;
+                            }    
                         }
                         else
                         {
