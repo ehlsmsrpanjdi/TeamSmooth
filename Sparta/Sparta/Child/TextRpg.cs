@@ -65,8 +65,7 @@ namespace Sparta.Child
                     case 99:
                         return;
                     default:
-                        Console.WriteLine("잘못된 입력입니다.");
-                        Key.AnyKey();
+                        Key.WrongKey();
                         break;
                 }
             }
