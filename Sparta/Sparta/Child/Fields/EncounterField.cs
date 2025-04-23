@@ -36,11 +36,11 @@ namespace Sparta.Child.Fields
         public override void FieldOpen()
         {
             base.FieldOpen();
-            for (int i = 0; i < 4; i++)     // 몬스터는 
+            for (int i = 0; i < 4; i++)     // 몬스터는 최대 4마리 생성
             {
                 if (30 < Global.Rand(0, 100))
                 {
-                    int monstertype = Global.Rand(0, 3); // 0이면 고블린, 1이면 오크, 2면 쌍두오크 생성
+                    int monstertype = Global.Rand(0, 4); // 0이면 고블린, 1이면 오크, 2면 쌍두오크 생성
                     switch (monstertype)
                     {
                         case 0:
@@ -52,6 +52,9 @@ namespace Sparta.Child.Fields
                         case 2:
                             SpawnActor<TwinHeadOrc>();
                             break;
+                        case 3:
+                            SpawnActor<Ogre>();
+                            break;
                     }
                 }
             }
@@ -60,7 +63,7 @@ namespace Sparta.Child.Fields
         private void PrintMonsterStatus()
         {
             Console.WriteLine("============================\n\n");
-            for (int i = 0; i < Actors.Count(); ++i)
+            for (int i = 1; i < Actors.Count() + 1; ++i)
             {
                 Console.WriteLine("{0}번 몬스터", i);
                 Actors[i - 1].PrintStatus();
@@ -106,7 +109,7 @@ namespace Sparta.Child.Fields
                 {
                     Console.WriteLine("플레이어가 공격합니다\n");
 
-                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().attack))
+                    if (true == Actors[select - 1].GetDamage(Player.GetPlayer().totalAttack, Actors[select - 1].totalShield))
                     {
                         Actors.Remove(Actors[select - 1]);
                     }
@@ -129,7 +132,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("몬스터가 공격합니다\n");
             for (int i = 0; i < Actors.Count(); ++i)
             {
-                if(true == Player.GetPlayer().GetDamage(Actors[i].attack))
+                if(true == Player.GetPlayer().GetDamage(Actors[i].totalAttack, Player.GetPlayer().totalShield))
                 {
                     Console.WriteLine("마을로 이동됩니다.");
                     ChangeField(FieldName.MainField);
