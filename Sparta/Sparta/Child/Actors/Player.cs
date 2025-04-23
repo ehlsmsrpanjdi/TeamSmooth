@@ -38,7 +38,12 @@ namespace Sparta.Child.Actors
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
             Console.WriteLine("이름을 알려주세요.\n");
             Name = Console.ReadLine();
-
+            if(string.IsNullOrWhiteSpace(Name))
+            {
+                Console.Clear();
+                Console.WriteLine("이름은 빈칸일 수 없습니다.\n");
+                BeginPlay();
+            }
 
             Console.Clear();
             Console.WriteLine($"입력하신 이름은 {Name}입니다.");
@@ -55,10 +60,6 @@ namespace Sparta.Child.Actors
                 case 2:
                     Console.Clear();
                     BeginPlay();
-                    break;
-
-                default:
-                    Key.WrongKey();
                     break;
             }
 
