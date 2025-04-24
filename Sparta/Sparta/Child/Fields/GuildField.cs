@@ -72,7 +72,33 @@ namespace Sparta.Child.Fields
                 }
                 Console.WriteLine($"{orderquest.Count}. 수주하지 않는다");
                 Console.WriteLine();
-                break;
+
+                int choice = selector.Select();
+
+                if (choice >= 0 && choice < orderquest.Count)
+                {
+                    Quest selectedQuest = orderquest[choice];
+                    Player player = Player.GetPlayer();
+
+                    // 퀘스트를 플레이어의 QuestInventory에 추가
+                    player.questInventory.AddQuest(selectedQuest);
+                    Console.WriteLine($"'{selectedQuest.Name}' 퀘스트를 수주하였습니다!");
+                    Key.AnyKey();
+                    Console.Clear();
+                    break;
+                }
+                else if (choice == orderquest.Count)
+                {
+                    Console.WriteLine("퀘스트 수주를 취소하였습니다.");
+                    Key.AnyKey();
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    Key.WrongKey();
+                    Console.Clear();
+                }
             }
         }
     }
