@@ -21,7 +21,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("==============================");
             Console.WriteLine();
             Console.WriteLine("1. 퀘스트를 수주한다.");
-            Console.WriteLine("2. 마을로 돌아간다.");
+            Console.WriteLine("2. 길드에서 나간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();
@@ -34,7 +34,7 @@ namespace Sparta.Child.Fields
                     ChangeField(FieldName.MainField);
                     break;
                 default:
-                    Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
+                    Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요.");
                     Console.ReadKey();
                     Console.Clear();
                     break;
@@ -46,13 +46,14 @@ namespace Sparta.Child.Fields
             Console.WriteLine("=========================");
             Console.WriteLine("=수주 가능한 퀘스트 목록=");
             Console.WriteLine("=========================");
+            Console.WriteLine();
             QuestManager.GetQuest(); // 퀘스트 목록 출력
 
-            Console.WriteLine("수주할 퀘스트 번호를 입력하세요:");
+            Console.WriteLine();
             int questIndex = selector.Select();
 
             QuestManager.AcceptQuest(questIndex); // 퀘스트 수주
-            Console.WriteLine("아무 키나 누르세요...");
+            Console.WriteLine("아무 키나 누르세요.");
             Console.ReadKey();
             Console.Clear();
         }
