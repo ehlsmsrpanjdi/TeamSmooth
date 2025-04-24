@@ -34,6 +34,7 @@ namespace Sparta.SaveSystem
         public int Gold;
         public float Exp;
         public int ListLength;
+        public float requiredexp; // 요구 경험치 추가
         public List<ItemSaveData> ItemList = new List<ItemSaveData>();
     }
 

@@ -35,6 +35,7 @@ namespace Sparta.SaveSystem
             ByteList.AddRange(hpByte);
             ByteList.AddRange(goldByte);
             ByteList.AddRange(expByte);
+            byte[] requiredexpByte = BitConverter.GetBytes(playerSaveData.requiredexp); // 요구 경험치 추가
             ByteList.AddRange(ListLengthByte);
 
             for (int i = 0; i < playerSaveData.ListLength; ++i)
@@ -77,6 +78,8 @@ namespace Sparta.SaveSystem
             playerSaveData.Gold = BitConverter.ToInt32(data, offset);
             offset += sizeof(int);
             playerSaveData.Exp = BitConverter.ToSingle(data, offset);
+            offset += sizeof(float);
+            playerSaveData.requiredexp = BitConverter.ToSingle(data, offset); // 요구 경험치 복원
             offset += sizeof(float);
 
             playerSaveData.ListLength = BitConverter.ToInt32(data, offset);

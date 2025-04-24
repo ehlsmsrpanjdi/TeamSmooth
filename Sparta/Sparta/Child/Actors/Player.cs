@@ -91,6 +91,7 @@ namespace Sparta.Child.Actors
             saveData.hp = hp;
             saveData.Gold = gold;
             saveData.Exp = exp;
+            saveData.requiredexp = requierdexp; // 요구 경험치 저장
             saveData.ListLength = inventory.inventory.Count();
 
             for (int i = 0; i < saveData.ListLength; ++i)
@@ -120,6 +121,7 @@ namespace Sparta.Child.Actors
             exp = _SaveData.Exp;
             gold = _SaveData.Gold;
             hp = _SaveData.hp;
+            requierdexp = _SaveData.requiredexp; // 요구 경험치 복원
             int ListLength = _SaveData.ListLength;
 
             for (int i = 0; i < ListLength; ++i)
