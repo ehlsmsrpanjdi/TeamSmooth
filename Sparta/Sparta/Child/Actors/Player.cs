@@ -105,7 +105,7 @@ namespace Sparta.Child.Actors
                 
                 if (itemData.IsEquipment)
                 {
-
+                    inventory.inventory[i].isEquip = true;
                 }
             }
 
