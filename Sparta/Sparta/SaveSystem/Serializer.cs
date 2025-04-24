@@ -19,6 +19,8 @@ namespace Sparta.SaveSystem
             byte[] JobLengthByte = BitConverter.GetBytes(JobByte.Length);
             byte[] LevelByte = BitConverter.GetBytes(playerSaveData.Level);
             byte[] hpByte = BitConverter.GetBytes(playerSaveData.hp);
+            byte[] goldByte = BitConverter.GetBytes(playerSaveData.Gold);
+            byte[] expByte = BitConverter.GetBytes(playerSaveData.Exp);
             byte[] ListLengthByte = BitConverter.GetBytes(playerSaveData.ListLength);
 
 
@@ -28,6 +30,8 @@ namespace Sparta.SaveSystem
             ByteList.AddRange(JobByte);
             ByteList.AddRange(LevelByte);
             ByteList.AddRange(hpByte);
+            ByteList.AddRange(goldByte);
+            ByteList.AddRange(expByte);
             ByteList.AddRange(ListLengthByte);
 
             for(int i = 0; i < playerSaveData.ListLength; ++i)
@@ -63,7 +67,15 @@ namespace Sparta.SaveSystem
             playerSaveData.Level = BitConverter.ToInt32(data, offset);
             offset += sizeof(int);  
             playerSaveData.hp = BitConverter.ToInt32(data, offset);
-            offset += sizeof(int);  
+            offset += sizeof(int);
+            playerSaveData.Gold = BitConverter.ToInt32(data, offset);
+            offset += sizeof(int);
+            playerSaveData.Exp = BitConverter.ToSingle(data, offset);
+            offset += sizeof(int);
+
+
+
+
             playerSaveData.ListLength = BitConverter.ToInt32(data, offset);
             offset += sizeof(int); 
 

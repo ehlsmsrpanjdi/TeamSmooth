@@ -29,6 +29,8 @@ namespace Sparta.SaveSystem
         public string? Job;
         public int Level;
         public int hp;
+        public int Gold;
+        public float Exp;
         public int ListLength;
         public List<ItemSaveData> ItemList = new List<ItemSaveData>();
     }

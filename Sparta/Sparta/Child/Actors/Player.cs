@@ -20,7 +20,7 @@ namespace Sparta.Child.Actors
 
         bool Init = false;
 
-        
+
 
         public static Player GetPlayer()
         {
@@ -87,6 +87,8 @@ namespace Sparta.Child.Actors
             saveData.Job = Job;
             saveData.Level = Level;
             saveData.hp = hp;
+            saveData.Gold = gold;
+            saveData.Exp = exp;
             saveData.ListLength = inventory.inventory.Count();
 
             for (int i = 0; i < saveData.ListLength; ++i)
@@ -110,6 +112,8 @@ namespace Sparta.Child.Actors
             Name = _SaveData.Name;
             Job = _SaveData.Job;
             Level = _SaveData.Level;
+            exp = _SaveData.Exp;
+            gold = _SaveData.Gold;
             hp = _SaveData.hp;
             int ListLength = _SaveData.ListLength;
 
@@ -265,7 +269,7 @@ namespace Sparta.Child.Actors
 
             }
         }
-        
+
 
 
 
@@ -304,7 +308,7 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"Gold : {gold} G");
             Console.WriteLine($"경험치 : {exp:F0}/{requierdexp:F0} ");
         }
-      
+
         public void ExpGoldGet(float monsterexp, int monstergold)
         {
             exp += monsterexp;
