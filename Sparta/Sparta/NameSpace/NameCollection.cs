@@ -41,6 +41,7 @@ namespace Sparta.NameSpace
         public const string Broadsword = "브로드소드";
         public const string IronArmour = "철갑옷";
         public const string IronShield = "철방패";
+        public const string DivineBlade = "신성한 칼날";
         public const string RedPotion = "빨간물약";
         public const string BigRedPotion = "큰 빨간물약";
         public const string WhitePotion = "하얀물약";

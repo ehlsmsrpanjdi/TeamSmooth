@@ -22,6 +22,7 @@ namespace Sparta.Child.Actors.ItemSystem
             Items[ItemName.Broadsword] = new Broadsword();
             Items[ItemName.IronArmour] = new Ironarmour();
             Items[ItemName.IronShield] = new Ironshield();
+            Items[ItemName.DivineBlade] = new DivineBlade(); // 히든 무기
             Items[ItemName.RedPotion] = new RedPotion();
             Items[ItemName.BigRedPotion] = new BigRedPotion();
             Items[ItemName.WhitePotion] = new WhitePotion();
@@ -127,6 +128,18 @@ namespace Sparta.Child.Actors.ItemSystem
             addshield = 10;
             gold = 1000;
             Info = "철로 만든 방패입니다.";
+        }
+    }
+    public class DivineBlade : Item
+    {
+        public DivineBlade()
+        {
+            myItemType = ItemType.Weapon;
+            Name = ItemName.DivineBlade;
+            isEquip = false;
+            addattack = 50;
+            gold = 5000;
+            Info = "알 수 없는 빛이 나는 검입니다.";
         }
     }
     public class RedPotion : Item
