@@ -112,6 +112,7 @@ namespace Sparta.Parent
 
         public string? Name {  get; set; }
         public string? Job { get; set; } // 전직(Class 가 맞는 거 같은데 단어 혼동이 클 거 같음 ㅇㅇ;;) 
+        public int highestFloor { get; set; }
         public int Level { get; protected set; }
         public int attack { get; protected set; }
         public int shield { get; protected set; }
