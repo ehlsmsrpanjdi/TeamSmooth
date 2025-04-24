@@ -72,7 +72,7 @@ namespace Sparta.Child.Fields
                     {
                         SpawnActor<Gobline>();
                     }
-                    spawnCount++;
+                        spawnCount++;
                 }
             }
         }

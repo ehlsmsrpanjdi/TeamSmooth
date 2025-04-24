@@ -92,7 +92,8 @@ namespace Sparta.Parent
             }
 
             // 치명타 계산
-            bool isCritical = random.Next(0, 100) < attackerDex;
+            bool isCritical = false;
+            isCritical=random.Next(0, 100) < attackerDex;
             if (isCritical)
             {
                 damage = (int)(damage * 1.5); // 치명타 데미지 1.5배

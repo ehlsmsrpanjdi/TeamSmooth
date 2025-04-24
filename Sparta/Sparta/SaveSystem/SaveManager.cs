@@ -28,10 +28,13 @@ namespace Sparta.SaveSystem
         public string? Name;
         public string? Job;
         public int Level;
+        public int attack;
+        public int shield;
         public int hp;
         public int Gold;
         public float Exp;
         public int ListLength;
+        public float requiredexp; // 요구 경험치 추가
         public List<ItemSaveData> ItemList = new List<ItemSaveData>();
     }
 
