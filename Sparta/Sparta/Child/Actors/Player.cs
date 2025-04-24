@@ -32,6 +32,17 @@ namespace Sparta.Child.Actors
             return Instance;
         }
 
+        public static Player GetPlayer(PlayerSaveData _SaveData)
+        {
+            AllItem.ItemInit();
+            if (Instance == null)
+            {
+                Instance = new Player();
+                Instance.LoadSaveData(_SaveData);
+            }
+            return Instance;
+        }
+
         void SetStatus()
         {
             if (Job == "전사")

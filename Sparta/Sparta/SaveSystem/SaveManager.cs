@@ -170,7 +170,7 @@ namespace Sparta.SaveSystem
             Serializer serializer = new Serializer();
             PlayerSaveData Data = serializer.Deserialize(dataBytes);
             /// 이곳에서 플레이어 생성
-
+            Player.GetPlayer(Data);
             return true;
 
         }
