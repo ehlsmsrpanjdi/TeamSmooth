@@ -28,6 +28,8 @@ namespace Sparta.SaveSystem
         public string? Name;
         public string? Job;
         public int Level;
+        public int attack;
+        public int shield;
         public int hp;
         public int Gold;
         public float Exp;

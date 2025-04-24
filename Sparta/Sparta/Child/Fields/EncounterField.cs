@@ -35,6 +35,7 @@ namespace Sparta.Child.Fields
             base.BeginPlay();
             TotalExp = 0;
             TotalGold = 0;
+            TotalItem.Clear();
         }
 
         public int difficulty;
@@ -75,7 +76,11 @@ namespace Sparta.Child.Fields
                     {
                         SpawnActor<Ogre>();
                     }
-                    spawnCount++;
+                    else
+                    {
+                        SpawnActor<Gobline>();
+                    }
+                        spawnCount++;
                 }
             }
         }
@@ -152,6 +157,9 @@ namespace Sparta.Child.Fields
                         Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!", TotalExp, TotalGold);
                         Player.GetPlayer().ExpGoldGet(TotalExp, TotalGold);
                         Player.GetPlayer().MonsterItemGet(TotalItem);
+                        TotalExp = 0;
+                        TotalGold = 0;
+                        TotalItem.Clear();
                         ChangeField(FieldName.BattleField);
                         Key.AnyKey();
                         return;
