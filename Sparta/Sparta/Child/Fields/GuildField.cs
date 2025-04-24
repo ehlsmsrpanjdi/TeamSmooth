@@ -2,6 +2,7 @@
 using Sparta.NameSpace;
 using Sparta.Parent;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,6 @@ namespace Sparta.Child.Fields
         public override void BeginPlay()
         {
             base.BeginPlay();
-            Console.WriteLine("길드에 입장했습니다.");
         }
 
         public override void Tick()
@@ -37,7 +37,7 @@ namespace Sparta.Child.Fields
                     Player.GetPlayer().Tick();
                     break;
                 case 1:
-                    //OrderQuest();
+                    OrderQuest();
                     break;
                 case 2:
                     break;
@@ -50,51 +50,30 @@ namespace Sparta.Child.Fields
                     break;
             }
         }
+        public void OrderQuest()
+        {
+            List<Quest> orderquest = new List<Quest>
+    {
+        new Quest { Name = "C급 퀘스트", Description = "고블린 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.Gobline, RewardGold = 40, RewardExp = 40 },
+        new Quest { Name = "B급 퀘스트", Description = "오크 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.Orc, RewardGold = 60, RewardExp = 60 },
+        new Quest { Name = "A급 퀘스트", Description = "쌍두오크 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.TwinHeadOrc, RewardGold = 80, RewardExp = 80 },
+        new Quest { Name = "S급 퀘스트", Description = "오우거 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.Ogre, RewardGold = 100, RewardExp = 100 }
+    };
+
+            while (true)
+            {
+                Console.WriteLine("=========================");
+                Console.WriteLine("=수주 가능한 퀘스트 목록=");
+                Console.WriteLine("=========================");
+                Console.WriteLine();
+                for (int i = 0; i < orderquest.Count; i++)
+                {
+                    Console.WriteLine($"{i}. {orderquest[i].Name} - 목표: {orderquest[i].TargetMonster} 토벌수량");
+                }
+                Console.WriteLine($"{orderquest.Count}. 수주하지 않는다");
+                Console.WriteLine();
+                break;
+            }
+        }
     }
 }
-        //public void OrderQuest()
-        //{
-        //List<Quest> orderquest = new List<Quest>
-        //{
-        //    new Quest { Name = "C급 퀘스트",  },
-        //    new Quest { Name = "B급 퀘스트",  },
-        //    new Quest { Name = "A급 퀘스트",  },
-        //    new Quest { Name = "S급 퀘스트",  }
-        //};
-
-//            while (true)
-//            {
-//                Console.WriteLine("=========================");
-//                Console.WriteLine("=수주 가능한 퀘스트 목록=");
-//                Console.WriteLine("=========================");
-//                Console.WriteLine();
-//                for (int i = 0; i < orderquest.Count; i++)
-//                {
-//                    Console.WriteLine($"{i}. {orderquest[i].Name} - 목표: {orderquest[i].gold} 토벌수량");
-//                }
-//                Console.WriteLine($"{orderquest.Count}. 수주하지 않는다");
-//                Console.WriteLine();
-
-//                int choice = selector.Select();
-
-//                if (choice >= 0 && choice < orderquest.Count)
-//                {
-//                    Item selectedItem = orderquest[choice];
-//                    Player player = Player.GetPlayer();
-
-//                    if (player.gold >= selectedItem.gold)
-//                    {
-//                        player.gold -= selectedItem.gold;
-//                        player.inventory.inventory.Add(selectedItem);
-//                        Console.WriteLine($"{selectedItem.Name}을(를) 수주하였습니다!");
-//                        Key.AnyKey();
-//                        Console.Clear();
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-
-
-

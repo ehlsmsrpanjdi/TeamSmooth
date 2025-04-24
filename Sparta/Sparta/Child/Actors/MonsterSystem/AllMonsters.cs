@@ -20,6 +20,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             shield = 0;
             maxHp = 20;
             hp = maxHp;
+            dex = 70;
             exp = 10;
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
@@ -39,6 +40,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             shield = 5;
             maxHp = 40;
             hp = maxHp;
+            dex = 70;
             exp = 15;
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
@@ -58,6 +60,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             shield = 5;
             maxHp = 60;
             hp = maxHp;
+            dex = 70;
             exp = 20;
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
@@ -76,6 +79,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             attack = 20;
             shield = 10;
             maxHp = 100;
+            dex = 70;
             exp = 25;
             hp = maxHp;
             gold = Global.Rand(0, 100);

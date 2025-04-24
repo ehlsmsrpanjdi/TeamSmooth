@@ -73,13 +73,33 @@ namespace Sparta.Parent
         }
         /// <summary>
         /// 첫 번째 인자는 공격자의 총 공격력, 두 번째 인자는 방어자의 총 방어력입니다.
+        /// 세 번째 인자는 공격자의 민첩, 네 번째 인자는 방어자의 민첩입니다.
+        /// 추후 좀 더 간결하게 수정할 예정입니다.
         /// </summary>
         /// <param name="attackerTotalAttack"></param>
         /// <param name="defenderTotalShield"></param>
         /// <returns></returns>
-        public virtual bool GetDamage(int attackerTotalAttack, int defenderTotalShield)
+        public virtual bool GetDamage(int attackerTotalAttack, int defenderTotalShield, int attackerDex, int defenderDex)
         {
-            int damage = Math.Max( 1, attackerTotalAttack - defenderTotalShield);
+            Random random = new Random();
+            int damage = Math.Max(1, attackerTotalAttack - defenderTotalShield);
+
+            // 회피 계산
+            if (random.Next(0, 100) < defenderDex)
+            {
+                Console.WriteLine($"{Name}이(가) 공격을 회피했습니다!");
+                return false; // 전투 계속
+            }
+
+            // 치명타 계산
+            bool isCritical = random.Next(0, 100) < attackerDex;
+            if (isCritical)
+            {
+                damage = (int)(damage * 1.5); // 치명타 데미지 1.5배
+                Console.WriteLine("치명타 발생!");
+            }
+
+            // 데미지 적용
             hp -= damage;
             if (hp < 0)
                 hp = 0;
@@ -88,12 +108,11 @@ namespace Sparta.Parent
 
             if (hp == 0)
             {
-               
                 OnDeath();
-                return true;  // 사망
+                return true; // 사망
             }
 
-            return false;     // 전투 계속
+            return false; // 전투 계속
         }
 
         // 사망 시 실행될 함수 (필요시 오버라이드 가능)
@@ -117,6 +136,7 @@ namespace Sparta.Parent
         public int attack { get; protected set; }
         public int shield { get; protected set; }
         public int hp { get; protected set; }
+        public int dex { get; protected set; } //치명타,회피 발생 확률 관련 스탯
         public int maxHp { get; protected set; }
         public int gold { get;  set; }
         public float exp { get; protected set; }

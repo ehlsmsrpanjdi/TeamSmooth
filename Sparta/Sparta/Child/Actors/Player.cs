@@ -20,7 +20,7 @@ namespace Sparta.Child.Actors
 
         bool Init = false;
 
-        
+
 
         public static Player GetPlayer()
         {
@@ -32,6 +32,17 @@ namespace Sparta.Child.Actors
             return Instance;
         }
 
+        public static Player GetPlayer(PlayerSaveData _SaveData)
+        {
+            AllItem.ItemInit();
+            if (Instance == null)
+            {
+                Instance = new Player();
+                Instance.LoadSaveData(_SaveData);
+            }
+            return Instance;
+        }
+
         void SetStatus()
         {
             if (Job == "전사")
@@ -39,24 +50,28 @@ namespace Sparta.Child.Actors
                 attack = 10;
                 shield = 5;
                 hp = 100;
+                dex = 70;
             }
             else if (Job == "암살자")
             {
                 attack = 15;
                 shield = 3;
                 hp = 80;
+                dex = 70;
             }
             else if (Job == "탱커")
             {
                 attack = 7;
                 shield = 7;
                 hp = 120;
+                dex = 70;
             }
             else if (Job == "스파르타")
             {
                 attack = 20;
                 shield = 10;
                 hp = 150;
+                dex = 70;
             }
 
             Level = 1;
@@ -72,6 +87,8 @@ namespace Sparta.Child.Actors
             saveData.Job = Job;
             saveData.Level = Level;
             saveData.hp = hp;
+            saveData.Gold = gold;
+            saveData.Exp = exp;
             saveData.ListLength = inventory.inventory.Count();
 
             for (int i = 0; i < saveData.ListLength; ++i)
@@ -95,6 +112,8 @@ namespace Sparta.Child.Actors
             Name = _SaveData.Name;
             Job = _SaveData.Job;
             Level = _SaveData.Level;
+            exp = _SaveData.Exp;
+            gold = _SaveData.Gold;
             hp = _SaveData.hp;
             int ListLength = _SaveData.ListLength;
 
@@ -102,10 +121,10 @@ namespace Sparta.Child.Actors
             {
                 ItemSaveData itemData = _SaveData.ItemList[i];
                 Item item = AllItem.CreatItem(itemData.ItemName);
-                
+                inventory.inventory[i] = item;
                 if (itemData.IsEquipment)
                 {
-
+                    inventory.inventory[i].isEquip = true;
                 }
             }
 
@@ -250,7 +269,7 @@ namespace Sparta.Child.Actors
 
             }
         }
-        
+
 
 
 
@@ -289,7 +308,7 @@ namespace Sparta.Child.Actors
             Console.WriteLine($"Gold : {gold} G");
             Console.WriteLine($"경험치 : {exp:F0}/{requierdexp:F0} ");
         }
-      
+
         public void ExpGoldGet(float monsterexp, int monstergold)
         {
             exp += monsterexp;
