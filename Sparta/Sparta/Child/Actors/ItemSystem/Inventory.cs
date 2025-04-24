@@ -10,13 +10,7 @@ namespace Sparta.Child.Actors.ItemSystem
         EquipManage EquipManage = new EquipManage();
         public Inventory()
         {
-            if (AllItem.Items != null)
-            {
-                inventory.Add(AllItem.CreatItem(ItemName.LongSword));
-                inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
-                inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
-                inventory.Add(AllItem.CreatItem(ItemName.RedPotion));
-            }
+
         }
         public void Tick()
         {

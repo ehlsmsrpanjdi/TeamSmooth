@@ -109,6 +109,7 @@ namespace Sparta.Child.Actors
 
         public void LoadSaveData(PlayerSaveData _SaveData)
         {
+            inventory.inventory.Clear();
             Name = _SaveData.Name;
             Job = _SaveData.Job;
             Level = _SaveData.Level;
@@ -121,7 +122,7 @@ namespace Sparta.Child.Actors
             {
                 ItemSaveData itemData = _SaveData.ItemList[i];
                 Item item = AllItem.CreatItem(itemData.ItemName);
-                inventory.inventory[i] = item;
+                inventory.inventory.Add(item);
                 if (itemData.IsEquipment)
                 {
                     inventory.inventory[i].isEquip = true;
@@ -277,7 +278,10 @@ namespace Sparta.Child.Actors
         {
             ActType = ActorType.Player;
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
-
+            inventory.inventory.Add(AllItem.CreatItem(ItemName.LongSword));
+            inventory.inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
+            inventory.inventory.Add(AllItem.CreatItem(ItemName.RedPotion));
+            // 초기 장비 지급
             SelectName();
             SelectJob();
 
