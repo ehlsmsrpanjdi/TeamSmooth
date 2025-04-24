@@ -75,10 +75,9 @@ namespace Sparta.Child.Actors
                 dex = 70;
             }
 
-            Level = 1;
+            Level = 10;
             gold = 1500;
             maxHp = hp;
-            highestFloor = 1;
         }
 
         public PlayerSaveData MakeSaveData()
@@ -110,6 +109,7 @@ namespace Sparta.Child.Actors
 
         public void LoadSaveData(PlayerSaveData _SaveData)
         {
+            inventory.inventory.Clear();
             Name = _SaveData.Name;
             Job = _SaveData.Job;
             Level = _SaveData.Level;
@@ -122,7 +122,7 @@ namespace Sparta.Child.Actors
             {
                 ItemSaveData itemData = _SaveData.ItemList[i];
                 Item item = AllItem.CreatItem(itemData.ItemName);
-                inventory.inventory[i] = item;
+                inventory.inventory.Add(item);
                 if (itemData.IsEquipment)
                 {
                     inventory.inventory[i].isEquip = true;
@@ -278,12 +278,32 @@ namespace Sparta.Child.Actors
         {
             ActType = ActorType.Player;
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
-
+            inventory.inventory.Add(AllItem.CreatItem(ItemName.LongSword));
+            inventory.inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
+            inventory.inventory.Add(AllItem.CreatItem(ItemName.RedPotion));
+            // 초기 장비 지급
             SelectName();
             SelectJob();
-
+            CheckLevel();
         }
 
+        public void CheckLevel()
+        {
+            if (Level > 1)
+            {
+                // 레벨 2부터 현재 레벨까지의 스탯 증가량 계산
+                for (int i = 2; i <= Level; i++)
+                {
+                    maxHp += 10;       // 레벨당 최대 체력 증가
+                    attack += 5;       // 레벨당 공격력 증가
+                    shield += 2;       // 레벨당 방어력 증가
+                    requierdexp *= 1.2f; // 다음 레벨업에 필요한 경험치 증가
+                }
+
+                // 현재 체력을 최대 체력으로 설정
+                hp = maxHp;
+            }
+        }
         public void PrintStatShort()
         {
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();

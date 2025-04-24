@@ -85,7 +85,7 @@ namespace Sparta.Parent
             int damage = Math.Max(1, attackerTotalAttack - defenderTotalShield);
 
             // 회피 계산
-            if (random.Next(0, 100) < defenderDex)
+            if (random.Next(0, 100) < defenderDex/2)
             {
                 Console.WriteLine($"{Name}이(가) 공격을 회피했습니다!");
                 return false; // 전투 계속
@@ -131,7 +131,7 @@ namespace Sparta.Parent
 
         public string? Name {  get; set; }
         public string? Job { get; set; } // 전직(Class 가 맞는 거 같은데 단어 혼동이 클 거 같음 ㅇㅇ;;) 
-        public int highestFloor { get; set; }
+        public int highestFloor { get; set; } = 1;
         public int Level { get; protected set; }
         public int attack { get; protected set; }
         public int shield { get; protected set; }
