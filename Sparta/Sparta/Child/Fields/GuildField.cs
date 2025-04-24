@@ -21,7 +21,8 @@ namespace Sparta.Child.Fields
             Console.WriteLine("==============================");
             Console.WriteLine();
             Console.WriteLine("1. 퀘스트를 수주한다.");
-            Console.WriteLine("2. 길드에서 나간다.");
+            Console.WriteLine("2. 퀘스트를 확인한다.");
+            Console.WriteLine("3. 길드에서 나간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();
@@ -31,12 +32,13 @@ namespace Sparta.Child.Fields
                     OrderQuest();
                     break;
                 case 2:
+                    CheckQuest();
+                    break;
+                case 3:
                     ChangeField(FieldName.MainField);
                     break;
                 default:
-                    Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요.");
-                    Console.ReadKey();
-                    Console.Clear();
+                    Console.WriteLine();
                     break;
             }
         }
@@ -53,9 +55,19 @@ namespace Sparta.Child.Fields
             int questIndex = selector.Select();
 
             QuestManager.AcceptQuest(questIndex); // 퀘스트 수주
-            Console.WriteLine("아무 키나 누르세요.");
             Console.ReadKey();
-            Console.Clear();
+        }
+
+        private void CheckQuest()
+        {
+            Console.WriteLine("==========================");
+            Console.WriteLine("=   수주한 퀘스트 목록   =");
+            Console.WriteLine("==========================");
+            Console.WriteLine();
+            QuestManager.GetQuestList(); // 퀘스트 목록 출력
+            Console.ReadKey();
         }
     }
 }
+
+
