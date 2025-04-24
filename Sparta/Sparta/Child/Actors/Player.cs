@@ -106,10 +106,10 @@ namespace Sparta.Child.Actors
             {
                 ItemSaveData itemData = _SaveData.ItemList[i];
                 Item item = AllItem.CreatItem(itemData.ItemName);
-                
+                inventory.inventory[i] = item;
                 if (itemData.IsEquipment)
                 {
-
+                    inventory.inventory[i].isEquip = true;
                 }
             }
 
