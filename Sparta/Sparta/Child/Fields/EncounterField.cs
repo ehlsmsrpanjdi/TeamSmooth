@@ -57,21 +57,23 @@ namespace Sparta.Child.Fields
 
                 if (mustSpawn || moreSpawn)
                 {
-                    int monstertype = Global.Rand(0, 4);
-                    switch (monstertype)
+                    int rand = Global.Rand(0, 100);
+
+                    if (rand < 40)
                     {
-                        case 0:
-                            SpawnActor<Gobline>();
-                            break;
-                        case 1:
-                            SpawnActor<Orc>();
-                            break;
-                        case 2:
-                            SpawnActor<TwinHeadOrc>();
-                            break;
-                        case 3:
-                            SpawnActor<Ogre>();
-                            break;
+                        SpawnActor<Gobline>();
+                    }
+                    else if (rand < 70 && difficulty >= 3)
+                    {
+                        SpawnActor<Orc>();
+                    }
+                    else if (rand < 90 && difficulty >= 5)
+                    {
+                        SpawnActor<TwinHeadOrc>();
+                    }
+                    else if (difficulty >= 8)
+                    {
+                        SpawnActor<Ogre>();
                     }
                     spawnCount++;
                 }
