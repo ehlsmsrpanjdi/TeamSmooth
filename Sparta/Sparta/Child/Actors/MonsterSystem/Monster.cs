@@ -26,7 +26,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             Console.WriteLine($" {Name}");
             Console.Write($"공격력 : {attack} \t"); // (+{eqStr})");
             Console.Write($" | 방어력 : {shield} \t"); // (+{eqDef})");
-            Console.WriteLine($" | 체 력 : {hp} \t"); // (+{eqHp})");
+            Console.WriteLine($" | 체력 : {hp} \t"); // (+{eqHp})");
         }
         protected override void OnDeath()
         {
