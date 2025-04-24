@@ -1,28 +1,28 @@
 ﻿using Sparta.Child.Actors;
+using Sparta.Child.Actors.ItemSystem;
 using Sparta.NameSpace;
 using Sparta.Parent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sparta.Child.Fields
 {
     class MainField : Field
     {
         bool ishidden = false;
+        bool hiddenEvent = false;
         public override void BeginPlay()
         {
             base.BeginPlay();
         }
-
-
         public override void Tick()
         {
-            ishidden = false ;
-            if (5 > Global.Rand(0,100))
-                ishidden = true;            // n프로 확률로 5번 선택지가 등장
+
+            ishidden = false;
+            if (!hiddenEvent)
+            {
+                if (5 > Global.Rand(0, 100))
+                    ishidden = true;
+            }
+            // n프로 확률로 5번 선택지가 등장
             base.Tick();
             Console.WriteLine("=======================================");
             Console.WriteLine("=환영합니다! 스무스 마을에 어서오세요.=");
@@ -60,7 +60,7 @@ namespace Sparta.Child.Fields
                 case 5:
                     if (ishidden)
                     {
-                        // 히든 무기를 획득 하는 함수
+                        Hidden_1();
                         break;
                     }
                     else
@@ -73,8 +73,50 @@ namespace Sparta.Child.Fields
                     break;
             }
         }
-
-
-
+        public void Hidden_1()
+        {
+            while (true)
+            {
+                int luckynum = Global.Rand(1, 3);
+                Console.WriteLine("당신은 알 수 없는 빛에 이끌려 신비한 곳에 도착했습니다.");
+                Console.WriteLine("올바른 선택을 하면 당신에게 좋은 일이 일어날 것 같습니다.");
+                Console.WriteLine("당신의 행운을 시험해 보세요!.\n");
+                Console.WriteLine("1. 더 앞으로 나아간다. \n2. 뒤로 돌아간다.\n");
+                selectedIndex = selector.Select();
+                switch (selectedIndex)
+                {
+                    case 1:
+                        OneOrTwo();
+                        return;
+                    case 2:
+                        OneOrTwo();
+                        return;
+                    case -1:
+                        Console.Clear();
+                        break;
+                    default:
+                        Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+                void OneOrTwo()
+                {
+                    if (selectedIndex != luckynum)
+                    {
+                        Console.WriteLine("유감... 알 수 없는 빛이 사라졌습니다...\n");
+                        Key.AnyKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("축하합니다!. 당신은 빛의 축복을 받아 특별한 장비를 획득했습니다.\n");
+                        Key.AnyKey();
+                        Player.GetPlayer().inventory.inventory.Add(AllItem.CreatItem(ItemName.DivineBlade));
+                        hiddenEvent = true;
+                    }
+                }
+            }
+        }
     }
 }
+
