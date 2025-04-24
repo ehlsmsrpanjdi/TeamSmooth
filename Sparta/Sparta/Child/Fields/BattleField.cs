@@ -18,7 +18,7 @@ namespace Sparta.Child.Fields
         }
 
         Player player = Player.GetPlayer();
-
+        public int selectFloor;
 
         private void Move()
         {
@@ -30,7 +30,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("돌아가기 : 0\n");
 
             selectedIndex = selector.Select();
-
+            selectFloor = selectedIndex;
             switch (selectedIndex)
             {
                 case -1:
@@ -51,13 +51,11 @@ namespace Sparta.Child.Fields
 
         }
 
-        private void EncounterMonster(int floorNum)
+        public void EncounterMonster(int floorNum)
         {
             Console.WriteLine($"던전 {floorNum}층 몬스터와 조우했습니다.\n");
 
             ChangeField(FieldName.EncounterField);
-            Key.AnyKey();
-            Move();
         }
 
         public override void Tick()

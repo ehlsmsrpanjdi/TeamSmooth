@@ -37,14 +37,27 @@ namespace Sparta.Child.Fields
             TotalGold = 0;
         }
 
+        public int difficulty;
+        public void SelectedNumberFromBattleField(BattleField selectedNum)
+        {
+            difficulty = selectedNum.selectFloor;
+        }
+
+
         public override void FieldOpen()
         {
-            base.FieldOpen();
-            for (int i = 0; i < 4; i++)     // 몬스터는 최대 4마리 생성
+            int minCount = difficulty/3 + 1;     // 최소 생성 마리 수
+            int totalSpawn = 4;   // 몬스터 최대 수
+            int spawnCount = 0;
+
+            for (int i = 0; i < totalSpawn; i++)
             {
-                if (30 < Global.Rand(0, 100))
+                bool mustSpawn = spawnCount < minCount;
+                bool moreSpawn = (difficulty * 10 >= Global.Rand(0, 100));
+
+                if (mustSpawn || moreSpawn)
                 {
-                    int monstertype = Global.Rand(0, 4); // 0이면 고블린, 1이면 오크, 2면 쌍두오크 생성
+                    int monstertype = Global.Rand(0, 4);
                     switch (monstertype)
                     {
                         case 0:
@@ -60,6 +73,7 @@ namespace Sparta.Child.Fields
                             SpawnActor<Ogre>();
                             break;
                     }
+                    spawnCount++;
                 }
             }
         }
@@ -77,7 +91,7 @@ namespace Sparta.Child.Fields
 
         private bool RunAway()
         {
-            if (30 > Global.Rand(0, 100))
+            if (difficulty*10 <= Global.Rand(0, 100))
             {
                 Console.WriteLine("도망에 성공했습니다.");
                 Key.AnyKey();
