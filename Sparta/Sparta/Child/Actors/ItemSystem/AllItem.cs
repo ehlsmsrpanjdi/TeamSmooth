@@ -15,6 +15,7 @@ namespace Sparta.Child.Actors.ItemSystem
 
         public static void ItemInit()
         {
+            if (AllItem.Items != null) return;
             Dictionary<string, Item> Items = GetAllItem();
             Items[ItemName.LongSword] = new LongSword();
             Items[ItemName.LeatherArmour] = new LeatherArmour();

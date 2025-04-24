@@ -17,9 +17,11 @@ namespace Sparta.Child.Fields
             base.BeginPlay();
         }
 
+        Player player = Player.GetPlayer();
+
+
         private void Move()
         {
-            var player = Player.GetPlayer();
 
             base.Tick();
             Console.WriteLine("던전 층수를 선택해 주세요.");
@@ -51,20 +53,11 @@ namespace Sparta.Child.Fields
 
         private void EncounterMonster(int floorNum)
         {
-            if (30 > Global.Rand(0, 100))
-            {
-                Console.WriteLine("몬스터와 조우했습니다.\n");
+            Console.WriteLine($"던전 {floorNum}층 몬스터와 조우했습니다.\n");
 
-                ChangeField(FieldName.EncounterField);
-                Key.AnyKey();
-                Move();
-            }
-            else
-            {
-                Console.WriteLine("아무일도 일어나지 않았습니다.\n");
-                Key.AnyKey();
-                Move();
-            }
+            ChangeField(FieldName.EncounterField);
+            Key.AnyKey();
+            Move();
         }
 
         public override void Tick()
