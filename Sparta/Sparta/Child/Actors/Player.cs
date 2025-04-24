@@ -24,6 +24,7 @@ namespace Sparta.Child.Actors
 
         public static Player GetPlayer()
         {
+            AllItem.ItemInit();
             if (Instance == null)
             {
                 Instance = new Player();
