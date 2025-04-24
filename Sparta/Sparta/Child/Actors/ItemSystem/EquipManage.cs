@@ -11,7 +11,7 @@ namespace Sparta.Child.Actors.ItemSystem
         {
             while (true)
             {
-                Console.WriteLine("-장착 관리-\n보유 중인 아이템을 장착하거나 해제합니다.(포션은 장착을 하면 사용이 됩니다.)\n");
+                Console.WriteLine("-장착 및 사용 관리-\n보유 중인 아이템을 장착,해제 및 사용합니다.\n");
                 Player.GetPlayer().PrintStatus();
                 Console.WriteLine("\n[아이템 목록]\n");
                 List<Item> inventory = Player.GetPlayer().inventory.inventory;
@@ -20,7 +20,7 @@ namespace Sparta.Child.Actors.ItemSystem
                 {
                     inventory[i].EquipManageStatus(i);
                 }
-                Console.WriteLine("\n0. 장비 착용을 중단한다.");
+                Console.WriteLine("\n0. 장비 장착을 중단한다.");
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {
@@ -37,6 +37,8 @@ namespace Sparta.Child.Actors.ItemSystem
                                 inventory[selectedIndex - 1].isEquip = !inventory[selectedIndex - 1].isEquip;
                                 Player.GetPlayer().inventory.OnlyOnePartItem(inventory[selectedIndex - 1].myItemType, selectedIndex - 1);
                                 Console.WriteLine("{0} 장비를 {1}했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].isEquip ? "장착" : "해제");
+                                Key.AnyKey();
+                                Console.Clear();
                                 break;
                             }
                             else
@@ -44,6 +46,8 @@ namespace Sparta.Child.Actors.ItemSystem
                                 Console.WriteLine("{0} 을(를) 사용하여 체력을 {1} 회복했습니다.\n", inventory[selectedIndex - 1].Name, inventory[selectedIndex - 1].addmaxHp);
                                 Player.GetPlayer().HealHP(inventory[selectedIndex - 1].addmaxHp);
                                 inventory.Remove(inventory[selectedIndex - 1]);
+                                Key.AnyKey();
+                                Console.Clear();
                                 break;
                             }    
                         }

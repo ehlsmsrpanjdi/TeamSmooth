@@ -30,7 +30,7 @@ namespace Sparta.Child.Actors.ItemSystem
                     inventory[i].PrintStatus();
                     //AllItem.GetItem(ItemName.LongSword).PrintStatus(); // 도감에 들어있는 정보가 훼손이 안되는지 테스트 하기 위한 코드
                 }
-                Console.WriteLine("\n1. 장비를 착용한다.\n2. 아이템을 사용한다.\n3. 가방을 닫는다.");
+                Console.WriteLine("\n1. 장비장착 및 아이템을 사용한다.\n2. 가방을 닫는다.");
                 selectedIndex = selector.Select();
                 switch (selectedIndex)
                 {
@@ -41,9 +41,6 @@ namespace Sparta.Child.Actors.ItemSystem
                         EquipManage.Tick();
                         break;
                     case 2:
-                        UsingItem();
-                        break;
-                    case 3:
                         return;
                     default:
                         Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
@@ -53,20 +50,6 @@ namespace Sparta.Child.Actors.ItemSystem
                 }
             }
         }
-        public void UsingItem()
-        {
-            while (true)
-            {
-                Console.WriteLine("보유중인 사용 아이템을 표시합니다");
-                Console.WriteLine("\n[사용 아이템 목록]\n");
-                for (int i = 0; i < inventory.Count; i++)
-                {
-                    inventory[i].PrintStatus();
-                }
-                break;
-            }
-        }
-
 
         protected Selector selector = new Selector();
         protected int selectedIndex = 0;
