@@ -1,12 +1,8 @@
 ﻿using Sparta.Child.Actors;
+using Sparta.Child.Actors.QuestSystem;
 using Sparta.NameSpace;
 using Sparta.Parent;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sparta.Child.Fields
 {
@@ -24,82 +20,41 @@ namespace Sparta.Child.Fields
             Console.WriteLine("=         시커 길드          =");
             Console.WriteLine("==============================");
             Console.WriteLine();
-            Console.WriteLine("0. 상태창을 확인한다.");
             Console.WriteLine("1. 퀘스트를 수주한다.");
-            Console.WriteLine("2. 퀘스트를 포기한다.");
-            Console.WriteLine("3. 마을로 돌아간다.");
+            Console.WriteLine("2. 마을로 돌아간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();
             switch (selectedIndex)
             {
-                case 0:
-                    Player.GetPlayer().Tick();
-                    break;
                 case 1:
                     OrderQuest();
                     break;
                 case 2:
-                    break;
-                case 3:
                     ChangeField(FieldName.MainField);
                     break;
                 default:
+                    Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
                     Console.ReadKey();
                     Console.Clear();
                     break;
             }
         }
-        public void OrderQuest()
+
+        private void OrderQuest()
         {
-            List<Quest> orderquest = new List<Quest>
-    {
-        new Quest { Name = "C급 퀘스트", Description = "고블린 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.Gobline, RewardGold = 40, RewardExp = 40 },
-        new Quest { Name = "B급 퀘스트", Description = "오크 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.Orc, RewardGold = 60, RewardExp = 60 },
-        new Quest { Name = "A급 퀘스트", Description = "쌍두오크 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.TwinHeadOrc, RewardGold = 80, RewardExp = 80 },
-        new Quest { Name = "S급 퀘스트", Description = "오우거 10마리를 처치하세요.", Goal = 10, TargetMonster = MonsterName.Ogre, RewardGold = 100, RewardExp = 100 }
-    };
+            Console.WriteLine("=========================");
+            Console.WriteLine("=수주 가능한 퀘스트 목록=");
+            Console.WriteLine("=========================");
+            QuestManager.GetQuest(); // 퀘스트 목록 출력
 
-            while (true)
-            {
-                Console.WriteLine("=========================");
-                Console.WriteLine("=수주 가능한 퀘스트 목록=");
-                Console.WriteLine("=========================");
-                Console.WriteLine();
-                for (int i = 0; i < orderquest.Count; i++)
-                {
-                    Console.WriteLine($"{i}. {orderquest[i].Name} - 목표: {orderquest[i].TargetMonster} 토벌수량");
-                }
-                Console.WriteLine($"{orderquest.Count}. 수주하지 않는다");
-                Console.WriteLine();
+            Console.WriteLine("수주할 퀘스트 번호를 입력하세요:");
+            int questIndex = selector.Select();
 
-                int choice = selector.Select();
-
-                if (choice >= 0 && choice < orderquest.Count)
-                {
-                    Quest selectedQuest = orderquest[choice];
-                    Player player = Player.GetPlayer();
-
-                    // 퀘스트를 플레이어의 QuestInventory에 추가
-                    player.questInventory.AddQuest(selectedQuest);
-                    Console.WriteLine($"'{selectedQuest.Name}' 퀘스트를 수주하였습니다!");
-                    Key.AnyKey();
-                    Console.Clear();
-                    break;
-                }
-                else if (choice == orderquest.Count)
-                {
-                    Console.WriteLine("퀘스트 수주를 취소하였습니다.");
-                    Key.AnyKey();
-                    Console.Clear();
-                    break;
-                }
-                else
-                {
-                    Key.WrongKey();
-                    Console.Clear();
-                }
-            }
+            QuestManager.AcceptQuest(questIndex); // 퀘스트 수주
+            Console.WriteLine("아무 키나 누르세요...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }

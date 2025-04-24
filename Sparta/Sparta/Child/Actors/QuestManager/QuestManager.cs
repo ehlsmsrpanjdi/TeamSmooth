@@ -8,6 +8,7 @@ namespace Sparta.Child.Actors.QuestSystem
     public static class QuestManager
     {
         private static List<Quest> availableQuests = new List<Quest>(); // 수주 가능한 퀘스트
+        private static List<Quest> activeQuests = new List<Quest>(); // 진행 중인 퀘스트
 
         // 초기화: 수주 가능한 퀘스트를 등록
         static QuestManager()
@@ -32,6 +33,26 @@ namespace Sparta.Child.Actors.QuestSystem
             {
                 Console.WriteLine($"{i}. {availableQuests[i].Name} - {availableQuests[i].Description}");
             }
+        }
+
+        // 퀘스트 수주
+        public static void AcceptQuest(int questIndex)
+        {
+            if (questIndex < 0 || questIndex >= availableQuests.Count)
+            {
+                Console.WriteLine("잘못된 선택입니다.");
+                return;
+            }
+
+            Quest selectedQuest = availableQuests[questIndex];
+            if (activeQuests.Contains(selectedQuest))
+            {
+                Console.WriteLine("이미 수주한 퀘스트입니다.");
+                return;
+            }
+
+            activeQuests.Add(selectedQuest);
+            Console.WriteLine($"'{selectedQuest.Name}' 퀘스트를 수주하였습니다!");
         }
     }
 }
