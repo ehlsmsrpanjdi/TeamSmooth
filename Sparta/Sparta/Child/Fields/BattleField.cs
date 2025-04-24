@@ -55,6 +55,7 @@ namespace Sparta.Child.Fields
         {
             Console.WriteLine($"던전 {floorNum}층 몬스터와 조우했습니다.\n");
 
+            difficulty = floorNum;
             ChangeField(FieldName.EncounterField);
         }
 

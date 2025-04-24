@@ -6,12 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Sparta.SelectorSystem;
 using Sparta.Child.Actors.MonsterSystem;
+using Sparta.Child.Fields;
 
 namespace Sparta.Parent
 {
     class Field
     {
         public string Name { get; set; } = "";
+
+
+        public static int difficulty { get; set; }
 
         public Field()
         {

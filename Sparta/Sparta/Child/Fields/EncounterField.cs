@@ -38,19 +38,11 @@ namespace Sparta.Child.Fields
             TotalItem.Clear();
         }
 
-        public int difficulty;
-        public void SelectedNumberFromBattleField(BattleField selectedNum)
-        {
-            difficulty = selectedNum.selectFloor;
-        }
-
-
         public override void FieldOpen()
         {
             int minCount = difficulty/3 + 1;     // 최소 생성 마리 수
             int totalSpawn = 4;   // 몬스터 최대 수
             int spawnCount = 0;
-
             for (int i = 0; i < totalSpawn; i++)
             {
                 bool mustSpawn = spawnCount < minCount;
@@ -150,7 +142,10 @@ namespace Sparta.Child.Fields
 
                     if(Actors.Count() == 0)
                     {
-                        
+                        if(difficulty == Player.GetPlayer().highestFloor)
+                        {
+                            Player.GetPlayer().highestFloor++;
+                        }
 
                         Console.WriteLine("플레이어가 승리하였습니다.\n");
 
@@ -197,7 +192,10 @@ namespace Sparta.Child.Fields
 
             PrintMonsterStatus();
 
-            Console.WriteLine("\n당신은 적을 조우했습니다.");
+            Console.WriteLine($"현재 도전중인 층수 : {difficulty}층");
+
+
+            Console.WriteLine("\n당신은 적을 조우했습니다.\n");
 
             Console.WriteLine("1. 공격한다.");
             Console.WriteLine("2. 아이템을 확인한다.");
