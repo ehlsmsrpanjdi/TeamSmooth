@@ -145,6 +145,8 @@ namespace Sparta.Child.Fields
 
                     if(Actors.Count() == 0)
                     {
+                        
+
                         Console.WriteLine("플레이어가 승리하였습니다.\n");
 
                         Console.WriteLine("총 {0} 만큼의 경험치와, {1} 만큼의 골드를 획득했습니다!", TotalExp, TotalGold);
