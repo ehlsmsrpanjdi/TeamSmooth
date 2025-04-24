@@ -75,7 +75,7 @@ namespace Sparta.Child.Actors
                 dex = 70;
             }
 
-            Level = 10;
+            Level = 1;
             gold = 1500;
             maxHp = hp;
         }
@@ -86,6 +86,8 @@ namespace Sparta.Child.Actors
             saveData.Name = Name;
             saveData.Job = Job;
             saveData.Level = Level;
+            saveData.attack = attack;
+            saveData.shield= shield;
             saveData.hp = hp;
             saveData.Gold = gold;
             saveData.Exp = exp;
@@ -113,6 +115,8 @@ namespace Sparta.Child.Actors
             Name = _SaveData.Name;
             Job = _SaveData.Job;
             Level = _SaveData.Level;
+            attack = _SaveData.attack;
+            shield = _SaveData.shield;
             exp = _SaveData.Exp;
             gold = _SaveData.Gold;
             hp = _SaveData.hp;
@@ -128,6 +132,9 @@ namespace Sparta.Child.Actors
                     inventory.inventory[i].isEquip = true;
                 }
             }
+
+            // 레벨에 따른 스탯 보정
+           //CheckLevel();
 
         }
 
@@ -284,10 +291,14 @@ namespace Sparta.Child.Actors
             // 초기 장비 지급
             SelectName();
             SelectJob();
-            CheckLevel();
+           // CheckLevel();
         }
-
-        public void CheckLevel()
+       
+        /// <summary> CheckLevel()
+        /// 로드세이브에 스탯 제대로 적용되나 확인용 137,294줄에서 사용함.
+        /// 78줄에 Lv을 수정하면 그 레벨만큼 스탯이 보정됨
+        /// </summary>
+        public void  CheckLevel()
         {
             if (Level > 1)
             {
@@ -301,7 +312,41 @@ namespace Sparta.Child.Actors
                 }
 
                 // 현재 체력을 최대 체력으로 설정
+                maxHp = hp;
+                //hp = maxHp;
+            }
+            else if (Level == 1)
+            {
+                if (Job == "전사")
+                {
+                    attack = 10;
+                    shield = 5;
+                    maxHp = 100; // maxHp 설정
+                    dex = 70;
+                }
+                else if (Job == "암살자")
+                {
+                    attack = 15;
+                    shield = 3;
+                    maxHp = 80; // maxHp 설정
+                    dex = 70;
+                }
+                else if (Job == "탱커")
+                {
+                    attack = 7;
+                    shield = 7;
+                    maxHp = 120; // maxHp 설정
+                    dex = 70;
+                }
+                else if (Job == "스파르타")
+                {
+                    attack = 20;
+                    shield = 10;
+                    maxHp = 150; // maxHp 설정
+                    dex = 70;
+                }
                 hp = maxHp;
+
             }
         }
         public void PrintStatShort()
