@@ -85,7 +85,7 @@ namespace Sparta.Parent
             int damage = Math.Max(1, attackerTotalAttack - defenderTotalShield);
 
             // 회피 계산
-            if (random.Next(0, 100) < defenderDex)
+            if (random.Next(0, 100) < defenderDex/2)
             {
                 Console.WriteLine($"{Name}이(가) 공격을 회피했습니다!");
                 return false; // 전투 계속
