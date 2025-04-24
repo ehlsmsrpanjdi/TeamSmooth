@@ -39,24 +39,28 @@ namespace Sparta.Child.Actors
                 attack = 10;
                 shield = 5;
                 hp = 100;
+                dex = 70;
             }
             else if (Job == "암살자")
             {
                 attack = 15;
                 shield = 3;
                 hp = 80;
+                dex = 70;
             }
             else if (Job == "탱커")
             {
                 attack = 7;
                 shield = 7;
                 hp = 120;
+                dex = 70;
             }
             else if (Job == "스파르타")
             {
                 attack = 20;
                 shield = 10;
                 hp = 150;
+                dex = 70;
             }
 
             Level = 1;
