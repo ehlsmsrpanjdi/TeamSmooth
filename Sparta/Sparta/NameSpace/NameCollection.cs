@@ -62,6 +62,15 @@ namespace Sparta.NameSpace
         public const string Sparta = "스파르타";
         public const string Monster = "몬스터";
     }
+
+    public static class QuestName
+    {
+        public const string EseyQuest = "C급 퀘스트";
+        public const string NomalQuest = "B급 퀘스트";
+        public const string HardQuest = "A급 퀘스트";
+        public const string VeryHardQuest = "S급 퀘스트";
+    }
+
     public static class Global
     {
         public static Random rand = new Random();
