@@ -29,7 +29,7 @@ namespace Sparta.Child.Fields
             Console.WriteLine("1. 상점으로 간다.");
             Console.WriteLine("2. 여관으로 간다.");
             Console.WriteLine("3. 길드로 간다.");
-            Console.WriteLine("4. 던전에 진입한다.");
+            Console.WriteLine("4. 마을 밖으로 나간다.");
             Console.WriteLine();
 
             selectedIndex = selector.Select();

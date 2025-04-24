@@ -19,27 +19,62 @@ namespace Sparta.Child.Fields
 
         private void Move()
         {
-            if(30 > Global.Rand(0, 100)){
+            var player = Player.GetPlayer();
+
+            base.Tick();
+            Console.WriteLine("던전 층수를 선택해 주세요.");
+
+            Console.WriteLine($"현재 선택 가능한 던전 층수 : 1 ~ {player.highestFloor}");
+            Console.WriteLine("돌아가기 : 0\n");
+
+            selectedIndex = selector.Select();
+
+            switch (selectedIndex)
+            {
+                case -1:
+                    Move();
+                    break;
+                case 0:
+                    Tick();
+                    break;
+                case int selectFloor when 0 < selectFloor && selectFloor <= player.highestFloor :
+                    EncounterMonster(selectFloor);
+                    break;
+                default:
+                    Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
+                    Console.ReadKey();
+                    Move();
+                    break;
+            }
+
+        }
+
+        private void EncounterMonster(int floorNum)
+        {
+            if (30 > Global.Rand(0, 100))
+            {
                 Console.WriteLine("몬스터와 조우했습니다.\n");
 
                 ChangeField(FieldName.EncounterField);
                 Key.AnyKey();
+                Move();
             }
             else
             {
                 Console.WriteLine("아무일도 일어나지 않았습니다.\n");
                 Key.AnyKey();
+                Move();
             }
         }
 
         public override void Tick()
         {
             base.Tick();
-            Console.WriteLine("마을 밖으로 나왔습니다.");
+            Console.WriteLine("마을 밖으로 나왔습니다.\n");
 
             Console.WriteLine("0. 상태창을 확인한다.");
-            Console.WriteLine("1. 이동한다.");
-            Console.WriteLine("2. 마을로 이동한다.");
+            Console.WriteLine("1. 던전으로 이동한다.");
+            Console.WriteLine("2. 마을로 이동한다.\n");
 
             selectedIndex = selector.Select();
 
