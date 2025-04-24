@@ -162,7 +162,7 @@ namespace Sparta.Child.Actors.ItemSystem
             myItemType = ItemType.Potion;
             Name = ItemName.BigRedPotion;
             isEquip = false;
-            addshield = 40;
+            addmaxHp = 40;
             gold = 200;
             Info = "체력을 많이 회복합니다.";
         }
@@ -174,7 +174,7 @@ namespace Sparta.Child.Actors.ItemSystem
             myItemType = ItemType.Potion;
             Name = ItemName.WhitePotion;
             isEquip = false;
-            addshield = 60;
+            addmaxHp = 60;
             gold = 400;
             Info = "체력을 크게 회복합니다.";
         }
@@ -186,7 +186,7 @@ namespace Sparta.Child.Actors.ItemSystem
             myItemType = ItemType.Potion;
             Name = ItemName.BigWhitePotion;
             isEquip = false;
-            addshield = 80;
+            addmaxHp = 80;
             gold = 800;
             Info = "체력을 아주 크게 회복합니다.";
         }
