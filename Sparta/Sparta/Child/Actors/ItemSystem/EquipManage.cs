@@ -14,14 +14,12 @@ namespace Sparta.Child.Actors.ItemSystem
                 Player.GetPlayer().PrintStatus();
                 Console.WriteLine("\n[아이템 목록]\n");
                 List<Item> inventory = Player.GetPlayer().GetPlayerInven().GetInventory();
-
                 for (int i = 0; i < inventory.Count; i++) // 개인적으로 foreach 싫어서 for 문으로 제작
                 {
                     inventory[i].EquipManageStatus(i);
                 }
                 Console.WriteLine("\n0. 장비 장착을 중단한다.");
                 selectedIndex = selector.Select();
-                Item selectItem = inventory[selectedIndex - 1];
                 switch (selectedIndex)
                 {
 
@@ -33,6 +31,7 @@ namespace Sparta.Child.Actors.ItemSystem
                     default:
                         if (selectedIndex - 1 < inventory.Count)
                         {
+                            Item selectItem = inventory[selectedIndex - 1];
                             switch (selectItem.myItemType)
                             {
                                 case ItemType.Potion:
@@ -49,17 +48,15 @@ namespace Sparta.Child.Actors.ItemSystem
                                     Key.AnyKey();
                                     Console.Clear();
                                     break;
-
                             }
-                            break;
                         }
                         else
                         {
                             Console.WriteLine("잘못된 입력입니다.  아무키나 누르시오");
                             Console.ReadKey();
                             Console.Clear();
-                            break;
                         }
+                        break;
                 }
             }
         }
