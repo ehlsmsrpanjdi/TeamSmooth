@@ -15,27 +15,48 @@ namespace Sparta.SaveSystem
 
             byte[] NameByte = Encoding.UTF8.GetBytes(playerSaveData.Name);
             byte[] NameLengthByte = BitConverter.GetBytes(NameByte.Length);
+
             byte[] JobByte = Encoding.UTF8.GetBytes(playerSaveData.Job);
             byte[] JobLengthByte = BitConverter.GetBytes(JobByte.Length);
+
             byte[] LevelByte = BitConverter.GetBytes(playerSaveData.Level);
             byte[] attackByte = BitConverter.GetBytes(playerSaveData.attack); // 공격력 추가
             byte[] shieldByte = BitConverter.GetBytes(playerSaveData.shield); // 방어력 추가
+            byte[] dexByte = BitConverter.GetBytes(playerSaveData.dex); 
+
             byte[] hpByte = BitConverter.GetBytes(playerSaveData.hp);
+            byte[] MaxHpByte = BitConverter.GetBytes(playerSaveData.MaxHp);
+
             byte[] goldByte = BitConverter.GetBytes(playerSaveData.Gold);
+
             byte[] expByte = BitConverter.GetBytes(playerSaveData.Exp);
+            byte[] maxexpByte = BitConverter.GetBytes(playerSaveData.requiredexp);
+
+            byte[] floorByte = BitConverter.GetBytes(playerSaveData.LastFloor);
+
             byte[] ListLengthByte = BitConverter.GetBytes(playerSaveData.ListLength);
 
             ByteList.AddRange(NameLengthByte);
             ByteList.AddRange(NameByte);
             ByteList.AddRange(JobLengthByte);
             ByteList.AddRange(JobByte);
+
             ByteList.AddRange(LevelByte);
             ByteList.AddRange(attackByte); // 공격력 추가
             ByteList.AddRange(shieldByte); // 방어력 추가
+            ByteList.AddRange(dexByte); // 방어력 추가
+
             ByteList.AddRange(hpByte);
+            ByteList.AddRange(MaxHpByte);
+
             ByteList.AddRange(goldByte);
+
             ByteList.AddRange(expByte);
-            byte[] requiredexpByte = BitConverter.GetBytes(playerSaveData.requiredexp); // 요구 경험치 추가
+            ByteList.AddRange(maxexpByte);
+
+            ByteList.AddRange(floorByte);
+
+
             ByteList.AddRange(ListLengthByte);
 
             for (int i = 0; i < playerSaveData.ListLength; ++i)
@@ -73,13 +94,24 @@ namespace Sparta.SaveSystem
             offset += sizeof(int);
             playerSaveData.shield = BitConverter.ToInt32(data, offset); // 방어력 추가
             offset += sizeof(int);
+            playerSaveData.dex = BitConverter.ToInt32(data, offset); 
+            offset += sizeof(int);
+
+
             playerSaveData.hp = BitConverter.ToInt32(data, offset);
             offset += sizeof(int);
+            playerSaveData.MaxHp = BitConverter.ToInt32(data, offset);
+            offset += sizeof(int);
+
             playerSaveData.Gold = BitConverter.ToInt32(data, offset);
             offset += sizeof(int);
+
             playerSaveData.Exp = BitConverter.ToSingle(data, offset);
             offset += sizeof(float);
             playerSaveData.requiredexp = BitConverter.ToSingle(data, offset); // 요구 경험치 복원
+            offset += sizeof(float);
+
+            playerSaveData.LastFloor= BitConverter.ToInt32(data, offset);
             offset += sizeof(float);
 
             playerSaveData.ListLength = BitConverter.ToInt32(data, offset);
