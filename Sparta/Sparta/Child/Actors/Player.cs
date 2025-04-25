@@ -20,6 +20,13 @@ namespace Sparta.Child.Actors
 
         bool Init = false;
 
+        private int HighestFloor;
+        public int highestFloor
+        {
+            get => HighestFloor;
+            set => HighestFloor = Math.Min(value, 10);
+        }
+
         private Player()
         {
 
