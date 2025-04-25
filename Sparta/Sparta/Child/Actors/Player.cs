@@ -323,17 +323,17 @@ namespace Sparta.Child.Actors
             SelectJob();
            
         }
-       
-      
-        }
         public void PrintStatShort()
         {
             var (eqAttack, eqShield, eqHp) = inventory.GetEquippedStatTotal();
             totalAttack = attack + eqAttack;
             totalShield = shield + eqShield;
             totalHp = hp + eqHp;
+            totalMaxHp = maxHp + eqHp;
+            if (hp > totalMaxHp)
+                hp = totalMaxHp;
             Console.WriteLine($"LV. {Level}\t | {Name}\t ( {Job} )");
-            Console.WriteLine($"공격력 : {totalAttack}\t | 방어력 : {totalShield}\t | 체력 : {totalHp}\t");
+            Console.WriteLine($"공격력 : {totalAttack}\t | 방어력 : {totalShield}\t | 체력 : {hp} / {totalMaxHp}\t");
         }
         public override void PrintStatus()
         {
@@ -343,12 +343,13 @@ namespace Sparta.Child.Actors
             totalShield = shield + eqShield;
             totalHp = hp + eqHp;
             totalMaxHp = maxHp + eqHp;
-
+            if (hp > totalMaxHp)
+                hp = totalMaxHp;
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( {Job} )");
             Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
             Console.WriteLine($"방어력 : {shield + eqShield} (+{eqShield})");
-            Console.WriteLine($"체 력 : {totalHp}/{totalMaxHp} (+{eqHp})");
+            Console.WriteLine($"체 력 : {hp}/{totalMaxHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
             Console.WriteLine($"경험치 : {exp:F0}/{requierdexp:F0} ");
         }
@@ -389,15 +390,15 @@ namespace Sparta.Child.Actors
         {
             hp += Value;
 
-            if (hp > maxHp)
+            if (hp > totalMaxHp)
             {
-                hp = maxHp;
+                hp = totalMaxHp;
             }
         }
 
         public void FullHP()
         {
-            hp = maxHp;
+            hp = totalMaxHp;
         }
 
         protected override void OnDeath()

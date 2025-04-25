@@ -105,7 +105,15 @@ namespace Sparta.Parent
             if (hp < 0)
                 hp = 0;
 
-            Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다. 현재 체력: {hp}/{maxHp}");
+            switch (ActType)
+            {
+                case ActorType.Player:
+                    Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다. 현재 체력: {hp}/{totalMaxHp}");
+                    break;
+                default:
+                    Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다. 현재 체력: {hp}/{maxHp}");
+                    break;
+            }
 
             if (hp == 0)
             {
