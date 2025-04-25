@@ -13,9 +13,6 @@ namespace Sparta.Child.Fields
 {
     class ShopField : Field
     {
-        Inventory inventory = new Inventory();
-
-
         public override void BeginPlay()
         {
             base.BeginPlay();
@@ -67,14 +64,14 @@ namespace Sparta.Child.Fields
         }
         private void BuyItem()
         {
-            List<Item> buyitem = new List<Item>
+            string[] itemNames = new string[]
             {
-                AllItem.GetAllItem()[ItemName.LongSword],
-                AllItem.GetAllItem()[ItemName.LeatherArmour],
-                AllItem.GetAllItem()[ItemName.WoodShield],
-                AllItem.GetAllItem()[ItemName.Broadsword],
-                AllItem.GetAllItem()[ItemName.IronArmour],
-                AllItem.GetAllItem()[ItemName.IronShield]
+                 ItemName.LongSword,
+                 ItemName.LeatherArmour,
+                 ItemName.WoodShield,
+                 ItemName.Broadsword,
+                 ItemName.IronArmour,
+                 ItemName.IronShield
             };
 
             while (true) // 상점 아저씨가 쫒아내는 문제 해결
@@ -83,18 +80,22 @@ namespace Sparta.Child.Fields
                 Console.WriteLine("=구매 가능한 아이템 목록=");
                 Console.WriteLine("=========================");
                 Console.WriteLine();
-                for (int i = 0; i < buyitem.Count; i++)
+
+                // 아이템 이름을 기반으로 AllItem.GetAllItem()에서 아이템 가져오기
+                for (int i = 0; i < itemNames.Length; i++)
                 {
-                    Console.WriteLine($"{i}. {buyitem[i].Name} - 가격: {buyitem[i].gold} 골드");
+                    Item item = AllItem.GetAllItem()[itemNames[i]];
+                    Console.WriteLine($"{i}. {item.Name} - 가격: {item.gold} 골드");
                 }
-                Console.WriteLine($"{buyitem.Count}. 구매하지 않는다");
+                Console.WriteLine($"{itemNames.Length}. 구매하지 않는다");
                 Console.WriteLine();
 
                 int choice = selector.Select();
 
-                if (choice >= 0 && choice < buyitem.Count)
+                if (choice >= 0 && choice < itemNames.Length)
                 {
-                    Item selectedItem = buyitem[choice];
+                    string selectedItemName = itemNames[choice];
+                    Item selectedItem = AllItem.GetAllItem()[selectedItemName];
                     Player player = Player.GetPlayer();
 
                     if (player.gold >= selectedItem.gold)
@@ -113,7 +114,7 @@ namespace Sparta.Child.Fields
                     }
 
                 }
-                else if (choice == buyitem.Count)
+                else if (choice == itemNames.Length)
                 {
                     Console.WriteLine("구매를 취소하였습니다.");
                     break; //상점 밖으로 나갈 수 없던 문제 해결
@@ -129,12 +130,12 @@ namespace Sparta.Child.Fields
 
         private void BuyUsingItem()
         {
-            List<Item> usingitem = new List<Item>
+            string[] itemNames = new string[]
                 {
-                AllItem.GetAllItem()[ItemName.RedPotion],
-                AllItem.GetAllItem()[ItemName.BigRedPotion],
-                AllItem.GetAllItem()[ItemName.WhitePotion],
-                AllItem.GetAllItem()[ItemName.BigWhitePotion]
+                ItemName.RedPotion,
+                ItemName.BigRedPotion,
+                ItemName.WhitePotion,
+                ItemName.BigWhitePotion
             };
 
             while (true)
@@ -143,18 +144,20 @@ namespace Sparta.Child.Fields
                 Console.WriteLine("=구매 가능한 아이템 목록=");
                 Console.WriteLine("=========================");
                 Console.WriteLine();
-                for (int i = 0; i < usingitem.Count; i++)
+                for (int i = 0; i < itemNames.Length; i++)
                 {
-                    Console.WriteLine($"{i}. {usingitem[i].Name} \t- 가격: {usingitem[i].gold} 골드");
+                    Item item = AllItem.GetAllItem()[itemNames[i]];
+                    Console.WriteLine($"{i}. {item.Name} - 가격: {item.gold} 골드");
                 }
-                Console.WriteLine($"{usingitem.Count}. 구매하지 않는다");
+                Console.WriteLine($"{itemNames.Length}. 구매하지 않는다");
                 Console.WriteLine();
 
                 int choice = selector.Select();
 
-                if (choice >= 0 && choice < usingitem.Count)
+                if (choice >= 0 && choice < itemNames.Length)
                 {
-                    Item selectedItem = usingitem[choice];
+                    string selectedItemName = itemNames[choice];
+                    Item selectedItem = AllItem.GetAllItem()[selectedItemName];
                     Player player = Player.GetPlayer();
 
                     if (player.gold >= selectedItem.gold)
@@ -173,7 +176,7 @@ namespace Sparta.Child.Fields
                     }
 
                 }
-                else if (choice == usingitem.Count)
+                else if (choice == itemNames.Length)
                 {
                     Console.WriteLine("구매를 취소하였습니다.");
                     break; 

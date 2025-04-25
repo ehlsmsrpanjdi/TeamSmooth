@@ -89,6 +89,5 @@ namespace Sparta.Child.Actors.QuestSystem
                 }
             }
         }
-
     }
 }
