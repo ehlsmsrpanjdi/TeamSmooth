@@ -149,6 +149,10 @@ namespace Sparta.SaveSystem
 
         public bool Load()
         {
+            if (!Directory.Exists(ResourcePath))
+            {
+                Directory.CreateDirectory(ResourcePath);
+            }
             string[] files = Directory.GetFiles(ResourcePath);  // 현재 폴더의 파일들 가져오기
 
 
