@@ -384,12 +384,13 @@ namespace Sparta.Child.Actors
             totalAttack = attack + eqAttack;
             totalShield = shield + eqShield;
             totalHp = hp + eqHp;
+            totalMaxHp = maxHp + eqHp;
 
             Console.WriteLine("Lv. " + Level);
             Console.WriteLine($"{Name} ( {Job} )");
             Console.WriteLine($"공격력 : {attack + eqAttack} (+{eqAttack})");
             Console.WriteLine($"방어력 : {shield + eqShield} (+{eqShield})");
-            Console.WriteLine($"체 력 : {totalHp}/{maxHp+eqHp} (+{eqHp})");
+            Console.WriteLine($"체 력 : {totalHp}/{totalMaxHp} (+{eqHp})");
             Console.WriteLine($"Gold : {gold} G");
             Console.WriteLine($"경험치 : {exp:F0}/{requierdexp:F0} ");
         }
