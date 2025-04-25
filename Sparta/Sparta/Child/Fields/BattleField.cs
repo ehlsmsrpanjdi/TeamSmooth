@@ -23,7 +23,7 @@ namespace Sparta.Child.Fields
         private void Move()
         {
 
-            base.Tick();
+            Console.Clear();
             Console.WriteLine("던전 층수를 선택해 주세요.");
 
             Console.WriteLine($"현재 선택 가능한 던전 층수 : 1 ~ {player.highestFloor}");
