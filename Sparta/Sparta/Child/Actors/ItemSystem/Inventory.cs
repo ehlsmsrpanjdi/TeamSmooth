@@ -6,11 +6,18 @@ namespace Sparta.Child.Actors.ItemSystem
 {
     class Inventory
     {
-        public List<Item> inventory = new List<Item>();
+        List<Item> inventory = new List<Item>();
         EquipManage EquipManage = new EquipManage();
         public Inventory()
         {
 
+        }
+        public List<Item> GetInventory()
+        {
+            if (inventory != null)
+                return inventory;
+            else
+                return inventory = new List<Item>();
         }
         public void Tick()
         {

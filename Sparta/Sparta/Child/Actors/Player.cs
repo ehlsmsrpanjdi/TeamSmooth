@@ -14,7 +14,7 @@ namespace Sparta.Child.Actors
 {
     class Player : Actor
     {
-        public Inventory inventory = new Inventory();
+        private Inventory inventory = new Inventory();
 
         private static Player? Instance = null;
 
@@ -23,6 +23,10 @@ namespace Sparta.Child.Actors
         private Player()
         {
 
+        }
+        public Inventory GetPlayerInven()
+        {
+            return inventory;
         }
 
         public static Player GetPlayer()
@@ -104,12 +108,12 @@ namespace Sparta.Child.Actors
 
             saveData.LastFloor = highestFloor;
 
-            saveData.ListLength = inventory.inventory.Count();
+            saveData.ListLength = inventory.GetInventory().Count();
 
             for (int i = 0; i < saveData.ListLength; ++i)
             {
                 ItemSaveData ItemData = new ItemSaveData();
-                Item item = inventory.inventory[i];
+                Item item = inventory.GetInventory()[i];
                 string? ItemName = item.Name;
 
                 ItemData.ItemName = ItemName;
@@ -124,7 +128,7 @@ namespace Sparta.Child.Actors
 
         public void LoadSaveData(PlayerSaveData _SaveData)
         {
-            inventory.inventory.Clear();
+            inventory.GetInventory().Clear();
             Name = _SaveData.Name;
             Job = _SaveData.Job;
 
@@ -149,10 +153,10 @@ namespace Sparta.Child.Actors
             {
                 ItemSaveData itemData = _SaveData.ItemList[i];
                 Item item = AllItem.CreatItem(itemData.ItemName);
-                inventory.inventory.Add(item);
+                inventory.GetInventory().Add(item);
                 if (itemData.IsEquipment)
                 {
-                    inventory.inventory[i].isEquip = true;
+                    inventory.GetInventory()[i].isEquip = true;
                 }
             }
         }
@@ -304,9 +308,9 @@ namespace Sparta.Child.Actors
         {
             ActType = ActorType.Player;
             Console.WriteLine("TextRPG 던전시커에 오신것을 환영합니다.");
-            inventory.inventory.Add(AllItem.CreatItem(ItemName.LongSword));
-            inventory.inventory.Add(AllItem.CreatItem(ItemName.LeatherArmour));
-            inventory.inventory.Add(AllItem.CreatItem(ItemName.RedPotion));
+            inventory.GetInventory().Add(AllItem.CreatItem(ItemName.LongSword));
+            inventory.GetInventory().Add(AllItem.CreatItem(ItemName.LeatherArmour));
+            inventory.GetInventory().Add(AllItem.CreatItem(ItemName.RedPotion));
             // 초기 장비 지급
             SelectName();
             SelectJob();
@@ -423,7 +427,7 @@ namespace Sparta.Child.Actors
         {
             for (int i = 0; i < totalitem.Count; i++)
             {
-                inventory.inventory.Add(totalitem[i]);
+                inventory.GetInventory().Add(totalitem[i]);
                 Console.WriteLine($"전리품으로 {totalitem[i].Name} 장비를 획득했습니다.");
             }
         }

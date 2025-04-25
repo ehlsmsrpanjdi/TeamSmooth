@@ -100,7 +100,7 @@ namespace Sparta.Child.Fields
                     if (player.gold >= selectedItem.gold)
                     {
                         player.gold -= selectedItem.gold;
-                        player.inventory.inventory.Add(selectedItem); //구매시 플레이어 인벤토리로
+                        player.GetPlayerInven().GetInventory().Add(selectedItem); //구매시 플레이어 인벤토리로
                         Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
                         Key.AnyKey(); 
                         Console.Clear(); 
@@ -160,7 +160,7 @@ namespace Sparta.Child.Fields
                     if (player.gold >= selectedItem.gold)
                     {
                         player.gold -= selectedItem.gold;
-                        player.inventory.inventory.Add(selectedItem);
+                        player.GetPlayerInven().GetInventory().Add(selectedItem);
                         Console.WriteLine($"{selectedItem.Name}을(를) 구매하였습니다!");
                         Key.AnyKey(); 
                         Console.Clear(); 
@@ -193,13 +193,13 @@ namespace Sparta.Child.Fields
             while (true)
             {
 
-                if (player.inventory.inventory.Count == 0)
+                if (player.GetPlayerInven().GetInventory().Count == 0)
                 {
                     Console.WriteLine("판매할 아이템이 없습니다.");
                     Console.WriteLine();
                 }
 
-                List<Item> sellitem = player.inventory.inventory;
+                List<Item> sellitem = player.GetPlayerInven().GetInventory();
 
                 if (sellitem.Count == 0)
                 {

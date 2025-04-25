@@ -111,7 +111,7 @@ namespace Sparta.Child.Fields
                     {
                         Console.WriteLine("축하합니다!. 당신은 빛의 축복을 받아 특별한 장비를 획득했습니다.\n");
                         Key.AnyKey();
-                        Player.GetPlayer().inventory.inventory.Add(AllItem.CreatItem(ItemName.DivineBlade));
+                        Player.GetPlayer().GetPlayerInven().GetInventory().Add(AllItem.CreatItem(ItemName.DivineBlade));
                         hiddenEvent = true;
                     }
                 }
