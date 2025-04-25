@@ -33,9 +33,6 @@ namespace Sparta.Child.Fields
             selectFloor = selectedIndex;
             switch (selectedIndex)
             {
-                case -1:
-                    Move();
-                    break;
                 case 0:
                     Tick();
                     break;
