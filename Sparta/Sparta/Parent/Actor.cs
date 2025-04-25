@@ -132,11 +132,11 @@ namespace Sparta.Parent
 
         public string? Name {  get; set; }
         public string? Job { get; set; } // 전직(Class 가 맞는 거 같은데 단어 혼동이 클 거 같음 ㅇㅇ;;) 
-        private int highestFloor;
-        public int HighestFloor
+        private int HighestFloor;
+        public int highestFloor
         {
-            get => highestFloor;
-            set => highestFloor = Math.Min(value, 10);
+            get => HighestFloor;
+            set => HighestFloor = Math.Min(value, 10);
         }
         public int Level { get; protected set; }
         public int attack { get; protected set; }

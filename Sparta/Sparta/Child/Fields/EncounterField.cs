@@ -147,9 +147,9 @@ namespace Sparta.Child.Fields
                         {
                             Console.WriteLine("\n     축하합니다! 던전의 최고층을 클리어하셨습니다!     \n\n");
                         }
-                        else if(difficulty == Player.GetPlayer().HighestFloor)
+                        else if(difficulty == Player.GetPlayer().highestFloor)
                         {
-                            Player.GetPlayer().HighestFloor++;
+                            Player.GetPlayer().highestFloor++;
                         }
 
                         Console.WriteLine("플레이어가 승리하였습니다.\n");

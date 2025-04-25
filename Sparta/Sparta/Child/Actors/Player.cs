@@ -78,7 +78,7 @@ namespace Sparta.Child.Actors
             Level = 1;
             gold = 1500;
             maxHp = hp;
-            HighestFloor = 1;
+            highestFloor = 1;
         }
 
         public PlayerSaveData MakeSaveData()
