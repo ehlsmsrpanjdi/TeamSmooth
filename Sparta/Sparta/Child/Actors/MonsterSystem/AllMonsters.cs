@@ -25,7 +25,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
             {
-                GetMonsterInven().Add(AllItem.GetAllItem()[ItemName.WoodShield]);
+                GetMonsterInven().Add(AllItem.CreatItem(ItemName.WoodShield));
             }
         }
     }
@@ -45,7 +45,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
             {
-                GetMonsterInven().Add(AllItem.GetAllItem()[ItemName.LongSword]);
+                GetMonsterInven().Add(AllItem.CreatItem(ItemName.LongSword));
             }
         }
     }
@@ -65,7 +65,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
             {
-                GetMonsterInven().Add(AllItem.GetAllItem()[ItemName.IronShield]);
+                GetMonsterInven().Add(AllItem.CreatItem(ItemName.IronShield));
             }
         }
     }
@@ -85,7 +85,7 @@ namespace Sparta.Child.Actors.MonsterSystem
             gold = Global.Rand(0, 100);
             if (30 > Global.Rand(0, 100))
             {
-                GetMonsterInven().Add(AllItem.GetAllItem()[ItemName.IronArmour]);
+                GetMonsterInven().Add(AllItem.CreatItem(ItemName.IronArmour));
             }
         }
     }

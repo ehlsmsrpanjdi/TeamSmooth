@@ -321,63 +321,10 @@ namespace Sparta.Child.Actors
             // 초기 장비 지급
             SelectName();
             SelectJob();
-           // CheckLevel();
+           
         }
        
-        /// <summary> CheckLevel()
-        /// 로드세이브에 스탯 제대로 적용되나 확인용 137,294줄에서 사용함.
-        /// 78줄에 Lv을 수정하면 그 레벨만큼 스탯이 보정됨
-        /// </summary>
-        public void  CheckLevel()
-        {
-            if (Level > 1)
-            {
-                // 레벨 2부터 현재 레벨까지의 스탯 증가량 계산
-                for (int i = 2; i <= Level; i++)
-                {
-                    maxHp += 10;       // 레벨당 최대 체력 증가
-                    attack += 5;       // 레벨당 공격력 증가
-                    shield += 2;       // 레벨당 방어력 증가
-                    requierdexp *= 1.2f; // 다음 레벨업에 필요한 경험치 증가
-                }
-
-                // 현재 체력을 최대 체력으로 설정
-                maxHp = hp;
-                //hp = maxHp;
-            }
-            else if (Level == 1)
-            {
-                if (Job == "전사")
-                {
-                    attack = 10;
-                    shield = 5;
-                    maxHp = 100; // maxHp 설정
-                    dex = 70;
-                }
-                else if (Job == "암살자")
-                {
-                    attack = 15;
-                    shield = 3;
-                    maxHp = 80; // maxHp 설정
-                    dex = 70;
-                }
-                else if (Job == "탱커")
-                {
-                    attack = 7;
-                    shield = 7;
-                    maxHp = 120; // maxHp 설정
-                    dex = 70;
-                }
-                else if (Job == "스파르타")
-                {
-                    attack = 20;
-                    shield = 10;
-                    maxHp = 150; // maxHp 설정
-                    dex = 70;
-                }
-                hp = maxHp;
-
-            }
+      
         }
         public void PrintStatShort()
         {
