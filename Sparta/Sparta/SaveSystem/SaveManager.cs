@@ -62,9 +62,9 @@ namespace Sparta.SaveSystem
             ResourcePath = Path.Combine(dir.FullName, "Resource");
             if (!Directory.Exists(ResourcePath))
             {
-                Console.WriteLine("경로에 Resource 폴더가 없습니다 Resource 폴더의 경로가 바뀐 것 같습니다.");
-                Console.WriteLine("{0} 의 경로에 Resource 폴더가 존재해야합니다", ResourcePath);
+                Directory.CreateDirectory(ResourcePath);
             }
+
         }
         public void Save()
         {
@@ -149,10 +149,7 @@ namespace Sparta.SaveSystem
 
         public bool Load()
         {
-            if (!Directory.Exists(ResourcePath))
-            {
-                Directory.CreateDirectory(ResourcePath);
-            }
+
             string[] files = Directory.GetFiles(ResourcePath);  // 현재 폴더의 파일들 가져오기
 
 
