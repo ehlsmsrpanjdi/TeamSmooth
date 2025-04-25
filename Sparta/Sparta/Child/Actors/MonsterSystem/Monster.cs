@@ -1,12 +1,5 @@
-﻿using Sparta.NameSpace;
+﻿using Sparta.Child.Actors.QuestSystem;
 using Sparta.Parent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sparta.Child.Actors.ItemSystem;
-using Sparta.Child.Actors.QuestSystem;
 
 namespace Sparta.Child.Actors.MonsterSystem
 {
@@ -19,7 +12,10 @@ namespace Sparta.Child.Actors.MonsterSystem
         }
         public List<Item> MosterItemGet()
         {
-            return monsterInven;
+            if (monsterInven != null)
+                return monsterInven;
+            else
+                return monsterInven = new List<Item>();
         }
         public override void PrintStatus()
         {
