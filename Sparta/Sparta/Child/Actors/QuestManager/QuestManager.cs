@@ -13,10 +13,10 @@ namespace Sparta.Child.Actors.QuestSystem
         // 초기화: 수주 가능한 퀘스트를 등록
         static QuestManager()
         {
-            GetQuests.Add(new Quest { Name = "C급 퀘스트", Description = "고블린 10마리 토벌", Goal = 10, TargetMonster = MonsterName.Gobline, RewardGold = 40, RewardExp = 40 });
-            GetQuests.Add(new Quest { Name = "B급 퀘스트", Description = "오크 10마리 토벌", Goal = 10, TargetMonster = MonsterName.Orc, RewardGold = 60, RewardExp = 60 });
-            GetQuests.Add(new Quest { Name = "A급 퀘스트", Description = "쌍두오크 10마리 토벌", Goal = 10, TargetMonster = MonsterName.TwinHeadOrc, RewardGold = 80, RewardExp = 80 });
-            GetQuests.Add(new Quest { Name = "S급 퀘스트", Description = "오우거 10마리 토벌", Goal = 10, TargetMonster = MonsterName.Ogre, RewardGold = 100, RewardExp = 100 });
+            GetQuests.Add(new Quest { Name = "C급 퀘스트", Description = "고블린 10마리 토벌", Goal = 10, TargetMonster = MonsterName.Gobline, RewardGold = 1000, RewardExp = 100 });
+            GetQuests.Add(new Quest { Name = "B급 퀘스트", Description = "오크 10마리 토벌", Goal = 10, TargetMonster = MonsterName.Orc, RewardGold = 1500, RewardExp = 150 });
+            GetQuests.Add(new Quest { Name = "A급 퀘스트", Description = "쌍두오크 10마리 토벌", Goal = 10, TargetMonster = MonsterName.TwinHeadOrc, RewardGold = 2000, RewardExp = 200 });
+            GetQuests.Add(new Quest { Name = "S급 퀘스트", Description = "오우거 10마리 토벌", Goal = 10, TargetMonster = MonsterName.Ogre, RewardGold = 2500, RewardExp = 250 });
         }
 
         // 퀘스트 목록을 출력하는 함수

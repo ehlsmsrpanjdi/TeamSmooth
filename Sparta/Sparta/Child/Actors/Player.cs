@@ -86,13 +86,21 @@ namespace Sparta.Child.Actors
             PlayerSaveData saveData = new PlayerSaveData();
             saveData.Name = Name;
             saveData.Job = Job;
+
             saveData.Level = Level;
             saveData.attack = attack;
             saveData.shield= shield;
+            saveData.dex = dex;
+            
             saveData.hp = hp;
+            saveData.MaxHp = maxHp;
+
             saveData.Gold = gold;
             saveData.Exp = exp;
             saveData.requiredexp = requierdexp; // 요구 경험치 저장
+
+            saveData.LastFloor = highestFloor;
+
             saveData.ListLength = inventory.inventory.Count();
 
             for (int i = 0; i < saveData.ListLength; ++i)
@@ -116,13 +124,22 @@ namespace Sparta.Child.Actors
             inventory.inventory.Clear();
             Name = _SaveData.Name;
             Job = _SaveData.Job;
+
             Level = _SaveData.Level;
             attack = _SaveData.attack;
             shield = _SaveData.shield;
-            exp = _SaveData.Exp;
+            dex = _SaveData.dex;
+
             gold = _SaveData.Gold;
+
             hp = _SaveData.hp;
+            maxHp = _SaveData.MaxHp;
+
+            exp = _SaveData.Exp;
             requierdexp = _SaveData.requiredexp; // 요구 경험치 복원
+
+            highestFloor = _SaveData.LastFloor;
+
             int ListLength = _SaveData.ListLength;
 
             for (int i = 0; i < ListLength; ++i)
@@ -135,10 +152,6 @@ namespace Sparta.Child.Actors
                     inventory.inventory[i].isEquip = true;
                 }
             }
-
-            // 레벨에 따른 스탯 보정
-           //CheckLevel();
-
         }
 
         void SelectName()
