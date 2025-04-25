@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Reflection.Metadata.Ecma335;
 
 
+
 namespace Sparta.SaveSystem
 {
     struct ItemSaveData
@@ -50,7 +51,7 @@ namespace Sparta.SaveSystem
 
 
 
-    class SaveManager
+    class SaveManager 
     {
         string? ResourcePath = null;
 
@@ -79,12 +80,18 @@ namespace Sparta.SaveSystem
                     Console.WriteLine("{0}번 세이브 데이터 : {1}", i, str);
                 }
                 Console.WriteLine("1~5번 중 세이브를 할 공간을 고르시오");
+                Console.WriteLine("");
+                Console.WriteLine("6. 뒤로 가기");
                 SelectedIndex = selector.Select();
                 if (SelectedIndex == -1)
                 {
                     continue;
                 }
-                else if (SelectedIndex <= 0 || SelectedIndex > 5)
+                else if (SelectedIndex == 6)
+                {
+                    return;                    
+                }
+                else if (SelectedIndex <= 0 || SelectedIndex > 6)
                 {
                     Key.WrongKey();
                     continue;
