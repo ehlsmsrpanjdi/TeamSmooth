@@ -149,6 +149,8 @@ namespace Sparta.Parent
         public int totalAttack { get; set; }
         public int totalShield { get; set; }
         public int totalHp  { get; set; }
+        public int totalMaxHp { get; set; }
+
         public float requierdexp { get; protected set; } = 100;
         
 
