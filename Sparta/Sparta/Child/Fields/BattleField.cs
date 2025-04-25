@@ -26,7 +26,7 @@ namespace Sparta.Child.Fields
             base.Tick();
             Console.WriteLine("던전 층수를 선택해 주세요.");
 
-            Console.WriteLine($"현재 선택 가능한 던전 층수 : 1 ~ {player.highestFloor}");
+            Console.WriteLine($"현재 선택 가능한 던전 층수 : 1 ~ {player.HighestFloor}");
             Console.WriteLine("돌아가기 : 0\n");
 
             selectedIndex = selector.Select();
@@ -39,7 +39,7 @@ namespace Sparta.Child.Fields
                 case 0:
                     Tick();
                     break;
-                case int selectFloor when 0 < selectFloor && selectFloor <= player.highestFloor :
+                case int selectFloor when 0 < selectFloor && selectFloor <= player.HighestFloor:
                     EncounterMonster(selectFloor);
                     break;
                 default:

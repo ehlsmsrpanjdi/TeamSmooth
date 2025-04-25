@@ -52,15 +52,15 @@ namespace Sparta.Child.Fields
                 {
                     int rand = Global.Rand(0, 100);
 
-                    if (rand < 40)
+                    if (rand < 20)
                     {
                         SpawnActor<Gobline>();
                     }
-                    else if (rand < 70 && difficulty >= 3)
+                    else if (rand < 60 && difficulty >= 3)
                     {
                         SpawnActor<Orc>();
                     }
-                    else if (rand < 90 && difficulty >= 5)
+                    else if (rand < 85 && difficulty >= 5)
                     {
                         SpawnActor<TwinHeadOrc>();
                     }
@@ -142,9 +142,14 @@ namespace Sparta.Child.Fields
 
                     if(Actors.Count() == 0)
                     {
-                        if(difficulty == Player.GetPlayer().highestFloor)
+
+                        if(difficulty == 10)
                         {
-                            Player.GetPlayer().highestFloor++;
+                            Console.WriteLine("\n     축하합니다! 던전의 최고층을 클리어하셨습니다!     \n\n");
+                        }
+                        else if(difficulty == Player.GetPlayer().HighestFloor)
+                        {
+                            Player.GetPlayer().HighestFloor++;
                         }
 
                         Console.WriteLine("플레이어가 승리하였습니다.\n");
