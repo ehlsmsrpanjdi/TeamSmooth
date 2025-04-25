@@ -20,7 +20,10 @@ namespace Sparta.Child.Actors
 
         bool Init = false;
 
+        private Player()
+        {
 
+        }
 
         public static Player GetPlayer()
         {
