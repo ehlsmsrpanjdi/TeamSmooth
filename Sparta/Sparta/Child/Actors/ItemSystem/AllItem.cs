@@ -6,17 +6,21 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Sparta.NameSpace;
+using System.Collections.ObjectModel;
 
 namespace Sparta.Child.Actors.ItemSystem
 {
     public class AllItem
     {
-        public static Dictionary<string, Item> Items = null;
+        private static bool isinit = false;
+
+        private readonly static Dictionary<string, Item> Items = new Dictionary<string, Item>();
+
+        public static IReadOnlyDictionary<string, Item> GetAllItem() => Items;
 
         public static void ItemInit()
         {
-            if (AllItem.Items != null) return;
-            Dictionary<string, Item> Items = GetAllItem();
+            if (AllItem.isinit == true) return;
             Items[ItemName.LongSword] = new LongSword();
             Items[ItemName.LeatherArmour] = new LeatherArmour();
             Items[ItemName.WoodShield] = new WoodShield();
@@ -28,16 +32,10 @@ namespace Sparta.Child.Actors.ItemSystem
             Items[ItemName.BigRedPotion] = new BigRedPotion();
             Items[ItemName.WhitePotion] = new WhitePotion();
             Items[ItemName.BigWhitePotion] = new BigWhitePotion();
+            isinit = true;
         }
 
-        public static Item? GetItem(string _itemName)
-        {
-            if (Items.ContainsKey(_itemName) == false)
-            {
-                Key.WrongKey();
-            }
-            return Items[_itemName];
-        }
+
         public static Item CreatItem(string _itemName)       // 도감에 있는 아이템을 실제 장비 아이템으로 생성하는 함수
         {
             Item gened_item = new Item();
@@ -50,14 +48,7 @@ namespace Sparta.Child.Actors.ItemSystem
             gened_item.myItemType = Items[_itemName].myItemType;
             return gened_item;
         }
-        public static Dictionary<string, Item> GetAllItem()
-        {
-            if(Items == null)
-            {
-                Items = new Dictionary<string, Item>();
-            }
-            return Items;
-        }
+
     }
     public class LongSword : Item
     {
