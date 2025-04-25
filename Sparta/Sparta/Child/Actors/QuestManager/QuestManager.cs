@@ -73,5 +73,22 @@ namespace Sparta.Child.Actors.QuestSystem
             }
         }
 
+        public static void UpdateQuest(string monsterName)
+        {
+            foreach (var quest in QuestList)
+            {
+                if (quest.TargetMonster == monsterName && !quest.IsCompleted)
+                {
+                    quest.Progress++;
+                    Console.WriteLine($"'{quest.Name}' 진행 상황: {quest.Progress}/{quest.Goal}");
+
+                    if (quest.IsCompleted) // 자동으로 완료 여부 확인
+                    {
+                        Console.WriteLine($"'{quest.Name}' 퀘스트를 완료했습니다!");
+                    }
+                }
+            }
+        }
+
     }
 }

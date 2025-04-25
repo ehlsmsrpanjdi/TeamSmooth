@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sparta.Child.Actors.ItemSystem;
+using Sparta.Child.Actors.QuestSystem;
 
 namespace Sparta.Child.Actors.MonsterSystem
 {
@@ -32,6 +33,7 @@ namespace Sparta.Child.Actors.MonsterSystem
         {
             base.OnDeath();
             //Player.GetPlayer().ExpGoldGet(exp, gold); 몬스터가 죽을 때 함수 실행
+            QuestManager.UpdateQuest(this.Name); //몬스터 죽을때 불러오기
         }
     }
 }
