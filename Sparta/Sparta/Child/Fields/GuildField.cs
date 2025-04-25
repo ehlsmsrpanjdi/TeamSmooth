@@ -64,8 +64,10 @@ namespace Sparta.Child.Fields
             Console.WriteLine("=   수주한 퀘스트 목록   =");
             Console.WriteLine("==========================");
             Console.WriteLine();
+
             QuestManager.GetQuestList(); // 퀘스트 목록 출력
             Console.ReadKey();
+            Console.Clear();
         }
     }
 }
