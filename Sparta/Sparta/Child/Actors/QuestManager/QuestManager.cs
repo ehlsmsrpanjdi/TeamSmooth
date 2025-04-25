@@ -82,10 +82,36 @@ namespace Sparta.Child.Actors.QuestSystem
                     quest.Progress++;
                     Console.WriteLine($"'{quest.Name}' 진행 상황: {quest.Progress}/{quest.Goal}");
 
-                    if (quest.IsCompleted) // 자동으로 완료 여부 확인
+                    if (quest.IsCompleted) 
                     {
                         Console.WriteLine($"'{quest.Name}' 퀘스트를 완료했습니다!");
                     }
+                }
+            }
+
+            QuestReward();
+
+        }
+        public static void QuestReward()
+        {
+            Player player = Player.GetPlayer(); 
+
+            if (player == null)
+            {
+                Console.WriteLine("플레이어 객체를 찾을 수 없습니다.");
+                return;
+            }
+
+            for (int i = QuestList.Count - 1; i >= 0; i--)
+            {
+                if (QuestList[i].IsCompleted)
+                {
+                    player.gold += QuestList[i].RewardGold;
+                    player.AddExp(QuestList[i].RewardExp); //exp를 직접 수정할 수 없어서 plaer에 addexp함수 만들고 사용
+
+                    Console.WriteLine($"'{QuestList[i].Name}' 퀘스트 보상 수령: 골드 {QuestList[i].RewardGold}, 경험치 {QuestList[i].RewardExp}");
+
+                    QuestList.RemoveAt(i); // 퀘스트 완료하고 리스트에서 퀘스트 제거
                 }
             }
         }

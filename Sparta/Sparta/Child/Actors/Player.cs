@@ -434,6 +434,23 @@ namespace Sparta.Child.Actors
                 }
             }
         }
+        public void AddExp(float CompleteExp) //외부에서 경험치 직접조절 가능
+        {
+            exp += CompleteExp; 
+            Console.WriteLine($"경험치 {CompleteExp}을(를) 획득했습니다! 현재 경험치: {exp}/{requierdexp}");
+
+            while (exp >= requierdexp)
+            {
+                Level++;
+                maxHp += 10;
+                attack += 5;
+                shield += 2;
+                exp -= requierdexp;
+                requierdexp *= 1.2f;
+
+                Console.WriteLine($"레벨 업! 현재 레벨: {Level}");
+            }
+        }
 
     }
 }
