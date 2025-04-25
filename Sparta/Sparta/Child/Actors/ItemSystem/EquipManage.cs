@@ -19,7 +19,7 @@ namespace Sparta.Child.Actors.ItemSystem
                 {
                     inventory[i].EquipManageStatus(i);
                 }
-                Console.WriteLine("\n0. 장비 장착을 중단한다.");
+                Console.WriteLine("\n0. 나가기.");
                 selectedIndex = selector.Select();
                 Item selectItem = inventory[selectedIndex - 1];
                 switch (selectedIndex)
